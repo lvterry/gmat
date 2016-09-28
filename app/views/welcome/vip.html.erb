@@ -91,5 +91,5 @@
 </div>
 
 <% content_for :scripts do %>
-  <script src="/assets/vip.js"></script>
+  <%= javascript_include_tag 'vip', 'data-turbolinks-track': 'reload' %>
 <% end -%>
