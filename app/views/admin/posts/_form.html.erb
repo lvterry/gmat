@@ -73,7 +73,7 @@
   </div>
 
   <% content_for :scripts do %>
-    <script src="/assets/admin/posts.js"></script>
+    <%= javascript_include_tag 'admin/posts' %>
   <% end -%>
 
 <% end %>
