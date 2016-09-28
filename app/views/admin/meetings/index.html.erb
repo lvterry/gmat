@@ -1,0 +1,33 @@
+<h4>首页课程表</h4>
+
+<%= link_to '添加课程', new_admin_meeting_path, class: 'btn btn-primary pull-right', style: 'margin-top: -45px;' %>
+    <table class="table table-bordered meetings-table">
+      <thead>
+        <th>课程名</th>
+        <th>科目</th>
+        <th>开始</th>
+        <th>结束</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <% @meetings.each do |meeting| %>
+          <tr data-id="<%= meeting.id %>">
+            <td>
+              <%= meeting.name %>
+            </td>
+            <td>数学</td>
+            <td>
+              <%= meeting.start_time.to_formatted_s(:date_and_time) %>
+            </td>
+            <td>
+              <%= meeting.end_time.to_formatted_s(:date_and_time) %>
+            </td>
+
+            <td>
+              <%= link_to '编辑', edit_admin_meeting_path(meeting) %>
+              <%= link_to '删除',  admin_meeting_path(meeting), class: 'delete-meeting' %>
+            </td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>

@@ -1,0 +1,40 @@
+<%= form_for [:admin, @slide], html: { class: 'form-horizontal post-form' } do |f| %>
+<div class="form-group">
+  <label for="img_url" class="col-sm-2 control-label">图片URL</label>
+  <div class="col-sm-10">
+    <%= f.text_field :img_url, class: 'form-control' %>
+    <p class="text-muted"><small>建议把图片直接上传七牛，然后把图片外链贴在这里</small></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="link" class="col-sm-2 control-label">
+    链接到
+  </label>
+  <div class="col-sm-10">
+    <%= f.text_field :link, class: 'form-control' %>
+    <p class="text-muted"><small>可以是站内或者站外链接</small></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="bg_color" class="col-sm-2 control-label">
+    背景色
+  </label>
+  <div class="col-sm-10">
+    <%= f.text_field :bg_color, class: 'form-control' %>
+    <p class="text-muted"><small>选取合适的背景色，可以使轮播图视觉效果更好。建议在 PS 里选取图片两侧的颜色，把色值填在这里</small></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-10 col-sm-offset-2">
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<% content_for :scripts do %>
+
+<% end -%>
+
+<% end %>

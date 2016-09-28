@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GMAT"/>
+    <meta name="description" content=""/>
+    <title>GMAT770 - 助力你考G高分</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="bg-blue fixed">
+      <div class="clearfix container">
+        <div class="left py1">
+          <a href="/">
+            <img src="http://7xso19.com2.z0.glb.clouddn.com/logo.png" width="150" class="block" />
+          </a>
+        </div>
+        <nav class="left ml2">
+          <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/courses">公开课</a></li>
+            <li><a href="/courses/featured.php">精品课</a></li>
+            <li><a class="<%= (controller_name == 'welcome' && action_name == 'vip') ? 'active' : '' %>" href="/welcome/vip">一对一</a></li>
+            <li><a class="<%= (controller_name == 'posts') ? 'active' : '' %>" href="/posts">免费资源</a></li>
+            <li><a class="<%= (controller_name == 'welcome' && action_name == 'about') ? 'active' : '' %>" href="/welcome/about">关于我们</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <%= yield %>
+
+    <footer class="py2 h6 center gray clearfix">
+      <div class="max-width-4 mx-auto">
+          <p>友情链接：
+            <a class="mx1" href="#">腾讯</a>
+            <a class="mx1" href="#">尚有</a>
+          </p>
+          <p>关注 GMAT770 的微信公众号</p>
+          <p><%= image_tag 'qr.png', alt: '微信二维码', width: 111 %></p>
+          <p>&copy; 2016 北京科技有限公司 ICP备29229923号</p>
+      </div>
+    </footer>
+
+    <%= yield :scripts %>
+  </body>
+</html>

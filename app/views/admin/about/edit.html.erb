@@ -1,0 +1,26 @@
+<h4>关于我们页面</h4>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end -%>
+
+<%= form_for [:admin, @about], html: { class: 'form' } do |f| %>
+  <div class="form-group">
+    <label for="title">标题</label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label for="img">图片地址</label>
+    <%= f.text_field :img, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label for="body">正文</label>
+    <%= f.text_area :body, class: 'form-control', id: 'summernote' %>
+  </div>
+
+  <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>

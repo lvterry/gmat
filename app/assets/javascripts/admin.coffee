@@ -1,0 +1,12 @@
+#= require jquery
+#= require csrf
+#= require bootstrap-sprockets
+#= require summernote
+#= require admin/tags
+#= require admin/vip
+#= require admin/common
+#= require admin/home
+#= require plupload/plupload.full.min
+#= require jquery.plugin
+#= require jquery.datetimeentry
+#= require qiniu.min

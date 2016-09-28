@@ -1,0 +1,41 @@
+<div class="bg-snow pt2 header-margin">
+    <div class="clearfix container-narrow p2 bg-white right-align filters">
+      <a href="/posts" class="<%= (@category == "" || @category.nil?) ? "active" : "" %>">全部</a>
+      <% @tags.each do |tag| %>
+        <a href="<%= post_category_url(tag.id) %>" class="<%= (tag.id.to_s == @category) ? 'active' : '' %>"><%= tag.name %></a>
+      <% end -%>
+    </div>
+</div>
+
+<div class="bg-snow">
+    <div class="clearfix max-width-3 mx-auto pb4">
+      <% @posts.each do |p| %>
+        <div class="post">
+          <h3>
+            <%= link_to p.title, post_path(p) %>
+          </h3>
+          <div class="gray">
+            <small>发布于&nbsp;<%= p.created_at.to_formatted_s(:date_and_time) %></small>
+            <% if p.attachments.count > 0 %>
+              &middot;
+              <small><%= image_tag 'download.png', width: 6, height: 14 %>&nbsp;文章内含附件</small>
+            <% end -%>
+          </div>
+          <div class="tags">
+            <%= image_tag "tag.png", height: 16, class: 'post-tag-icon' %>
+            <% p.tag_names.each do |t| %>
+              <a class="post-tag" href="<%= post_category_url(t.id) %>"><%= t.name %></a>
+            <% end -%>
+          </div>
+          <div class="body">
+            <%= p.summary[0..200] %>
+          </div>
+
+          <% if p.top %>
+            <%= image_tag "top.png", size: '60x60', class: 'top' %>
+          <% end -%>
+
+        </div>
+      <% end -%>
+    </div>
+</div>

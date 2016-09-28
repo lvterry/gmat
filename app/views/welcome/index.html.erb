@@ -1,0 +1,83 @@
+<div class="header-margin">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @slides.each do |slide| %>
+        <div class="swiper-slide" data-color="<%= slide.bg_color %>">
+          <a href="<%= slide.link %>">
+            <%= image_tag slide.img_url, width: 1190, height: 360 %>
+          </a>
+        </div>
+      <% end -%>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<div class="why-us">
+  <div class="container py2">
+    <div class="clearfix">
+
+      <div class="col col-4 p2">
+        <div class="left mr2">
+          <img src="http://7xtg0z.com2.z0.glb.clouddn.com/p1.png" width="180" height="120">
+        </div>
+        <h4>实力 + 经验</h4>
+        <p>
+          团队平均770分以上，并均有超过2年的授课经验，独家教材
+        </p>
+        <p><a href="http://edu.yy.com"><strong>查看更多&nbsp;»</strong></a></p>
+      </div><div class="col col-4 p2">
+      <div class="left mr2">
+        <img src="http://7xtg0z.com2.z0.glb.clouddn.com/p2.png" width="180" height="120">
+      </div>
+      <h4>定制 + 灵活</h4>
+      <p>
+        根据个人特点拟定授课方案，因材施教；一对一授课时间安排灵活
+      </p>
+      <p><a href="bing.com"><strong>查看更多&nbsp;»</strong></a></p>
+    </div><div class="col col-4 p2">
+    <div class="left mr2">
+      <img src="http://7xtg0z.com2.z0.glb.clouddn.com/p3.png" width="180" height="120">
+    </div>
+    <h4>专注 + 陪伴</h4>
+    <p>
+      无需等待机经发布，临考前随时答疑解惑，有问必答，一路陪你达到目标分
+    </p>
+    <p><a href="qq.com"><strong>查看更多&nbsp;»</strong></a></p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="calendar-container clearfix">
+  <h3 class="center" style="margin-bottom: 0;">课程预告</h3>
+  <% if false %>
+    <div class="container">
+      <%= month_calendar events: @meetings do |date, meetings| %>
+        <%= date.day %>
+        <% meetings.each do |meeting| %>
+          <div>
+            <%= meeting.name %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end -%>
+  <div class="container">
+    <div id="calendar"></div>
+  </div>
+</div>
+
+<div id="wechat">
+  <%= image_tag 'wechat.png', width: 30 %>
+</div>
+<div id="barcode" style="display: none;">
+  <%= image_tag 'barcode.png', width: 100 %>
+  <p>关注 GMAT770 的微信公众号<br>获取更多资讯</p>
+</div>
+
+<% content_for :scripts do %>
+  <script src="/assets/welcome.js"></script>
+<% end -%>

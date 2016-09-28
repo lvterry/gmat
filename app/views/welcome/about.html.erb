@@ -1,0 +1,28 @@
+<div class="header-margin">
+  <div class="bg-gray">
+    <div class="container clearfix" style="padding: 20px 0;">
+      <div class="card clearfix">
+        <div class="title">
+        <h1><%= @about.title %></h1>
+          <%= image_tag @about.img, size: '384x432' %>
+        </div>
+        <div class="letter">
+          <%= raw @about.body %>
+        </div>
+      </div>
+
+      <h2 class="center" style="font-size:40px;">团队成员</h2>
+
+      <% @teachers.each do |teacher| %>
+        <div class="member-desc card clearfix">
+          <div class="avatar">
+            <%= image_tag "#{teacher.avatar}?imageView2/1/w/180/h/180" %>
+          </div>
+          <h3><%= teacher.long_name %></h3>
+          <p><%= teacher.description %></p>
+        </div>
+      <% end -%>
+
+    </div>
+  </div>
+</div>

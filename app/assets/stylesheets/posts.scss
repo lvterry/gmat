@@ -1,0 +1,19 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.post-show-container {
+  padding: 16px 24px;
+}
+
+.attachments {
+  padding-bottom: 16px;
+
+  .filelist {
+    margin-top: 8px;
+    padding: 16px;
+
+    a {
+      margin-right: 8px;
+    }
+  }
+}

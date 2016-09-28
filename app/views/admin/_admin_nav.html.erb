@@ -1,0 +1,16 @@
+<ul class="nav nav-pills nav-stacked left-nav">
+  <li><div style="border: none">首页内容</div></li>
+  <li class="<%= (controller_name == 'slides') ? 'active' : '' %>">
+    <a href="<%= admin_slides_path %>">轮播图</a>
+  </li>
+  <li class="<%= (controller_name == 'meetings') ? 'active' : '' %>">
+    <a href="<%= admin_meetings_path %>">课程表</a>
+  </li>
+  <li><div>免费资源内容</div></li>
+  <li class="<%= controller_name == 'posts' ? 'active' : '' %>"><a href="<%= admin_posts_path %>">文章</a></li>
+  <li class="<%= controller_name == 'tags' ? 'active' : '' %>"><a href="<%= admin_tags_path %>">标签</a></li>
+  <li><div>其他</div></li>
+  <li class="<%= controller_name == 'teachers' ? 'active' : '' %>"><a href="<%= admin_teachers_path %>">教师管理</a></li>
+  <li class="<%= controller_name == 'about' ? 'active' : '' %>"><a href="<%= edit_admin_about_path(1) %>">关于我们</a></li>
+  <li class="<%= controller_name == 'vip' ? 'active' : '' %>"><a href="<%= edit_admin_vip_path(1) %>">一对一页面</a></li>
+</ul>

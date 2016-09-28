@@ -1,0 +1,95 @@
+<div class="header-margin one-on-one">
+  <div class="topbar">
+    <%= image_tag 'one_on_one_text.png', size: '280x124' %>
+  </div>
+
+  <div class="features-container container">
+
+    <div class="features container clearfix">
+      <div class="card card-left" style="margin-right: 10px;">
+        <div style="margin-bottom: 30px;">
+          <%= image_tag '高分.png' %>
+          <p><%= @vip.f1 %></p>
+        </div>
+        <div>
+          <%= image_tag '专业.png' %>
+          <p><%= @vip.f2 %></p>
+        </div>
+      </div>
+      <div class="card card-right">
+        <div style="margin-bottom: 30px;">
+          <%= image_tag '经验.png' %>
+          <p><%= @vip.f3 %></p>
+        </div>
+        <div>
+          <%= image_tag '精英.png' %>
+          <p><%= @vip.f4 %></p>
+        </div>
+      </div>
+      <div class="card card-left card-bottom" style="margin-right: 10px;">
+        <div style="margin-bottom: 30px;">
+          <%= image_tag '专注.png' %>
+          <p><%= @vip.f5 %></p>
+        </div>
+        <div>
+          <%= image_tag '高效.png' %>
+          <p><%= @vip.f6 %></p>
+        </div>
+      </div>
+      <div class="card card-right card-bottom">
+        <div style="margin-bottom: 30px;">
+          <%= image_tag '个性.png' %>
+          <p><%= @vip.f7 %></p>
+        </div>
+        <div>
+          <%= image_tag '举一反三.png' %>
+          <p><%= @vip.f8 %></p>
+        </div>
+      </div>
+    </div>
+
+    <%= image_tag '私人定制.png' %>
+
+  </div>
+
+
+  <h2 class="center">服务流程</h2>
+
+  <div class="container clearfix flow">
+
+    <% @vip.flows.each do |flow| %>
+      <div class="card">
+        <img src="<%= flow.img %>">
+        <h4><%= flow.title %></h4>
+        <p><%= flow.body %></p>
+      </div>
+    <% end -%>
+
+  </div>
+
+  <h2 class="center">常见问题</h2>
+
+  <div class="container card faq clearfix">
+    <% @vip.questions.each do |question| %>
+      <div>
+        <h4><%= question.q %></h4>
+        <p><%= question.a %></p>
+      </div>
+    <% end -%>
+  </div>
+
+  <h2 class="center">如何报名</h2>
+  <div class="container">
+    <div class="card center">
+      <p>请关注 <b>GMAT770长工</b> 的微信号咨询报名</p>
+      <p>
+        <%= image_tag "http://7xtg0z.com2.z0.glb.clouddn.com/qrcode.png", width: 200 %>
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<% content_for :scripts do %>
+  <script src="/assets/vip.js"></script>
+<% end -%>

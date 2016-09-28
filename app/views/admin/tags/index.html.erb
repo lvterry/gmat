@@ -1,0 +1,22 @@
+<h4>标签</h4>
+<button class="btn btn-primary pull-right" style="margin-top: -45px;" data-toggle="modal" data-target="#tagModal" class="add-tag">添加标签</button>
+<table class="table table-bordered tags-table">
+  <thead>
+    <th>标签名称</th>
+    <th>操作</th>
+  </thead>
+  <tbody>
+    <% @tags.each do |t| %>
+      <tr data-id="<%= t.id %>">
+        <td><%= t.name %></td>
+        <td>
+          <%= link_to '编辑', '#', class: 'edit-tag', data: { target: '#tagModal', toggle: 'modal'} %>
+          <%= link_to '删除', '#', class: 'delete-tag' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%= render partial: "admin/tag_modal", locals: { tag: @tag } %>
+<%= render partial: "admin/confirm_modal", locals: { tag: @tag } %>

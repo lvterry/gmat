@@ -1,0 +1,31 @@
+<h4>轮播图管理</h4>
+
+<%= link_to '添加轮播图', new_admin_slide_path, class: 'btn btn-primary pull-right', style: 'margin-top: -45px;' %>
+
+    <table class="table table-bordered slides-table">
+      <thead>
+        <th style="width: 220px;">图片</th>
+        <th>链接</th>
+        <th>背景颜色</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <% @slides.each do |slide| %>
+          <tr data-id="<%= slide.id %>">
+            <td>
+              <%= image_tag slide.img_url, height: 60 %>
+            </td>
+            <td>
+              <%= slide.link %>
+            </td>
+            <td>
+              <%= slide.bg_color %>
+            </td>
+            <td>
+              <%= link_to '编辑', edit_admin_slide_path(slide) %>
+              <%= link_to '删除', admin_slide_path(slide), class: 'delete-slide' %>
+            </td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>

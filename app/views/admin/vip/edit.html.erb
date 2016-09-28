@@ -1,0 +1,185 @@
+<h4>VIP一对一页面</h4>
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">私人定制内容</a></li>
+    <li role="presentation"><a href="#flow" aria-controls="flow" role="tab" data-toggle="tab">服务流程</a></li>
+    <li role="presentation"><a href="#faq" aria-controls="faq" role="tab" data-toggle="tab">常见问题</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="personal">
+
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end -%>
+
+      <%= form_for [:admin, @vip], html: { class: 'form-horizontal' } do |f| %>
+        <div class="form-group">
+          <label for="f1" class="col-sm-2 control-label">高分</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f1, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f2" class="col-sm-2 control-label">专业</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f2, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f3" class="col-sm-2 control-label">经验</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f3, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f4" class="col-sm-2 control-label">精英</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f4, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f5" class="col-sm-2 control-label">专注</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f5, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f6" class="col-sm-2 control-label">高效</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f6, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f7" class="col-sm-2 control-label">个性</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f7, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f8" class="col-sm-2 control-label">举一反三</label>
+          <div class="col-sm-10">
+            <%= f.text_field :f8, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit '保存', class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="flow">
+      <table class="table table-bordered table-striped">
+        <tbody>
+        <% @vip.flows.each do |flow| %>
+          <tr>
+            <td class="img"><img src="<%= flow.img %>" height="30" /></td>
+            <td class="title" style="width: 120px;"><%= flow.title %></td>
+            <td class="body text-muted"><%= flow.body %></td>
+            <td style="width: 100px;"><a href="#" data-toggle="modal" data-target="#flowModal" data-id="<%= flow.id %>">编辑</a></td>
+          </tr>
+        <% end -%>
+        </tbody>
+      </table>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="faq">
+      <a href="#" data-toggle="modal" data-target="#questionModal" class="btn btn-primary pull-right" style="margin-bottom: 16px;">添加问题</a>
+      <table class="table table-bordered table-striped">
+        <tbody>
+        <% @vip.questions.each do |question| %>
+          <tr>
+            <td class="q"><%= question.q %></td>
+            <td class="hidden a"><%= question.a %></td>
+            <td style="width: 100px;"><a href="#" data-toggle="modal" data-target="#questionModal" data-id="<%= question.id %>">编辑</a></td>
+          </tr>
+        <% end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="flowModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">修改流程内容</h4>
+      </div>
+      <form action="/admin/vip/flows" method="post" class="form">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="modal-body">
+          <input type="hidden" name="flow[id]" id="flow-id">
+          <div class="form-group">
+            <label for="">标题</label>
+            <input type="text" name="flow[title]" class="form-control" id="flow-title">
+          </div>
+          <div class="form-group">
+            <label for="">介绍</label>
+            <input type="text" name="flow[body]" class="form-control" id="flow-body">
+          </div>
+          <div class="form-group">
+            <label for="">图标链接</label>
+            <input type="text" name="flow[img]" class="form-control" id="flow-img">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <input type="submit" class="btn btn-primary" value="保存">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- question dialog -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="questionModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">编辑问题</h4>
+      </div>
+      <form action="/admin/vip/questions" method="post" class="form">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :vip_id, 1 %>
+        <div class="modal-body">
+          <input type="hidden" name="question[id]" id="question-id">
+          <div class="form-group">
+            <label for="">问题</label>
+            <input type="text" name="question[q]" class="form-control" id="question-q">
+          </div>
+          <div class="form-group">
+            <label for="">答案</label>
+            <textarea class="form-control" name="question[a]" id="question-a" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <input type="submit" class="btn btn-primary" value="保存">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
