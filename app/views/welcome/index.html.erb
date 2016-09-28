@@ -79,5 +79,5 @@
 </div>
 
 <% content_for :scripts do %>
-  <script src="/assets/welcome.js"></script>
+  <%= javascript_include_tag 'welcome', 'data-turbolinks-track': 'reload' %>
 <% end -%>
