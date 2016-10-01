@@ -1,40 +1,43 @@
-<div class="bg-snow pt2 header-margin">
-    <div class="container-narrow">
-        <div class="clearfix card right-align filters">
-          <a href="/courses" class="<%= (@subject == "" || @subject.nil?) ? "active" : "" %>">全部</a>
-          <% Course.subjects.each_with_index do |subject, index| %>
-            <a href="<%= courses_subject_url(index) %>" class="<%= (index.to_s == @subject) ? 'active' : '' %>"><%= subject %></a>
-          <% end -%>
-        </div>
-    </div>
-</div>
+<div class="bg-snow">
 
-<div class="bg-snow courses">
+    <div class="pt2 header-margin">
+        <div class="container-narrow">
+            <div class="clearfix card right-align filters">
+              <a href="/courses" class="<%= (@subject == "" || @subject.nil?) ? "active" : "" %>">全部</a>
+              <% Course.subjects.each_with_index do |subject, index| %>
+              <a href="<%= courses_subject_url(index) %>" class="<%= (index.to_s == @subject) ? 'active' : '' %>"><%= subject %></a>
+              <% end -%>
+          </div>
+      </div>
+  </div>
+
+  <div class="courses">
     <div class="clearfix max-width-3 mx-auto pb4">
       <% @courses.each do |course| %>
-        <div class="course-item bg-white p2 mb1 clearfix">
-            <div class="left">
-                <a href="<%= course_show_path(course) %>">
-                    <img src="<%= course.img_url %>?imageView2/1/w/240/h/145" width="240" height="145">
-                </a>
-            </div>
-            <div class="left pl3" style="width:59%">
-                <a href="<%= course_show_path(course) %>" class="h3 black"><%= course.title %></a>
-                <div class="gray h5 mt1">
-                    <div>讲师: <%= course.teacher.name %></div>
-                    <div>开课时间：<%= course.start_time.to_formatted_s(:date_and_time)%></div>
+      <div class="course-item bg-white p2 mb1 clearfix">
+        <div class="left">
+            <a href="<%= course_show_path(course) %>">
+                <img src="<%= course.img_url %>?imageView2/1/w/240/h/145" width="240" height="145">
+            </a>
+        </div>
+        <div class="left pl3" style="width:59%">
+            <a href="<%= course_show_path(course) %>" class="h3 black"><%= course.title %></a>
+            <div class="gray h5 mt1">
+                <div>讲师: <%= course.teacher.name %></div>
+                <div>开课时间：<%= course.start_time.to_formatted_s(:date_and_time)%></div>
 
-                        <div>费用：<strong class="pink"><%= course.fee %></strong> 元/人</div>
+                <div>费用：<strong class="pink"><%= course.fee %></strong> 元/人</div>
 
-                </div>
-                <div class="mt2">
-                    <a href="<%= course_show_path(course) %>" class="btn btn-primary">查看详情</a>
-                </div>
             </div>
-            <div class="right">
-              <%= image_tag "#{course.subject_name}.png", width: 55, height: 37 %>
+            <div class="mt2">
+                <a href="<%= course_show_path(course) %>" class="btn btn-primary">查看详情</a>
             </div>
         </div>
-      <% end -%>
-    </div>
+        <div class="right">
+          <%= image_tag "#{course.subject_name}.png", width: 55, height: 37 %>
+      </div>
+  </div>
+  <% end -%>
+</div>
+</div>
 </div>

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'
 
-    root to: 'slides#index'
+    root to: 'courses#index'
 
     #get "posts/:id/delete_attachment", to: 'posts#delete_attachment'
   end
