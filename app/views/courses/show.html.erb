@@ -8,8 +8,8 @@
     <div class="container-narrow bg-white card" style="margin-bottom: 20px;">
       <div class="clearfix">
         <div class="left">
-          <h2 style="margin: 0"><%= @course.title %></h2>
-          <p>开课时间: <%= @course.start_time.to_formatted_s(:date_and_time) %></p>
+          <h2 style="margin: 0 0 8px 0"><%= @course.title %></h2>
+          <div>开课时间: <%= @course.start_time.to_formatted_s(:date_and_time) %></div>
         </div>
 
         <div class="right center">
@@ -22,6 +22,15 @@
         </div>
       </div>
     </div>
+
+    <% if @course.video_id != '' %>
+      <div class="container-narrow">
+        <h4>课程视频</h4>
+        <div class="bg-white card">
+          <embed src="http://static.video.qq.com/TPout.swf?vid=<%= @course.video_id %>&auto=0" allowFullScreen="true" quality="high" width="728" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+        </div>
+      </div>
+    <% end -%>
 
     <div class="container-narrow">
       <h4>课程介绍</h4>

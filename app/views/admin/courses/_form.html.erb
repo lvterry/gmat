@@ -89,7 +89,7 @@
     <label for="video_id" class="col-sm-2 control-label">视频 ID</label>
     <div class="col-sm-5">
       <%= f.text_field :video_id, class: 'form-control' %>
-      <p class="text-muted"><small>课程对应的腾讯视频的ID <a href="#">如何获取</a></small></p>
+      <p class="text-muted"><small>课程对应的腾讯视频的ID <a href="#" data-toggle="modal" data-target="#videoModal">如何获取</a></small></p>
     </div>
   </div>
 
@@ -112,3 +112,18 @@
   <% end -%>
 
 <% end %>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="videoModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">如何获取视频 ID</h4>
+      </div>
+      <div class="modal-body">
+        <p>在浏览器里打开视频的页面，将下图红线标注内容复制到此页面相应输入框<br>目前只支持 QQ 视频</p>
+        <img src="http://7xtg0z.com2.z0.glb.clouddn.com/video_id.png" width="100%">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
