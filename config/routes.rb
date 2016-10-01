@@ -14,11 +14,20 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
+  get 'courses', to: 'courses#index'
+
+  get 'courses/free', to: 'courses#free', as: 'free_courses'
+
+  get 'courses/free/archive', to: 'courses#free_archive', as: 'free_courses_archive'
+
+  get 'courses/:id', to: 'courses#show', as: 'course_show'
+
 
   namespace :admin do
     #get 'about/:id/edit', to: 'about#edit'
     resources :posts, :tags, :about, :vip,
-      :teachers, :attachments, :slides, :meetings
+      :teachers, :attachments, :slides, :meetings,
+      :courses
 
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'

@@ -1,0 +1,31 @@
+<h4>课程管理</h4>
+<a href="<%= new_admin_course_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">添加课程</a>
+<table class="table table-bordered">
+  <thead>
+    <th style="width:500px;">课程标题</th>
+    <th>科目</th>
+    <th>开课时间</th>
+    <th>讲师</th>
+    <th>收费</th>
+    <th style="width: 150px;">操作</th>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.title %></td>
+        <td><%= course.subject_name %></td>
+        <td><%= course.start_time.to_formatted_s(:date_and_time) %></td>
+        <td><%= course.teacher.name %></td>
+        <td><%= course.fee %></td>
+        <td>
+          <%= link_to '编辑', edit_admin_course_path(course) %>
+          <%= link_to '删除', admin_course_path(course), class: 'delete-course' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'admin/courses' %>
+<% end -%>

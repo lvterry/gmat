@@ -52,6 +52,10 @@ h3 {
   letter-spacing: 1px;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   width: 1190px;
   margin-left: auto;
@@ -285,6 +289,10 @@ nav li a:hover, nav li a.active {
 
 
 /* courses related */
+.courses {
+  padding-top: 16px;
+}
+
 .apply-course {
   background: #3587F8;
   display: block;
@@ -345,8 +353,6 @@ nav li a:hover, nav li a.active {
 }
 
 .post {
-  background-color: white;
-  padding: 1em;
   margin: 1em 0;
   position: relative;
 }

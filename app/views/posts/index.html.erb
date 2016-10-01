@@ -10,7 +10,7 @@
 <div class="bg-snow">
     <div class="clearfix max-width-3 mx-auto pb4">
       <% @posts.each do |p| %>
-        <div class="post">
+        <div class="post card">
           <h3>
             <%= link_to p.title, post_path(p) %>
           </h3>

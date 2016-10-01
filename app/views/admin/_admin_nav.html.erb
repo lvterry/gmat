@@ -6,6 +6,10 @@
   <li class="<%= (controller_name == 'meetings') ? 'active' : '' %>">
     <a href="<%= admin_meetings_path %>">课程表</a>
   </li>
+  <li><div>课程管理</div></li>
+  <li class="<%= (controller_name == 'courses') ? 'active' : '' %>">
+    <a href="<%= admin_courses_path %>">课程管理</a>
+  </li>
   <li><div>免费资源内容</div></li>
   <li class="<%= controller_name == 'posts' ? 'active' : '' %>"><a href="<%= admin_posts_path %>">文章</a></li>
   <li class="<%= controller_name == 'tags' ? 'active' : '' %>"><a href="<%= admin_tags_path %>">标签</a></li>

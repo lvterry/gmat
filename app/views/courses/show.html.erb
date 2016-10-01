@@ -1,0 +1,46 @@
+<div class="course-show">
+  <div class="header-margin bg-snow">
+    <div class="container-narrow" style="padding-top: 16px;">
+      <a href="<%= (@from == 'free') ? '/courses/free' : '/courses' %>"><small>&laquo;&nbsp;返回全部课程</small></a>
+    </div>
+  </div>
+  <div class="pt2 bg-snow" style="padding-bottom: 20px;">
+    <div class="container-narrow bg-white card" style="margin-bottom: 20px;">
+      <div class="clearfix">
+        <div class="left">
+          <h2 style="margin: 0"><%= @course.title %></h2>
+          <p>开课时间: <%= @course.start_time.to_formatted_s(:date_and_time) %></p>
+        </div>
+
+        <div class="right center">
+          <% if @course.fee %>
+            <div><strong class="pink" style="font-size: 200%"><%= @course.fee %></strong> 元/人</div>
+          <% end -%>
+          <% if @course.link != "" %>
+            <%= link_to '现在就去报名', @course.link, class: 'apply-course py1 px3 rounded' %>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+      <h4>课程介绍</h4>
+      <div class="bg-white card">
+        <%= raw @course.description %>
+      </div>
+    </div>
+
+    <div class="container-narrow course-teacher">
+      <h4>讲师介绍</h4>
+      <div class="card">
+        <div class="member-desc clearfix">
+            <div class="avatar">
+              <%= image_tag "#{@course.teacher.avatar}?imageView2/1/w/90/h/90" %>
+            </div>
+            <h3><%= @course.teacher.name %></h3>
+            <p><%= @course.teacher.description %></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

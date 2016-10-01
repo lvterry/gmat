@@ -15,5 +15,6 @@
  *= require fullcalendar
  *= require welcome
  *= require posts
+ *= require courses
  *= require_self
  */

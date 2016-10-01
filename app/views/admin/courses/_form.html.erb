@@ -1,0 +1,115 @@
+<%= form_for [:admin, @course], html: { class: 'form-horizontal course-form' } do |f| %>
+  <div class="form-group">
+    <label for="title" class="col-sm-2 control-label">课程名</label>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="teacher" class="col-sm-2 control-label">讲师</label>
+    <div class="col-sm-4">
+      <%= collection_select(:course, :teacher_id, Teacher.all, :id, :name, {}, class: 'form-control') %>
+      <div class="text-muted"><small>讲师的可选项在 [ 其他 &gt; 教师管理 ] 里维护</small></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description" class="col-sm-2 control-label">课程介绍</label>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: 'form-control', id: 'summernote' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="start_time" class="col-sm-2 control-label">
+      上课时间
+    </label>
+    <div class="col-sm-4">
+      <%= f.text_field :start_time, class: 'form-control datetime' %>
+      <div class="text-muted"><small>时间输入支持上下方向键和 Tab 键</small></div>
+    </div>
+    <div class="col-sm-4">
+      <%= f.text_field :end_time, class: 'form-control datetime' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label">科目</label>
+    <div class="col-sm-10">
+      <% Course.subjects.each_with_index do |cat, index| %>
+        <label class="radio-inline">
+          <input type="radio" name="course[subject]" value="<%= index %>" <%= (!@course.subject.nil? && @course.subject == index) ? 'checked' : '' %>> <%= cat %>
+        </label>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :img_url %>
+    <label class="col-sm-2 control-label">文章头图</label>
+    <div class="col-sm-10">
+      <div class="padding-top: 7px;">
+        <div id="img_container" style="margin-bottom: 8px;">
+          <% if @course.img_url %>
+            <img src="<%= @course.img_url %>?imageView2/1/w/240/h/145" height="145" width="240">
+            <a href="#">Delete</a>
+          <% end -%>
+        </div>
+        <div class="hidden">
+          <span class="filename"></span>
+          <%= image_tag 'loading.gif', width: 20, height: 20 %>
+        </div>
+        <div id="qiniu_container">
+          <button id="qiniu_upload" class="btn btn-default">选择文件</button>
+          <span class="text-muted"><small>只能上传一个头图，新上传的覆盖之前上传的</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="link" class="col-sm-2 control-label">报名链接</label>
+    <div class="col-sm-10">
+      <%= f.text_field :link, class: 'form-control' %>
+      <p class="text-muted"><small>课程的报名链接，通常是一个 YY 或者 QQ 的地址</small></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fee" class="col-sm-2 control-label">学费</label>
+    <div class="col-sm-5">
+      <div class="input-group">
+        <%= f.text_field :fee, class: 'form-control' %>
+        <div class="input-group-addon">每人</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="video_id" class="col-sm-2 control-label">视频 ID</label>
+    <div class="col-sm-5">
+      <%= f.text_field :video_id, class: 'form-control' %>
+      <p class="text-muted"><small>课程对应的腾讯视频的ID <a href="#">如何获取</a></small></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="seq" class="col-sm-2 control-label">展示顺序</label>
+    <div class="col-sm-5">
+      <%= f.text_field :seq, class: 'form-control' %>
+      <p class="text-muted"><small>数字越大越靠前</small></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <%= f.submit '保存', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+  <% content_for :scripts do %>
+    <%= javascript_include_tag 'admin/courses' %>
+  <% end -%>
+
+<% end %>

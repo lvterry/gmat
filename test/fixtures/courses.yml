@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  img_url: MyString
+  start_time: 2016-09-30 21:28:37
+  end_time: 2016-09-30 21:28:37
+  subject: 1
+  fee: 1
+  link: MyString
+  video_id: MyString
+  seq: 1
+
+two:
+  title: MyString
+  description: MyText
+  img_url: MyString
+  start_time: 2016-09-30 21:28:37
+  end_time: 2016-09-30 21:28:37
+  subject: 1
+  fee: 1
+  link: MyString
+  video_id: MyString
+  seq: 1

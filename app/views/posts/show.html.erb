@@ -1,33 +1,37 @@
-<div class="header-margin bg-snow">
-  <div class="container-narrow" style="padding-top: 16px;">
-    <a href="/posts"><small>&laquo;&nbsp;返回全部文章</small></a>
-  </div>
-</div>
-<div class="pt2 bg-snow" style="padding-bottom: 20px;">
-  <div class="container-narrow bg-white post-show-container">
-    <h2 style="margin: 0"><%= @post.title %></h2>
-    <p style="color: #999; margin: 8px 0;"><small>发布于 <%= @post.created_at.to_formatted_s(:date_and_time) %></small></p>
-    <div class="tags">
-      <%= image_tag "tag.png", height: 16, class: 'post-tag-icon' %>
-      <% @post.tag_names.each do |t| %>
-        <a href="<%= post_category_url(t.id) %>" class="post-tag"><%= t.name %></a>
-      <% end -%>
-    </div>
-    <div>
-      <%= raw @post.body %>
-    </div>
-  </div>
-</div>
+<div class="bg-snow post-show">
 
-<% if @post.attachments.count > 0 %>
-<div class="bg-snow attachments">
-  <div class="container-narrow">
-    <div><strong>附件下载</strong></div>
-    <div class="bg-white filelist">
-      <% @post.attachments.each do |attachment| %>
-        <div><a href="<%= attachment.url %>"><%= attachment.new_name %></a></div>
-      <% end -%>
+  <div class="header-margin">
+    <div class="container-narrow" style="padding-top: 16px;">
+      <a href="/posts"><small>&laquo;&nbsp;返回全部文章</small></a>
     </div>
   </div>
+  <div class="pt2">
+    <div class="container-narrow card">
+      <h2 style="margin: 0"><%= @post.title %></h2>
+      <p style="color: #999; margin: 8px 0;"><small>发布于 <%= @post.created_at.to_formatted_s(:date_and_time) %></small></p>
+      <div class="tags">
+        <%= image_tag "tag.png", height: 16, class: 'post-tag-icon' %>
+        <% @post.tag_names.each do |t| %>
+          <a href="<%= post_category_url(t.id) %>" class="post-tag"><%= t.name %></a>
+        <% end -%>
+      </div>
+      <div>
+        <%= raw @post.body %>
+      </div>
+    </div>
+  </div>
+
+  <% if @post.attachments.count > 0 %>
+  <div class="attachments">
+    <div class="container-narrow">
+      <h4>附件下载</h4>
+      <div class="bg-white filelist card">
+        <% @post.attachments.each do |attachment| %>
+          <div><a href="<%= attachment.url %>"><%= attachment.new_name %></a></div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
 </div>
-<% end -%>
