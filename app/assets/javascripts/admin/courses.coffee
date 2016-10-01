@@ -26,7 +26,7 @@ $ ->
       img = imgContainer.find('img')
       img.attr 'src', "http://#{qiniu_domain}/#{file.name}?imageView2/1/w/240/h/145"
     else
-      html = "<img src='http://#{qiniu_domain}/#{file.name}?imageView2/1/w/240/h/145' width='240' height='145' /><a href='#'>Delete</a>"
+      html = "<img src='http://#{qiniu_domain}/#{file.name}?imageView2/1/w/240/h/145' width='240' height='145' />"
       imgContainer.html html
 
   initQiniu(filesAdded, filesUploaded)
