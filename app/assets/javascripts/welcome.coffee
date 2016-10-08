@@ -15,7 +15,7 @@ $ ->
       else
         slide = $('.swiper-slide').eq(slide.activeIndex)
       color = slide.data('color')
-      $('.header-margin').css 'background-color', color
+      $('.header-margin').css 'background-color', '#' + color
 
     changeSlideColor()
 
