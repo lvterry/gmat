@@ -9,12 +9,14 @@
     <div class="container-narrow card">
       <h2 style="margin: 0"><%= @post.title %></h2>
       <p style="color: #999; margin: 8px 0;"><small>发布于 <%= @post.created_at.to_formatted_s(:date_and_time) %></small></p>
-      <div class="tags">
-        <%= image_tag "tag.png", height: 16, class: 'post-tag-icon' %>
-        <% @post.tag_names.each do |t| %>
-          <a href="<%= post_category_url(t.id) %>" class="post-tag"><%= t.name %></a>
-        <% end -%>
-      </div>
+      <% if @post.tag_names.size > 0 %>
+        <div class="tags">
+          <%= image_tag "tag.png", height: 16, class: 'post-tag-icon' %>
+          <% @post.tag_names.each do |t| %>
+            <a href="<%= post_category_url(t.id) %>" class="post-tag"><%= t.name %></a>
+          <% end -%>
+        </div>
+      <% end -%>
       <div>
         <%= raw @post.body %>
       </div>
