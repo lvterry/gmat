@@ -10,7 +10,7 @@
 body {
   font-family: 'hiragino sans gb', helvetica, arial, sans-serif;
   background-color: #f9f9f9;
-  color: #222;
+  color: #333;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -99,4 +99,9 @@ table.files .delete-attachment {
   img {
     margin-right: 8px;
   }
+}
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
 }
