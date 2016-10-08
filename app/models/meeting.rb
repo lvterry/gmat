@@ -13,7 +13,7 @@ class Meeting < ApplicationRecord
   end
 
   def categories
-    ['数学','逻辑小班','逻辑一对一','语法','IR+AWA','阅读']
+    ['逻辑','语法','数学','阅读','AWA','IR']
   end
 
   def colors
