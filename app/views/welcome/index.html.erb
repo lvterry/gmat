@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
       <% @slides.each do |slide| %>
         <div class="swiper-slide" data-color="<%= slide.bg_color %>">
-          <a href="<%= slide.link %>">
+          <a href="<%= slide.link %>" target="_blank">
             <%= image_tag slide.img_url, width: 1190, height: 360 %>
           </a>
         </div>
