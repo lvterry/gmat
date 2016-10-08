@@ -36,10 +36,11 @@ window.initCalendar = ->
       left: 'prev,next today'
       center: 'title'
       right: 'month,basicWeek,basicDay'
-    defaultDate: '2016-09-25'
+    defaultDate: new Date()
     firstDay: 1
     navLinks: true
     editable: false
     eventLimit: true
     events: '/meetings.json'
     eventBorderColor: '#fff'
+    timeFormat: 'H:mm'
