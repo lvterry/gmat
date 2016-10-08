@@ -15,7 +15,7 @@
             <td>
               <%= meeting.name %>
             </td>
-            <td>数学</td>
+            <td><%= meeting.categories[meeting.category] %></td>
             <td>
               <%= meeting.start_time.to_formatted_s(:date_and_time) %>
             </td>
