@@ -24,6 +24,7 @@ $ ->
       nextButton: '.swiper-button-next'
       prevButton: '.swiper-button-prev'
       loop: true
+      autoplay: 3000
 
     swiper.on 'slideNextStart', changeSlideColor
     swiper.on 'slidePrevStart', changeSlideColor
