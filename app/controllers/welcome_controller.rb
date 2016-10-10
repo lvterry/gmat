@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   def index
     @slides = Slide.all
     @meetings = Meeting.all
+    @meeting = Meeting.new
   end
 
   def about

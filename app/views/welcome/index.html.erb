@@ -53,6 +53,12 @@
 
 <div class="calendar-container clearfix">
   <h3 class="center" style="margin-bottom: 0;">课程预告</h3>
+  <ul>
+    <li style="background-color: #666"><label><input type="radio" name="calendar-category" value="-1" checked> 全部</label></li>
+    <% @meeting.categories.each_with_index do |category, index| %>
+      <li style="background-color: <%= @meeting.colors[index] %>"><label><input type="radio" name="calendar-category" value="<%= index %>"> <%= category %></label></li>
+    <% end -%>
+  </ul>
   <% if false %>
     <div class="container">
       <%= month_calendar events: @meetings do |date, meetings| %>
@@ -79,5 +85,5 @@
 </div>
 
 <% content_for :scripts do %>
-  <%= javascript_include_tag 'welcome', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'welcome' %>
 <% end -%>

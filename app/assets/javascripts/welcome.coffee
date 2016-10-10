@@ -2,6 +2,35 @@
 #= require moment.min
 #= require fullcalendar.min
 
+window.initCalendar = ->
+  $('#calendar').fullCalendar
+    header:
+      left: 'prev,next today'
+      center: 'title'
+      right: 'month,basicWeek,basicDay'
+    defaultDate: new Date()
+    firstDay: 1
+    navLinks: true
+    editable: false
+    eventLimit: true
+    events: '/meetings.json'
+    eventBorderColor: '#fff'
+    timeFormat: 'H:mm'
+
+class CategoryFilter
+  constructor: ->
+    @selectedIndex = -1
+    @inputs = $('[name=calendar-category]')
+    @inputs.on 'click', @changeCategory
+
+  changeCategory: (e)=>
+    input = e.currentTarget
+    if input.value != @selectedIndex
+      console.log input.value
+      @selectedIndex = input.value
+
+
+
 $ ->
     barcode = $('#barcode')
     $('#wechat').on 'click', (e)->
@@ -31,17 +60,4 @@ $ ->
 
     initCalendar()
 
-window.initCalendar = ->
-  $('#calendar').fullCalendar
-    header:
-      left: 'prev,next today'
-      center: 'title'
-      right: 'month,basicWeek,basicDay'
-    defaultDate: new Date()
-    firstDay: 1
-    navLinks: true
-    editable: false
-    eventLimit: true
-    events: '/meetings.json'
-    eventBorderColor: '#fff'
-    timeFormat: 'H:mm'
+    new CategoryFilter
