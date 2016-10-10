@@ -2,34 +2,27 @@
 #= require moment.min
 #= require fullcalendar.min
 
-window.initCalendar = ->
-  $('#calendar').fullCalendar
-    header:
-      left: 'prev,next today'
-      center: 'title'
-      right: 'month,basicWeek,basicDay'
-    defaultDate: new Date()
-    firstDay: 1
-    navLinks: true
-    editable: false
-    eventLimit: true
-    events: '/meetings.json'
-    eventBorderColor: '#fff'
-    timeFormat: 'H:mm'
-
-class CategoryFilter
-  constructor: ->
+class EventsFilter
+  constructor: (@calendar)->
     @selectedIndex = -1
     @inputs = $('[name=calendar-category]')
     @inputs.on 'click', @changeCategory
+    @loadEvents({})
 
   changeCategory: (e)=>
     input = e.currentTarget
     if input.value != @selectedIndex
-      console.log input.value
       @selectedIndex = input.value
+      @loadEvents {category: @selectedIndex}
 
-
+  loadEvents: (data) =>
+    $.ajax
+      url: '/meetings.json'
+      data: data
+      success: (events) =>
+        @calendar.fullCalendar('removeEvents')
+        @calendar.fullCalendar('addEventSource', events)
+        @calendar.fullCalendar('rerenderEvents')
 
 $ ->
     barcode = $('#barcode')
@@ -58,6 +51,17 @@ $ ->
     swiper.on 'slideNextStart', changeSlideColor
     swiper.on 'slidePrevStart', changeSlideColor
 
-    initCalendar()
+    $('#calendar').fullCalendar
+      header:
+        left: 'prev,next today'
+        center: 'title'
+        right: 'month,basicWeek,basicDay'
+      defaultDate: new Date()
+      firstDay: 1
+      navLinks: true
+      editable: false
+      eventLimit: true
+      eventBorderColor: '#fff'
+      timeFormat: 'H:mm'
 
-    new CategoryFilter
+    new EventsFilter $('#calendar')
