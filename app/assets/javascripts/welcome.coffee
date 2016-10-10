@@ -1,6 +1,7 @@
 #= require swiper.jquery
 #= require moment.min
 #= require fullcalendar.min
+#= require layer/layer
 
 class EventsFilter
   constructor: (@calendar)->
@@ -16,6 +17,7 @@ class EventsFilter
       @loadEvents {category: @selectedIndex}
 
   loadEvents: (data) =>
+    @layerIndex = layer.msg '加载中...', { time: 0 }
     $.ajax
       url: '/meetings.json'
       data: data
@@ -23,6 +25,8 @@ class EventsFilter
         @calendar.fullCalendar('removeEvents')
         @calendar.fullCalendar('addEventSource', events)
         @calendar.fullCalendar('rerenderEvents')
+      complete: =>
+        layer.close @layerIndex
 
 $ ->
     barcode = $('#barcode')
