@@ -29,11 +29,6 @@ class EventsFilter
         layer.close @layerIndex
 
 $ ->
-    barcode = $('#barcode')
-    $('#wechat').on 'click', (e)->
-      barcode.toggle();
-      e.stopPropagation();
-      $('body').one 'click', -> barcode.hide()
 
     changeSlideColor = (slide) ->
       if slide is undefined
