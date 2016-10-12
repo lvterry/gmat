@@ -1,6 +1,6 @@
 <%= form_for [:admin, @meeting], html: { class: 'form-horizontal post-form' } do |f| %>
 <div class="form-group">
-  <label for="name" class="col-sm-2 control-label">课程名</label>
+  <label for="name" class="col-sm-2 control-label">课程名<span class="required">*</span></label>
   <div class="col-sm-10">
     <%= f.text_field :name, class: 'form-control' %>
   </div>
@@ -8,7 +8,7 @@
 
 <div class="form-group">
   <label for="link" class="col-sm-2 control-label">
-    链接到
+    链接到<span class="required">*</span>
   </label>
   <div class="col-sm-10">
     <%= f.text_field :link, class: 'form-control' %>
@@ -18,7 +18,7 @@
 
 <div class="form-group">
   <label for="start_time" class="col-sm-2 control-label">
-    上课时间
+    上课时间<span class="required">*</span>
   </label>
   <div class="col-sm-4">
     <%= f.text_field :start_time, class: 'form-control datetime' %>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="form-group">
-  <label for="category" class="col-sm-2 control-label">类别</label>
+  <label for="category" class="col-sm-2 control-label">类别<span class="required">*</span></label>
   <div class="col-sm-10">
     <% @meeting.categories.each_with_index do |cat, index| %>
       <label class="radio-inline">

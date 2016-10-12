@@ -1,13 +1,13 @@
 <%= form_for [:admin, @course], html: { class: 'form-horizontal course-form' } do |f| %>
   <div class="form-group">
-    <label for="title" class="col-sm-2 control-label">课程名</label>
+    <label for="title" class="col-sm-2 control-label">课程名<span class="required">*</span></label>
     <div class="col-sm-10">
       <%= f.text_field :title, class: 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="teacher" class="col-sm-2 control-label">讲师</label>
+    <label for="teacher" class="col-sm-2 control-label">讲师<span class="required">*</span></label>
     <div class="col-sm-4">
       <%= collection_select(:course, :teacher_id, Teacher.all, :id, :name, {}, class: 'form-control') %>
       <div class="text-muted"><small>讲师的可选项在 [ 其他 &gt; 教师管理 ] 里维护</small></div>
@@ -15,7 +15,7 @@
   </div>
 
   <div class="form-group">
-    <label for="description" class="col-sm-2 control-label">课程介绍</label>
+    <label for="description" class="col-sm-2 control-label">课程介绍<span class="required">*</span></label>
     <div class="col-sm-10">
       <%= f.text_area :description, class: 'form-control', id: 'summernote' %>
     </div>
@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <label for="start_time" class="col-sm-2 control-label">
-      上课时间
+      上课时间<span class="required">*</span>
     </label>
     <div class="col-sm-4">
       <%= f.text_field :start_time, class: 'form-control datetime' %>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="form-group">
-    <label for="subject" class="col-sm-2 control-label">科目</label>
+    <label for="subject" class="col-sm-2 control-label">科目<span class="required">*</span></label>
     <div class="col-sm-10">
       <% Course.subjects.each_with_index do |cat, index| %>
         <label class="radio-inline">
@@ -47,7 +47,7 @@
 
   <div class="form-group">
     <%= f.hidden_field :img_url %>
-    <label class="col-sm-2 control-label">文章头图</label>
+    <label class="col-sm-2 control-label">课程头图<span class="required">*</span></label>
     <div class="col-sm-10">
       <div class="padding-top: 7px;">
         <div id="img_container" style="margin-bottom: 8px;">
