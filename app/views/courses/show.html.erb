@@ -17,7 +17,7 @@
             <div><strong class="pink" style="font-size: 200%"><%= @course.fee %></strong> 元/人</div>
           <% end -%>
           <% if @course.link != "" %>
-            <%= link_to '现在就去报名', @course.link, class: 'apply-course py1 px3 rounded' %>
+            <%= link_to '现在就去报名', @course.link, class: 'apply-course py1 px3 rounded', target: '_blank' %>
           <% end -%>
         </div>
       </div>
