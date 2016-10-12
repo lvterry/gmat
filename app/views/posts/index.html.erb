@@ -8,7 +8,7 @@
 </div>
 
 <div class="bg-snow">
-    <div class="clearfix max-width-3 mx-auto pb4">
+    <div class="clearfix max-width-3 mx-auto">
       <% @posts.each do |p| %>
         <div class="post card">
           <h3>
@@ -39,5 +39,8 @@
 
         </div>
       <% end -%>
+    </div>
+    <div class="container-narrow">
+      <%= will_paginate @posts, previous_label: "«", next_label: "»" %>
     </div>
 </div>
