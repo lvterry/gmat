@@ -64,4 +64,4 @@ gem 'codemirror-rails'
 gem 'jquery-turbolinks'
 
 gem 'qiniu'
-#gem "simple_calendar", "2.2.0"
+gem 'will_paginate', '>= 3.1'
