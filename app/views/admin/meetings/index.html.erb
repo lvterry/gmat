@@ -17,10 +17,10 @@
             </td>
             <td><%= meeting.categories[meeting.category] %></td>
             <td>
-              <%= meeting.start_time.to_formatted_s(:date_and_time) %>
+              <%= meeting.meeting_blocks.first.start_time.to_formatted_s(:date_and_time) %>
             </td>
             <td>
-              <%= meeting.end_time.to_formatted_s(:date_and_time) %>
+              <%= meeting.meeting_blocks.last.end_time.to_formatted_s(:date_and_time) %>
             </td>
 
             <td>

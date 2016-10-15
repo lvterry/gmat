@@ -19,3 +19,23 @@ window.initQiniu = (filesAdded, filesUploaded) ->
 
 $ ->
   $('#summernote').summernote()
+
+  $('.meeting-form').on 'click', '.delete-meeting-block', ->
+    checkbox = $(@)
+    tds = checkbox.parents('tr').find('td').not(':last')
+    tds.css 'opacity', if checkbox.is(':checked') then 0.4 else 1
+
+  $('.add-meeting-block').on 'click', (e)->
+    e.preventDefault()
+    #meetingId = $('#meeting_id').val()
+    rows = $('.meeting-form tr')
+    $('.meeting-form tbody').append("<tr>
+                        <td>
+                          <input class=\"form-control datetime is-datetimeEntry\" type=\"text\" name=\"meeting[meeting_blocks_attributes][#{rows.length}][start_time]\" id=\"meeting_meeting_blocks_attributes_#{rows.length}_start_time\">
+                        </td>
+                        <td>
+                          <input class=\"form-control datetime is-datetimeEntry\" type=\"text\" name=\"meeting[meeting_blocks_attributes][#{rows.length}][end_time]\" id=\"meeting_meeting_blocks_attributes_#{rows.length}_end_time\">
+                        </td>
+                        <td>
+                        </td>
+                      </tr>")

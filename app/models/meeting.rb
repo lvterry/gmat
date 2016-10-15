@@ -1,15 +1,19 @@
 class Meeting < ApplicationRecord
-  validates :start_time, :end_time, :name, :link, presence: true
+  validates :name, :link, presence: true
+  has_many :meeting_blocks, index_errors: true
+  accepts_nested_attributes_for :meeting_blocks, allow_destroy: true
 
-  def as_json(options={})
-    {
-      id: self.id,
-      title: self.name,
-      start: self.start_time,
-      end: self.end_time,
-      url: self.link,
-      backgroundColor: self.colors[self.category]
-    }
+  def as_separate_meetings()
+    self.meeting_blocks.map do |mb|
+      {
+        id: self.id,
+        title: self.name,
+        start: mb.start_time,
+        end: mb.end_time,
+        url: self.link,
+        backgroundColor: self.colors[self.category]
+      }
+    end
   end
 
   def categories
