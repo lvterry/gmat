@@ -51,14 +51,6 @@ Vip.first.questions.create(
   a: 'GMAT770团队不提供保分服务，实行多退少补的原则，承诺每一次授课内容饱满、精炼、到位。'
 )
 
-Meeting.create(
-  name: '数学小班',
-  start_time: '2016-10-02 19:00:00',
-  end_time: '2016-10-02 20:00:00',
-  link: 'http://keith-wood.name/datetimeEntryRef.html',
-  category: 1
-)
-
 Slide.create(
   img_url: 'http://7xtg0z.com2.z0.glb.clouddn.com/slide1.jpg',
   link: 'http://bing.com',
