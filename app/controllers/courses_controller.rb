@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     else
       where_conditions = "fee > 0 and subject = '#{@subject}'"
     end
-    @courses = Course.where(where_conditions).order(seq: :desc, created_at: :desc).page(params[:page]).per_page(7)
+    @courses = Course.where(where_conditions).order(seq: :desc, created_at: :desc).page(params[:page]).per_page(10)
   end
 
   def free
@@ -41,6 +41,6 @@ class CoursesController < ApplicationController
         where_conditions.merge!(start_time: (DateTime.now..DateTime.now + 100.years))
       end
 
-      @courses = Course.where(where_conditions).order(seq: :desc, created_at: :desc).page(params[:page]).per_page(7)
+      @courses = Course.where(where_conditions).order(seq: :desc, created_at: :desc).page(params[:page]).per_page(10)
     end
 end
