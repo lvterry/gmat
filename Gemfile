@@ -70,3 +70,5 @@ gem 'jquery-turbolinks'
 
 gem 'qiniu'
 gem 'will_paginate', '>= 3.1'
+
+gem "sentry-raven"
