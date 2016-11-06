@@ -162,31 +162,14 @@ nav li a:hover, nav li a.active {
   padding-left: 100px;
 }
 
-#wechat {
+.qr-floating {
   position: fixed;
   right: 0;
-  bottom: 20px;
-  background-color: #f90;
-  padding: 0.5em 0.5em 0.2em 0.5em;
-  cursor: pointer;
-  border: 1px solid white;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
-}
-
-#wechat:hover {
-  background-color: #E68A00;
-}
-
-#barcode {
-  padding: 1em;
-  border: 1px solid white;
-  font-size: 12px;
-  text-align: center;
-  position: fixed;
-  right: 50px;
-  background: white;
-  bottom: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  bottom: 120px;
+  width: 120px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0,0,0,.1);
+  z-index: 10;
 }
 
 /* color utilities */

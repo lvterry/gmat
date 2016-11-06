@@ -1,15 +1,1 @@
-<div id="wechat">
-  <%= image_tag 'wechat.png', width: 30 %>
-</div>
-<div id="barcode" style="display: none;">
-  <%= image_tag 'barcode.png', width: 100 %>
-  <p>关注 GMAT770 的微信公众号<br>获取更多资讯</p>
-</div>
-
-<script>
-$(function(){
-  $('#wechat').on('click', function(e){
-    $('#barcode').toggle();
-  });
-})
-</script>
+<%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/qrcode_floating.jpg', class: 'qr-floating' %>
