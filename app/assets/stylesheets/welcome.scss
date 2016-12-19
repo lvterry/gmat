@@ -5,7 +5,7 @@
 }
 
 body {
-  font: 16px/1.5 Roboto, 'Hiragino Sans GB', 'Microsoft Yahei', helvetica, arial, sans-serif;
+  font: 16px/1.5 Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', arial, sans-serif;
   margin: 0;
   color: #333;
   background-color: #fff;
@@ -58,6 +58,7 @@ img {
 
 .container {
   width: 1190px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -505,6 +506,7 @@ nav li a:hover, nav li a.active {
 .one-on-one .flow > div {
   float: left;
   width: 290px;
+  max-width: 24%;
   height: 337px;
   margin-right: 9px;
   background-color: white;
@@ -543,12 +545,15 @@ nav li a:hover, nav li a.active {
 
 .features-container > img {
   position: absolute;
-  top: 110px;
-  left: 395px;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -220px;
 }
 
 .features .card {
-  width: 590px;
+  width: calc(50% - 10px);
+  max-width: 48%;
   height: 300px;
   float: left;
   margin-bottom: 10px;
@@ -583,6 +588,7 @@ nav li a:hover, nav li a.active {
 .swiper-container {
   width: 1190px;
   height: 360px;
+  max-width: 100%;
 }
 
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
