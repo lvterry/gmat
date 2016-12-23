@@ -1,23 +1,13 @@
 class Admin::MeetingsController < AdminController
 
   def index
-    @meetings = Meeting.order(created_at: :desc)
+    @meetings = Meeting.order(created_at: :desc).page(params[:page]).per_page(15)
   end
 
   def new
     @meeting = Meeting.new
     @meeting.meeting_blocks.build
   end
-
-  # def create
-  #   @meeting = Meeting.new(meeting_params)
-  #   if @meeting.save
-  #     flash[:notice] = '保存成功'
-  #     redirect_to edit_admin_meeting_path(@meeting)
-  #   else
-  #     redirect_to new_admin_meeting_path
-  #   end
-  # end
 
   def create
     @meeting = Meeting.new(name: meeting_params[:name], link: meeting_params[:link], category: meeting_params[:category])

@@ -117,3 +117,26 @@ table.files .delete-attachment {
     padding-right: 8px;
   }
 }
+
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+
+  > * {
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    background-color: white;
+    padding: 3px 10px;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  em, .disabled, .current {
+    font-style: normal;
+    color: #aaa;
+    border-color: #eee;
+  }
+}
