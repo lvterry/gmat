@@ -16,12 +16,16 @@
               <%= meeting.name %>
             </td>
             <td><%= meeting.categories[meeting.category] %></td>
-            <td>
-              <%= meeting.meeting_blocks.first.start_time.to_formatted_s(:date_and_time) %>
-            </td>
-            <td>
-              <%= meeting.meeting_blocks.last.end_time.to_formatted_s(:date_and_time) %>
-            </td>
+            <% if meeting.meeting_blocks.size == 0 %>
+              <td></td><td></td>
+            <% else %>
+              <td>
+                <%= meeting.meeting_blocks.first.start_time.to_formatted_s(:date_and_time) %>
+              </td>
+              <td>
+                <%= meeting.meeting_blocks.last.end_time.to_formatted_s(:date_and_time) %>
+              </td>
+            <%- end %>
 
             <td>
               <%= link_to '编辑', edit_admin_meeting_path(meeting) %>
