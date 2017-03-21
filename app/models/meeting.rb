@@ -21,7 +21,7 @@ class Meeting < ApplicationRecord
   end
 
   def colors
-    ['#266CDE','#266CDE', '#7231A6','#7231A6', '#E4A40B','#E4A40B','#58a128','#00BCD4']
+    ['#266CDE','#266CDE', '#7231A6','#7231A6', '#E4A40B','#E4A40B','#58a128','#00BCD4','#58a128']
   end
 
 end
