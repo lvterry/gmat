@@ -6,6 +6,7 @@
 #= require admin/vip
 #= require admin/common
 #= require admin/home
+#= require admin/teachers
 #= require plupload/plupload.full.min
 #= require jquery.plugin
 #= require jquery.datetimeentry
