@@ -16,6 +16,7 @@
  *= require welcome
  *= require posts
  *= require courses
+ *= require exercises
  *= require layer
  *= require_self
  */

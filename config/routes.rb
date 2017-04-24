@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'questions', to: 'questions#index'
+  # get 'exercises', to: 'exercises#index'
 
-  get 'questions/:id', to: 'questions#show'
+  # get 'exercises/:id', to: 'exercises#show'
 
   get 'welcome/index'
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'welcome/uptoken'
 
   resources :posts
+  resources :exercises
 
   get 'meetings', to: 'meetings#index'
 
