@@ -1,34 +1,155 @@
+$green: #749d1f;
+
+.search-bar {
+  padding: 30px;
+  background-color: white;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  text-align: center;
+
+  input {
+    border: 2px solid $green;
+    width: 630px;
+    padding: 11px;
+  }
+
+  button {
+    color: white;
+    background-color: $green;
+    border: none;
+    font-size: 14px;
+    padding: 0 40px;
+    height: 39px;
+  }
+}
+
+
+.filters {
+  .container {
+    padding: 24px 30px;
+  }
+
+  .selected-filters {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f5f5f5;
+
+    a {
+      background-color: $green;
+      color: white;
+      padding: 2px 9px;
+      display: inline-block;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: darken($green, 5%);
+      }
+
+      img {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  table {
+    margin-top: 30px;
+
+    td {
+      padding-bottom: 24px;
+    }
+
+    td:first-child {
+      color: #999;
+      width: 60px;
+    }
+
+    a {
+      margin-right: 16px;
+      color: #333;
+
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+}
+
 .exercises {
 
   .container {
     background-color: white;
     margin-top: 30px;
+    padding: 24px 30px;
+  }
+
+  .table-header {
+    margin-bottom: 24px;
+  }
+
+  .exercise-count {
+    float: right;
+
+    span {
+      font-weight: bold;
+      margin: 0 2px;
+      color: $green;
+    }
   }
 
   table {
     border-collapse: collapse;
   }
 
-
-  th, td {
-    padding: 12px;
+  td {
     border: 1px solid #eee;
   }
 
-  th {
-    text-align: left;
-  }
-
-  tr:hover {
+  .sr {
     background-color: #f5f5f5;
+    width: 40px;
+    text-align: center;
   }
 
-  a {
-    color: #333;
+  .title {
+    background-color: #fafafa;
 
-    &:hover {
-      color: #3587F8;
-      text-decoration: underline;
+    a {
+      color: #333;
+      display: block;
+      padding: 20px;
     }
+  }
+
+  .exercise:hover {
+    border: 1px solid $green;
+
+    .sr {
+      background-color: $green;
+      color: white;
+    }
+
+    .title {
+      background-color: white;
+      color: $green;
+
+      a {
+        color: $green;
+      }
+    }
+  }
+}
+
+.text-muted {
+  color: #999;
+}
+
+.exercise-detail {
+  .container {
+    background-color: white;
+    margin-top: 24px;
+    padding: 24px 30px;
+  }
+
+  h4 {
+    margin: 0 0 24px 0;
   }
 }

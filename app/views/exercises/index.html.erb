@@ -1,19 +1,18 @@
 <div class="bg-snow pb2">
 
-  <div class="pt2 header-margin">
+  <div class="pt2 header-margin search-bar">
     <div class="container">
-      <input type="text">
-      <button>Search</button>
+      <input type="text" placeholder="输入题目关键词">
+      <button>搜索</button>
     </div>
   </div>
 
   <div class="filters">
     <div class="container bg-white">
-      <span>共找到 18221 道题目</span>
       <div class="selected-filters">
-        <span>全部结果 &gt;</span>
-        <span>OG2016</span>
-        <span>PS</span>
+        <span class="text-muted">全部结果 &gt;</span>
+        <a href="#">OG2016<%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
+        <a href="#">PS<%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
       </div>
 
       <table>
@@ -21,33 +20,33 @@
           <tr>
             <td>来源</td>
             <td>
-              <span>OG13</span>
-              <span>OG2016</span>
-              <span>OG2017</span>
-              <span>Prep07</span>
-              <span>Prep08</span>
-              <span>Prep12</span>
-              <span>其他</span>
+              <a href="#">OG13</a>
+              <a href="#">OG2016</a>
+              <a href="#">OG2017</a>
+              <a href="#">Prep07</a>
+              <a href="#">Prep08</a>
+              <a href="#">Prep12</a>
+              <a href="#">其他</a>
             </td>
           </tr>
           <tr>
             <td>题型</td>
             <td>
-              <span>IR</span>
-              <span>PS</span>
-              <span>DS</span>
-              <span>SC</span>
-              <span>CR</span>
-              <span>RC</span>
+              <a href="#">IR</a>
+              <a href="#">PS</a>
+              <a href="#">DS</a>
+              <a href="#">SC</a>
+              <a href="#">CR</a>
+              <a href="#">RC</a>
             </td>
           </tr>
           <tr>
             <td>难度</td>
             <td>
-              <span>500-600</span>
-              <span>600-700</span>
-              <span>700-750</span>
-              <span>750+</span>
+              <a href="#">500-600</a>
+              <a href="#">600-700</a>
+              <a href="#">700-750</a>
+              <a href="#">750+</a>
             </td>
           </tr>
         </tbody>
@@ -57,30 +56,23 @@
 
   <div class="exercises">
     <div class="container">
-      <table cellspacing="0" cellpadding="0">
-        <thead>
-          <th style="width: 60px">序号</th>
-          <th>题目内容</th>
-        </thead>
+      <div class="table-header">
+        <input type="checkbox"> 仅显示770的解析
+        <div class="exercise-count">共有<span><%= @count %></span>道试题</div>
+      </div>
+      <table cellspacing="0">
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-<a href="<%= exercise_path(1) %>">In a review of 2,000 studies of human behavior that date back to the 1940s, two Swiss psychologists, declaring that since most of the studies had failed to control for such variables as social class and family</a>
-</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-<a href="<%= exercise_path(1) %>">Manufacturers rate batteries in watt-hours; if they rate the watt-hour higher, the longer the battery can be expected to last.</a>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><a href="<%= exercise_path(1) %>">Although a surge in retail sales <u>have raised hopes that there is a recovery finally</u> under way, many economists say that without a large amount of spending the recovery might not last.</a></td>
-          </tr>
+          <% @exercises.each_with_index do |e, i| %>
+            <tr class="exercise">
+              <td class="sr"><%= i %></td>
+              <td class="title">
+                <%= link_to raw(e.title), exercise_path(e) %>
+              </td>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
+
     </div>
 
   </div>

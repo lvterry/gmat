@@ -1,2 +1,25 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class="bg-snow pb2">
+  <div class="pt2 header-margin breadcrumb">
+    <div class="container">
+      <%= link_to '题库', exercises_path %>
+      &gt;
+      <%= link_to '语法SC', '#' %>
+      &gt;
+      题目详情
+    </div>
+  </div>
+
+  <div class="exercise-detail">
+    <div class="container">
+      <h4>题目内容</h4>
+      <p><%= raw @exercise.title %></p>
+      <ul>
+        <% @exercise.choices.each do |c| %>
+          <li><%= c %></li>
+        <% end -%>
+      </ul>
+      <button>显示正确答案和解析</button>
+      <p>正确答案: <span><%= @exercise.anwser %></span></p>
+    </div>
+  </div>
+</div>
