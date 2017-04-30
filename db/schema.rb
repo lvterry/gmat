@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430141150) do
+ActiveRecord::Schema.define(version: 20170430150011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,16 +52,17 @@ ActiveRecord::Schema.define(version: 20170430141150) do
 
   create_table "exercises", force: :cascade do |t|
     t.text     "title"
-    t.text     "choices",       default: [],              array: true
+    t.text     "choices",       default: [],                array: true
     t.integer  "anwser"
-    t.text     "guides",        default: [],              array: true
+    t.text     "guides",        default: [],                array: true
     t.string   "video_url"
-    t.text     "exercise_tags", default: [],              array: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.text     "difficulty",    default: [],              array: true
-    t.text     "book",          default: [],              array: true
-    t.text     "subject",       default: [],              array: true
+    t.text     "exercise_tags", default: [],                array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.text     "difficulty",    default: [],                array: true
+    t.text     "book",          default: [],                array: true
+    t.text     "subject",       default: [],                array: true
+    t.boolean  "exclusive",     default: true
   end
 
   create_table "flows", force: :cascade do |t|
