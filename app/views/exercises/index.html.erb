@@ -20,33 +20,25 @@
           <tr>
             <td>来源</td>
             <td>
-              <a href="#">OG13</a>
-              <a href="#">OG2016</a>
-              <a href="#">OG2017</a>
-              <a href="#">Prep07</a>
-              <a href="#">Prep08</a>
-              <a href="#">Prep12</a>
-              <a href="#">其他</a>
+              <% @books.each do |book| %>
+                <a href="#"><%= book %></a>
+              <% end -%>
             </td>
           </tr>
           <tr>
             <td>题型</td>
             <td>
-              <a href="#">IR</a>
-              <a href="#">PS</a>
-              <a href="#">DS</a>
-              <a href="#">SC</a>
-              <a href="#">CR</a>
-              <a href="#">RC</a>
+              <% @subjects.each do |subject| %>
+                <a href="#"><%= subject %></a>
+              <% end -%>
             </td>
           </tr>
           <tr>
             <td>难度</td>
             <td>
-              <a href="#">500-600</a>
-              <a href="#">600-700</a>
-              <a href="#">700-750</a>
-              <a href="#">750+</a>
+              <% @difficulties.each do |difficulty| %>
+                <a href="#"><%= difficulty %></a>
+              <% end -%>
             </td>
           </tr>
         </tbody>

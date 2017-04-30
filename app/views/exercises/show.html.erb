@@ -3,7 +3,7 @@
     <div class="container">
       <%= link_to '题库', exercises_path %>
       &gt;
-      <%= link_to '语法SC', '#' %>
+      <%= link_to @exercise.subject.first, '#' %>
       &gt;
       题目详情
     </div>
