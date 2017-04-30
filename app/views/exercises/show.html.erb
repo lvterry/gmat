@@ -20,6 +20,11 @@
       </ul>
       <button>显示正确答案和解析</button>
       <p>正确答案: <span><%= @exercise.anwser %></span></p>
+      <ul>
+        <% @exercise.guides.each do |guide| %>
+          <li><%= guide %></li>
+        <% end -%>
+      </ul>
     </div>
   </div>
 </div>

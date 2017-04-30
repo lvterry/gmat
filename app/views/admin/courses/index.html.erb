@@ -15,7 +15,7 @@
         <td><%= course.title %></td>
         <td><%= course.subject_name %></td>
         <td><%= course.start_time.to_formatted_s(:date_and_time) %></td>
-        <td><%= course.teacher.name %></td>
+        <td><%= course.teacher.nil? ? '' : course.teacher.name %></td>
         <td><%= course.fee %></td>
         <td>
           <%= link_to '编辑', edit_admin_course_path(course) %>
