@@ -26,7 +26,7 @@ $green: #749d1f;
 
 .filters {
   .container {
-    padding: 24px 30px;
+    padding: 24px 30px 8px 30px;
   }
 
   .selected-filters {
@@ -36,7 +36,7 @@ $green: #749d1f;
     a {
       background-color: $green;
       color: white;
-      padding: 2px 9px;
+      padding: 0 9px;
       display: inline-block;
       border-radius: 4px;
 
@@ -54,12 +54,12 @@ $green: #749d1f;
     margin-top: 30px;
 
     td {
-      padding-bottom: 24px;
+      padding-bottom: 16px;
     }
 
     td:first-child {
       color: #999;
-      width: 60px;
+      width: 40px;
     }
 
     a {
@@ -67,6 +67,10 @@ $green: #749d1f;
       color: #333;
 
       &:hover {
+        color: $green;
+      }
+
+      &.selected {
         color: $green;
       }
     }
@@ -77,7 +81,7 @@ $green: #749d1f;
 
   .container {
     background-color: white;
-    margin-top: 30px;
+    margin: 16px auto;
     padding: 24px 30px;
   }
 
@@ -97,6 +101,7 @@ $green: #749d1f;
 
   table {
     border-collapse: collapse;
+    width: 100%;
   }
 
   td {

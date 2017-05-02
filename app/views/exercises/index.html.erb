@@ -11,33 +11,36 @@
     <div class="container bg-white">
       <div class="selected-filters">
         <span class="text-muted">全部结果 &gt;</span>
-        <a href="#">OG2016<%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
-        <a href="#">PS<%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
+        <% unless @filters.blank? %>
+          <% @filters.each do |key, value| %>
+            <a href="#" data-label="<%= key %>"><%= value%><%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
+          <% end -%>
+        <% end -%>
       </div>
 
-      <table>
+      <table class="exercise-filters">
         <tbody>
           <tr>
             <td>来源</td>
-            <td>
+            <td class="js-book" data-label="book">
               <% @books.each do |book| %>
-                <a href="#"><%= book %></a>
+                <a href="#" data-value="<%= book %>"><%= book %></a>
               <% end -%>
             </td>
           </tr>
           <tr>
             <td>题型</td>
-            <td>
+            <td class="js-subject" data-label="subject">
               <% @subjects.each do |subject| %>
-                <a href="#"><%= subject %></a>
+                <a href="#" data-value="<%= subject %>"><%= subject %></a>
               <% end -%>
             </td>
           </tr>
           <tr>
             <td>难度</td>
-            <td>
+            <td class="js-difficulty" data-label="difficulty">
               <% @difficulties.each do |difficulty| %>
-                <a href="#"><%= difficulty %></a>
+                <a href="#" data-value="<%= difficulty %>"><%= difficulty %></a>
               <% end -%>
             </td>
           </tr>
@@ -48,22 +51,29 @@
 
   <div class="exercises">
     <div class="container">
-      <div class="table-header">
-        <input type="checkbox"> 仅显示770的解析
-        <div class="exercise-count">共有<span><%= @count %></span>道试题</div>
-      </div>
-      <table cellspacing="0">
-        <tbody>
-          <% @exercises.each_with_index do |e, i| %>
-            <tr class="exercise">
-              <td class="sr"><%= i %></td>
-              <td class="title">
-                <%= link_to raw(e.title), exercise_path(e) %>
-              </td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
+
+      <% if @count == 0 %>
+        <p style="text-align: center; color: #999">没有找到相关题目，请重新搜索</p>
+      <% else %>
+
+        <div class="table-header">
+          <input type="checkbox"> 仅显示770的解析
+          <div class="exercise-count">共有<span><%= @count %></span>道试题</div>
+        </div>
+        <table cellspacing="0">
+          <tbody>
+            <% @exercises.each_with_index do |e, i| %>
+              <tr class="exercise">
+                <td class="sr"><%= i + 1 %></td>
+                <td class="title">
+                  <%= link_to raw(e.title), exercise_path(e) %>
+                </td>
+              </tr>
+            <% end -%>
+          </tbody>
+        </table>
+
+      <% end -%>
 
     </div>
 
@@ -71,3 +81,11 @@
 
 
 </div>
+
+
+<% content_for :scripts do %>
+  <script>
+  var filters = <%= raw @filters.to_json %>;
+  </script>
+  <%= javascript_include_tag 'exercises' %>
+<% end -%>

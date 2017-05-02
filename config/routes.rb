@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  # get 'exercises', to: 'exercises#index'
-
-  # get 'exercises/:id', to: 'exercises#show'
+  get '/exercises/search', to: 'exercises#search'
 
   get 'welcome/index'
 
