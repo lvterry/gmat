@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get '/exercises/search', to: 'exercises#search'
-
   get 'welcome/index'
 
   get 'welcome/about'
@@ -11,7 +9,11 @@ Rails.application.routes.draw do
   get 'welcome/uptoken'
 
   resources :posts
-  resources :exercises
+  resources :exercises do
+    collection do
+      get :search
+    end
+  end
 
   get 'meetings', to: 'meetings#index'
 

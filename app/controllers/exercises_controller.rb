@@ -10,25 +10,36 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find params[:id]
   end
 
+  # def search
+  #   @filters = JSON.parse params[:filters]
+  #   book = @filters["book"]
+  #   difficulty = @filters["difficulty"]
+  #   subject = @filters["subject"]
+
+  #   if book.blank? && difficulty.blank? && subject.blank?
+  #     @exercises = Exercise.all
+  #   else
+  #     where = []
+  #     @filters.each do |key, value|
+  #       where.push " '#{value}' = ANY(#{key}) "
+  #     end
+  #     @exercises = Exercise.where where.join(' AND ')
+  #   end
+
+  #   @count = @exercises.count
+
+  #   render 'index'
+  # end
+
   def search
-    @filters = JSON.parse params[:filters]
-    book = @filters["book"]
-    difficulty = @filters["difficulty"]
-    subject = @filters["subject"]
+    @exercises = Exercise.search do
+      fulltext params[:query]
+    end.results
 
-    if book.blank? && difficulty.blank? && subject.blank?
-      @exercises = Exercise.all
-    else
-      where = []
-      @filters.each do |key, value|
-        where.push " '#{value}' = ANY(#{key}) "
-      end
-      @exercises = Exercise.where where.join(' AND ')
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.xml  { render :xml => @exercises }
     end
-
-    @count = @exercises.count
-
-    render 'index'
   end
 
   def set_labels
