@@ -37,9 +37,9 @@ class Admin::ExercisesController < AdminController
   end
 
   def set_labels
-    @difficulties = ['500-600', '600-700', '700-750', '750以上']
-    @subjects = ['语法SC', '逻辑CR', '阅读RC', '数学PS', '数学DS', '作文AWA', '推理IR']
-    @books = ['OG12', 'OG15', 'OG16', 'OG17', 'Prep07', 'Manhattan']
+    @difficulties = Label.where(category: '难度')
+    @subjects = Label.where(category: '题型')
+    @books = Label.where(category: '来源')
   end
 
   private
@@ -47,7 +47,7 @@ class Admin::ExercisesController < AdminController
   def exercise_params
     params.require(:exercise).permit(:title, {:choices => []}, :anwser,
       {:guides => []}, :video_url, :exercise_tags,
-      {:book => []}, {:subject => []}, {:difficulty => []})
+      {:label_ids => []}, :exclusive)
   end
 
 end

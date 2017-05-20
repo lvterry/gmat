@@ -21,3 +21,9 @@
 .byebug_history
 
 *.DS_Store
+
+solr/data
+solr/development
+solr/test
+/log/*.log.lck
+solr/pids

@@ -77,8 +77,8 @@
     <div class="col-sm-10">
       <% @books.each do |book| %>
         <label class="checkbox-inline">
-          <input type="checkbox" name="exercise[book][]" value="<%= book %>" <%= (@exercise.book.include?(book)) ? 'checked' : '' %>>
-          <%= book %>
+          <input type="checkbox" name="exercise[label_ids][]" value="<%= book.id %>" <%= (@exercise.label_ids.include?(book.id)) ? 'checked' : '' %>>
+          <%= book.name %>
         </label>
       <% end -%>
     </div>
@@ -89,8 +89,8 @@
     <div class="col-sm-10">
       <% @subjects.each do |subject| %>
         <label class="checkbox-inline">
-          <input type="checkbox" name="exercise[subject][]" value="<%= subject %>" <%= (@exercise.subject.include?(subject)) ? 'checked' : '' %>>
-          <%= subject %>
+          <input type="checkbox" name="exercise[label_ids][]" value="<%= subject.id %>" <%= (@exercise.label_ids.include?(subject.id)) ? 'checked' : '' %>>
+          <%= subject.name %>
         </label>
       <% end -%>
     </div>
@@ -101,8 +101,8 @@
     <div class="col-sm-10">
       <% @difficulties.each do |d| %>
         <label class="checkbox-inline">
-          <input type="checkbox" name="exercise[difficulty][]" value="<%= d %>" <%= (@exercise.difficulty.include?(d)) ? 'checked' : '' %>>
-          <%= d %>
+          <input type="checkbox" name="exercise[label_ids][]" value="<%= d.id %>" <%= (@exercise.label_ids.include?(d.id)) ? 'checked' : '' %>>
+          <%= d.name %>
         </label>
       <% end -%>
     </div>

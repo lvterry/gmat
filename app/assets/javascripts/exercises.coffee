@@ -1,29 +1,41 @@
+#= require url-search-params
+
 $ ->
-  exerciseFilters = $('.exercise-filters')
+  exerciseFilters = $('.exercise-filters a')
+  selectedFilters = $('.selected-filters a')
+  searchParams = new URLSearchParams(location.search)
 
-  ['book', 'subject', 'difficulty'].forEach (item) ->
-    if (filters isnt null) and (filters[item] isnt undefined)
-      exerciseFilters.find(".js-#{item} a").each ->
-        $(@).addClass('selected') if $(@).text() is filters[item]
-
-  $('.selected-filters a').click (e)->
+  exerciseFilters.on 'click', (e) ->
     e.preventDefault()
-    key = $(@).data 'label'
-    delete window.filters[key]
-    filterResults()
+    labelId = $(@).data('value')
+    labels = if searchParams.get('labels') then searchParams.get('labels').split(',') else []
+    labels.push labelId
+    searchParams.set 'labels', labels.join(',')
+    setPathname(searchParams)
 
-  $('.exercise-filters a').click (e)->
+  selectedFilters.on 'click', (e) ->
     e.preventDefault()
-    filters = window.filters
-    key = $(@).parent().data 'label'
-    filters ?= {}
-    filters[key] = $(@).text()
-    window.filters = filters
-    filterResults()
+    labelId = $(@).data('value')
+    labels = searchParams.get('labels').split(',')
+    newLabels = []
+    labels.forEach (item) ->
+      newLabels.push(item) if item isnt "#{labelId}"
+    searchParams.set 'labels', newLabels
+
+    setPathname(searchParams)
+
+  setPathname = (searchParams) ->
+    pathname = if (location.pathname.indexOf('search') is -1) then "#{location.pathname}/search" else location.pathname
+    window.location = "#{pathname}?#{searchParams.toString()}"
+
+  # intercept search form post
+  # so that filters are submitted too
+  $('.search-bar form').on 'submit', (e)->
+    console.log e
+    if searchParams.has('labels')
+      console.log "I need to be submitted"
+    #return false
 
 
-filterResults = ->
-  pathname = window.location.pathname
-  pathname = "#{pathname}/search" if pathname.indexOf('search') is -1
-  window.location = pathname + '?filters=' + JSON.stringify(window.filters)
-
+  $('.show-guides').on 'click', (e) ->
+    $('.guides').toggle()

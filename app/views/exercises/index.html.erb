@@ -12,9 +12,10 @@
     <div class="container bg-white">
       <div class="selected-filters">
         <span class="text-muted">全部结果 &gt;</span>
-        <% unless @filters.blank? %>
-          <% @filters.each do |key, value| %>
-            <a href="#" data-label="<%= key %>"><%= value%><%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
+        <% if @labels.present? %>
+          <% @labels.each do |label| %>
+            <% label = Label.find(label) %>
+            <a href="#" data-value="<%= label.id %>"><%= label.name %><%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
           <% end -%>
         <% end -%>
       </div>
@@ -23,17 +24,18 @@
         <tbody>
           <tr>
             <td>来源</td>
-            <td class="js-book" data-label="book">
+            <td>
+
               <% @books.each do |book| %>
-                <a href="#" data-value="<%= book %>"><%= book %></a>
+                <a href="#" data-value="<%= book.id %>" class="<%= @labels.present? && @labels.include?(book.id.to_s) ? 'selected' : '' %>"><%= book.name %></a>
               <% end -%>
             </td>
           </tr>
           <tr>
             <td>题型</td>
-            <td class="js-subject" data-label="subject">
+            <td>
               <% @subjects.each do |subject| %>
-                <a href="#" data-value="<%= subject %>"><%= subject %></a>
+                <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
               <% end -%>
             </td>
           </tr>
@@ -41,7 +43,7 @@
             <td>难度</td>
             <td class="js-difficulty" data-label="difficulty">
               <% @difficulties.each do |difficulty| %>
-                <a href="#" data-value="<%= difficulty %>"><%= difficulty %></a>
+                <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
               <% end -%>
             </td>
           </tr>
@@ -53,13 +55,13 @@
   <div class="exercises">
     <div class="container">
 
-      <% if @count == 0 %>
+      <% if @exercises.count == 0 %>
         <p style="text-align: center; color: #999">没有找到相关题目，请重新搜索</p>
       <% else %>
 
         <div class="table-header">
           <input type="checkbox"> 仅显示770的解析
-          <div class="exercise-count">共有<span><%= @count %></span>道试题</div>
+          <div class="exercise-count">共有<span><%= @exercises.count %></span>道试题</div>
         </div>
         <table cellspacing="0">
           <tbody>

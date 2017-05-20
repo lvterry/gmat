@@ -2,19 +2,19 @@
 <a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">添加题目</a>
 <table class="table table-bordered">
   <thead>
-    <th style="width: 600px;">题目</th>
-    <th>题型</th>
-    <th>难度</th>
-    <th>来源</th>
+    <th style="width: 500px;">题目</th>
+    <th>标签</th>
     <th>操作</th>
   </thead>
   <tbody>
     <% @exercises.each do |exercise| %>
       <tr>
         <td><%= raw(exercise.title).truncate(180) %></td>
-        <td><%= exercise.subject.join(', ') %></td>
-        <td><%= exercise.difficulty.join(', ') %></td>
-        <td><%= exercise.book.join(', ') %></td>
+        <td>
+          <% exercise.labels.each do |label| %>
+            <span><%= label.name %></span>,&nbsp;
+          <% end -%>
+        </td>
         <td>
           <%= link_to '编辑', edit_admin_exercise_path(exercise) %>
           <%= link_to '删除', admin_exercise_path(exercise), class: 'delete-exercise' %>
