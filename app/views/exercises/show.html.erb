@@ -3,7 +3,7 @@
     <div class="container">
       <%= link_to '题库', exercises_path %>
       &gt;
-      <%= link_to @exercise.subject.first, "/exercises/search?filters={\"subject\":\"#{@exercise.subject.first}\"}" %>
+      <%= link_to @exercise.labels.first.name, "/exercises/search?labels=#{@exercise.labels.first.id}" %>
       &gt;
       题目详情
     </div>
