@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508153051) do
+ActiveRecord::Schema.define(version: 20170522154849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,17 +59,14 @@ ActiveRecord::Schema.define(version: 20170508153051) do
     t.text     "exercise_tags", default: [],                array: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.text     "difficulty",    default: [],                array: true
-    t.text     "book",          default: [],                array: true
-    t.text     "subject",       default: [],                array: true
     t.boolean  "exclusive",     default: true
   end
 
   create_table "exercises_labels", id: false, force: :cascade do |t|
     t.integer "exercise_id"
-    t.integer "labels_id"
+    t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["labels_id"], name: "index_exercises_labels_on_labels_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
