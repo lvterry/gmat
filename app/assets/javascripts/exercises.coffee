@@ -31,10 +31,9 @@ $ ->
   # intercept search form post
   # so that filters are submitted too
   $('.search-bar form').on 'submit', (e)->
-    console.log e
     if searchParams.has('labels')
-      console.log "I need to be submitted"
-    #return false
+      input = $('<input type="hidden" name="labels" value="' + searchParams.get('labels') + '">')
+      $(@).append input
 
 
   $('.show-guides').on 'click', (e) ->
