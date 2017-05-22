@@ -93,7 +93,7 @@ nav li {
   float: left;
 }
 
-nav li a {
+nav li a, .login a {
   color: white;
   text-decoration: none;
   opacity: 0.9;
@@ -101,10 +101,15 @@ nav li a {
   padding: 0.7em 1em;
 }
 
-nav li a:hover, nav li a.active {
+nav li a:hover, nav li a.active,
+.login a:hover, .login a.active {
   opacity: 1;
   color: white;
   background-color: #616771;
+}
+
+.login {
+  float: right;
 }
 
 .why-us h4 {

@@ -43,6 +43,8 @@
             <li><a class="<%= (controller_name == 'welcome' && action_name == 'about') ? 'active' : '' %>" href="/welcome/about">关于我们</a></li>
           </ul>
         </nav>
+
+        <%= render 'layouts/login' %>
       </div>
     </header>
 
