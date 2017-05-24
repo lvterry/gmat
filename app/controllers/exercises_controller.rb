@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_labels
 
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.page(params[:page]).per_page(2)
     @count = Exercise.count
   end
 
@@ -12,11 +12,16 @@ class ExercisesController < ApplicationController
 
   def search
     @labels = params[:labels].split(",") if params[:labels].present?
+    @exclusive = params[:exclusive]
 
-    @exercises = Exercise.search do
+    search = Exercise.search do
       fulltext params[:query]
+      paginate page: params[:page] || 1, per_page: 2
       with(:label_ids, params[:labels].split(",")) if params[:labels].present?
-    end.results
+      with(:exclusive, true) if params[:exclusive].present?
+    end
+
+    @exercises = search.results
 
     render :index
   end

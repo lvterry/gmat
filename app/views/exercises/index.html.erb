@@ -55,14 +55,15 @@
   <div class="exercises">
     <div class="container">
 
+      <div class="table-header">
+        <label style="cursor: pointer;"><input type="checkbox" name="exclusive" <%= @exclusive.present? ? 'checked' : '' %>> 仅显示770的解析</label>
+        <div class="exercise-count">共有<span><%= @exercises.count %></span>道试题</div>
+      </div>
+
       <% if @exercises.count == 0 %>
         <p style="text-align: center; color: #999">没有找到相关题目，请重新搜索</p>
       <% else %>
 
-        <div class="table-header">
-          <input type="checkbox"> 仅显示770的解析
-          <div class="exercise-count">共有<span><%= @exercises.count %></span>道试题</div>
-        </div>
         <table cellspacing="0">
           <tbody>
             <% @exercises.each_with_index do |e, i| %>
@@ -75,6 +76,10 @@
             <% end -%>
           </tbody>
         </table>
+
+        <div class="container-narrow">
+          <%= will_paginate @exercises, previous_label: "«", next_label: "»" %>
+        </div>
 
       <% end -%>
 

@@ -11,6 +11,7 @@ $ ->
     labels = if searchParams.get('labels') then searchParams.get('labels').split(',') else []
     labels.push labelId
     searchParams.set 'labels', labels.join(',')
+    searchParams.delete 'page'
     setPathname(searchParams)
 
   selectedFilters.on 'click', (e) ->
@@ -21,7 +22,15 @@ $ ->
     labels.forEach (item) ->
       newLabels.push(item) if item isnt "#{labelId}"
     searchParams.set 'labels', newLabels
+    searchParams.delete 'page'
+    setPathname(searchParams)
 
+  $('[name=exclusive]').on 'click', (e) ->
+    e.preventDefault()
+    if @checked
+      searchParams.set 'exclusive', 1
+    else
+      searchParams.delete 'exclusive'
     setPathname(searchParams)
 
   setPathname = (searchParams) ->
