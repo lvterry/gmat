@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170522154849) do
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
