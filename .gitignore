@@ -27,3 +27,6 @@ solr/development
 solr/test
 /log/*.log.lck
 solr/pids
+
+config/database.yml
+config/secrets.yml

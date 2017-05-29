@@ -1,5 +1,8 @@
 lock '3.6.1'
 
+set :stages, %w(staging production)
+set :default_stage, "staging"
+
 set :application, 'gmat-rails'
 set :repo_url, 'git@git.oschina.net:wangyazhou/gmat-rails.git'
 
