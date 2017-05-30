@@ -197,9 +197,12 @@ $green: #749d1f;
 
   .show-guides {
     margin-top: 32px;
+    font-size: 14px;
   }
 
   .guides {
+
+    display: none;
 
     p {
       font-weight: bold;
