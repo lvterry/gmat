@@ -71,6 +71,7 @@ gem 'jquery-turbolinks'
 
 gem 'qiniu'
 gem 'will_paginate', '>= 3.1'
-gem "sentry-raven"
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+gem "omniauth-wechat-oauth2"
