@@ -22,13 +22,15 @@
       <button class="btn show-guides">显示正确答案和解析</button>
 
       <div class="guides">
-        <p>正确答案: <span><%= options[@exercise.anwser] %></span></p>
-        <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
-        <ul>
-          <% @exercise.guides.each_with_index do |guide, index| %>
-            <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= guide %></li>
-          <% end -%>
-        </ul>
+        <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
+        <% if @exercise.guides.join("").present? %>
+          <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
+          <ul>
+            <% @exercise.guides.each_with_index do |guide, index| %>
+              <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= guide %></li>
+            <% end -%>
+          </ul>
+        <% end -%>
 
         <% if @exercise.video_url.present? %>
           <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
