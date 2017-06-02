@@ -54,5 +54,5 @@ Rails.application.configure do
 
   config.web_console.whitelisted_ips = %w( 106.187.95.168 )
 
-  config.logger = Logger.new(STDOUT)
+  #config.logger = Logger.new(STDOUT)
 end
