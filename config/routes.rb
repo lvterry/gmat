@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'auth/:provider/callback', to: 'sessions#create', as: 'login'
+
   get 'welcome/index'
 
   get 'welcome/about'
@@ -36,6 +38,8 @@ Rails.application.routes.draw do
 
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'
+
+    get "users", to: 'users#index'
 
     root to: 'courses#index'
 

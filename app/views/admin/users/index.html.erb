@@ -1,0 +1,19 @@
+<h4>用户</h4>
+<table class="table table-bordered">
+  <thead>
+    <th>用户昵称</th>
+    <th>注册时间</th>
+    <th>城市</th>
+    <th>手机号</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.nickname %></td>
+        <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
+        <td><%= user.city %></td>
+        <td><%= user.mobile %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

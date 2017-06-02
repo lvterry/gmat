@@ -1,26 +1,5 @@
-<div class="login"><a href="#">登录</a></div>
-
-<% content_for :scripts do %>
-  <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
-  <script>
-    $('.login a').on('click', function(e){
-      e.preventDefault();
-      layer.open({
-        type: 1,
-        skin: 'layui-layer-rim', //加上边框
-        area: ['420px', '240px'], //宽高
-        content: '<div id="wx-container"></div>'
-      });
-
-    var obj = new WxLogin({
-      id:"wx-container",
-      appid: "wx2cbc3bad6adebf9b",
-      scope: "snsapi_login",
-      redirect_uri: "http://gaofengo.com",
-      state: "",
-      style: "",
-      href: ""
-      });
-    });
-  </script>
+<% if current_user %>
+  <div class="login"><a href="#"><%= current_user.nickname %></a></div>
+<% else %>
+  <div class="login"><%= link_to '登录', '/auth/open_wechat' %></div>
 <% end -%>
