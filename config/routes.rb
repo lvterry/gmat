@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create', as: 'login'
 
+  get 'update_mobile', to: 'users#update_mobile', as: 'update_mobile'
+
   get 'welcome/index'
 
   get 'welcome/about'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get 'welcome/uptoken'
 
   resources :posts
+  resources :users
   resources :exercises do
     collection do
       get :search

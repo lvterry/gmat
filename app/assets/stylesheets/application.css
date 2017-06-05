@@ -17,5 +17,6 @@
  *= require posts
  *= require courses
  *= require exercises
+ *= require users
  *= require_self
  */
