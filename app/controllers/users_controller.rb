@@ -5,11 +5,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to root_path
-    else
-
-    end
+    render json: { result: user.update(user_params) }
   end
 
   private

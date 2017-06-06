@@ -1,14 +1,22 @@
 form.edit_user {
-  > div {
-    margin-bottom: 24px;
-  }
 
   [type=text] {
     padding: 12px;
     font-size: 18px;
   }
 
+  .error {
+    margin-top: 8px;
+    color: #c00;
+    display: none;
+  }
+
   .btn {
     width: 267px;
+    margin-top: 24px;
+
+    &:disabled {
+      color: #eee;
+    }
   }
 }

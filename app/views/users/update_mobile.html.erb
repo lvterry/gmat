@@ -1,12 +1,13 @@
 <div class="bg-snow pb2">
 
   <div class="pt2 header-margin search-bar">
-    <h3>请补充您的手机号，方便我们为您推送更多有用信息</h3>
+    <h3>请绑定您的手机号</h3>
 
     <% if current_user %>
 
       <%= form_for @current_user do |f| %>
         <div><%= f.text_field :mobile, placeholder: '手机号', autofocus: true %></div>
+        <div class="error">手机号格式错误</div>
         <%= f.submit '保存手机号', class: 'btn' %>
       <% end -%>
 

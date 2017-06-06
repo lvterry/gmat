@@ -1,7 +1,6 @@
 #= require swiper.jquery
 #= require moment.min
 #= require fullcalendar.min
-#= require layer
 
 class EventsFilter
   constructor: (@calendar)->
