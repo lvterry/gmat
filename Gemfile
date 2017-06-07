@@ -73,4 +73,5 @@ gem 'sunspot_solr'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 
-#gem 'omniauth-open-wechat-oauth2'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'

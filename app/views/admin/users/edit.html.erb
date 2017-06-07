@@ -1,0 +1,9 @@
+<h4>设置用户权限</h4>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
+<% end -%>
+
+<%= render partial: "admin/users/permissions" %>
