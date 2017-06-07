@@ -18,4 +18,12 @@ class User < ApplicationRecord
     )
     user
   end
+
+  def mobile_part
+    if user.mobile.present?
+      mobile = user.mobile
+      mobile[3..6] = '****'
+      mobile
+    end
+  end
 end

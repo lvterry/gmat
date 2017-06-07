@@ -4,6 +4,8 @@
     <th>用户昵称</th>
     <th>注册时间</th>
     <th>城市</th>
+    <th>权限</th>
+    <th>权限有效期</th>
     <th>手机号</th>
   </thead>
   <tbody>
@@ -12,7 +14,9 @@
         <td><%= user.nickname %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
         <td><%= user.city %></td>
-        <td><%= user.mobile %></td>
+        <td>-</td>
+        <td>长期</td>
+        <td><%= user.mobile_part %></td>
       </tr>
     <% end -%>
   </tbody>
