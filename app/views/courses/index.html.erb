@@ -23,7 +23,7 @@
         <div class="left pl3" style="width:59%">
           <a href="<%= course_show_path(course) %>" class="h3 black"><%= course.title %></a>
           <div class="gray h5 mt1">
-            <div>讲师: <%= course.teacher.name %></div>
+            <div>讲师: <%= course.teacher.present? ? course.teacher.name : '' %></div>
             <div>开课时间：<%= course.start_time.to_formatted_s(:date_and_time)%></div>
 
             <div>费用：<strong class="pink"><%= course.fee %></strong> 元/人</div>
