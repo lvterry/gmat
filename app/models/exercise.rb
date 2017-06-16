@@ -7,4 +7,10 @@ class Exercise < ApplicationRecord
     boolean :exclusive
     integer :label_ids, multiple: true
   end
+
+  def is_math?
+    ps_label_id = 10
+    ds_label_id = 19
+    self.label_ids.include?(ps_label_id) || self.label_ids.include?(ds_label_id)
+  end
 end
