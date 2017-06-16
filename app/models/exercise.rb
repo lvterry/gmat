@@ -8,9 +8,11 @@ class Exercise < ApplicationRecord
     integer :label_ids, multiple: true
   end
 
-  def is_math?
-    ps_label_id = 10
-    ds_label_id = 19
-    self.label_ids.include?(ps_label_id) || self.label_ids.include?(ds_label_id)
+  def is_sc_cr_ps_ds?
+    val = false
+    Settings.label_ids.each do |label_id|
+      val = true if self.label_ids.include?(label_id)
+    end
+    val
   end
 end
