@@ -79,7 +79,11 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    config (1.4.0)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.1.1)
     debug_inspector (0.0.2)
+    deep_merge (1.1.1)
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
@@ -258,6 +262,7 @@ DEPENDENCIES
   capistrano-rvm (~> 0.1.2)
   codemirror-rails
   coffee-rails (~> 4.2)
+  config
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
