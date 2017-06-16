@@ -27,7 +27,7 @@
           <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
           <ul>
             <% @exercise.guides.each_with_index do |guide, index| %>
-              <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= guide %></li>
+              <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= raw guide %></li>
             <% end -%>
           </ul>
         <% end -%>
