@@ -11,7 +11,6 @@
 
   <div class="exercise-detail">
     <div class="container">
-      <!-- <h4>题目内容</h4> -->
       <p class="question"><%= raw @exercise.title %></p>
       <ul>
         <% options = ['A', 'B', 'C', 'D', 'E'] %>
@@ -23,24 +22,7 @@
 
       <div class="guides">
         <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
-        <% if @exercise.guides.join("").present? %>
-          <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
-          <ul>
-            <% @exercise.guides.each_with_index do |guide, index| %>
-              <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= raw guide %></li>
-            <% end -%>
-          </ul>
-        <% end -%>
-
-        <% if @exercise.video_url.present? %>
-          <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
-          <% if true # 权限检查 %>
-              <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
-              <div>
-                <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/course-%E6%95%B0%E5%AD%A6%E8%AE%AD%E7%BB%83%E8%90%A5-2..png', width: 423, height: 244 %>
-              </div>
-          <% end -%>
-        <% end -%>
+        <%= render "exercises/guides" %>
       </div>
     </div>
   </div>

@@ -45,7 +45,7 @@ class Admin::ExercisesController < AdminController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:title, {:choices => []}, :anwser,
+    params.require(:exercise).permit(:title, :math_guide, {:choices => []}, :anwser,
       {:guides => []}, :video_url, :exercise_tags,
       {:label_ids => []}, :exclusive)
   end
