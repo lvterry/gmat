@@ -10,7 +10,7 @@
 
 body {
   font-family: "Segoe UI", helvetica, arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   color: #333;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -42,6 +42,7 @@ body {
 .admin-container {
   border: 1px solid #ddd;
   background-color: white;
+  margin-bottom: 32px;
 
   .nav-container {
     padding: 0;
