@@ -28,4 +28,11 @@ class User < ApplicationRecord
       mobile
     end
   end
+
+  def allowed_labels
+    ids = self.user_groups.map do |user_group|
+      user_group.label_ids
+    end
+    ids.flatten
+  end
 end

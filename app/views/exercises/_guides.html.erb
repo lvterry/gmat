@@ -1,41 +1,41 @@
-<% options = ['A', 'B', 'C', 'D', 'E'] %>
+<% if current_user.blank? %>
 
+<div class="permission-reminder">登录后可查看题目解析 <%= link_to '登录', '/auth/open_wechat' %></div>
 
-<h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
-
-<% if @exercise.is_sc_cr_ps_ds? %>
-
-  <div style="padding-left: 22px;">
-    <%= raw @exercise.math_guide %>
-  </div>
 
 <% else %>
 
-  <% if @exercise.guides.join("").present? %>
-    <ul style="padding-right: 64px;">
-      <% @exercise.guides.each_with_index do |guide, index| %>
-        <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= raw guide %></li>
-      <% end -%>
-    </ul>
+  <% options = ['A', 'B', 'C', 'D', 'E'] %>
+
+
+  <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
+
+  <% if @exercise.is_sc_cr_ps_ds? %>
+
+    <div style="padding-left: 22px;">
+      <%= raw @exercise.math_guide %>
+    </div>
+
+  <% else %>
+
+    <% if @exercise.guides.join("").present? %>
+      <ul style="padding-right: 64px;">
+        <% @exercise.guides.each_with_index do |guide, index| %>
+          <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= raw guide %></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+
   <% end -%>
 
-<% end -%>
-
-
-
-
-
-
-
-
-
-
-<% if @exercise.video_url.present? %>
-  <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
-  <% if true # 权限检查 %>
-      <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
-      <div>
-        <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/course-%E6%95%B0%E5%AD%A6%E8%AE%AD%E7%BB%83%E8%90%A5-2..png', width: 423, height: 244 %>
-      </div>
+  <% if @exercise.video_url.present? %>
+    <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
+    <% if true # 权限检查 %>
+        <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
+        <div>
+          <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/course-%E6%95%B0%E5%AD%A6%E8%AE%AD%E7%BB%83%E8%90%A5-2..png', width: 423, height: 244 %>
+        </div>
+    <% end -%>
   <% end -%>
+
 <% end -%>
