@@ -20,6 +20,10 @@ window.initQiniu = (filesAdded, filesUploaded) ->
 $ ->
   $('#summernote').summernote()
 
+  $('.datetime').datetimeEntry
+    datetimeFormat: 'Y-O-D H:M'
+    spinnerImage: ''
+
   $('.meeting-form').on 'click', '.delete-meeting-block', ->
     checkbox = $(@)
     tds = checkbox.parents('tr').find('td').not(':last')

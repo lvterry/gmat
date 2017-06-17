@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_and_belongs_to_many :user_groups
+
   def self.find_or_create_from_auth_hash(auth_hash)
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
     user.update(
@@ -25,11 +27,5 @@ class User < ApplicationRecord
       mobile[3..6] = '****'
       mobile
     end
-  end
-
-  def label_names
-    self.labels.map do |label|
-      label.name
-    end.join ", "
   end
 end

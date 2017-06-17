@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616144250) do
+ActiveRecord::Schema.define(version: 20170617145305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 20170616144250) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "labels_user_groups", force: :cascade do |t|
+    t.integer "label_id"
+    t.integer "user_group_id"
+    t.index ["label_id"], name: "index_labels_user_groups_on_label_id", using: :btree
+    t.index ["user_group_id"], name: "index_labels_user_groups_on_user_group_id", using: :btree
+  end
+
   create_table "labels_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "label_id"
@@ -156,6 +163,13 @@ ActiveRecord::Schema.define(version: 20170616144250) do
     t.datetime "valid_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_groups_users", force: :cascade do |t|
+    t.integer "user_group_id"
+    t.integer "user_id"
+    t.index ["user_group_id"], name: "index_user_groups_users_on_user_group_id", using: :btree
+    t.index ["user_id"], name: "index_user_groups_users_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

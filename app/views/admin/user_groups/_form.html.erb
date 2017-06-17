@@ -1,0 +1,59 @@
+<%= form_for [:admin, @user_group], html: { class: 'form-horizontal user-group-form' } do |f| %>
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">组名<span class="required">*</span></label>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="book" class="col-sm-2 control-label">来源</label>
+    <div class="col-sm-10">
+      <% @books.each do |book| %>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="user_group[label_ids][]" value="<%= book.id %>" <%= (@user_group.label_ids.include?(book.id)) ? 'checked' : '' %>>
+          <%= book.name %>
+        </label>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label">题型</label>
+    <div class="col-sm-10">
+      <% @subjects.each do |subject| %>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="user_group[label_ids][]" value="<%= subject.id %>" <%= (@user_group.label_ids.include?(subject.id)) ? 'checked' : '' %>>
+          <%= subject.name %>
+        </label>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="difficulty" class="col-sm-2 control-label">难度</label>
+    <div class="col-sm-10">
+      <% @difficulties.each do |d| %>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="user_group[label_ids][]" value="<%= d.id %>" <%= (@user_group.label_ids.include?(d.id)) ? 'checked' : '' %>>
+          <%= d.name %>
+        </label>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="valid_to" class="col-sm-2 control-label">权限有效期</label>
+    <div class="col-sm-4">
+      <%= f.text_field :valid_to, class: 'form-control datetime' %>
+      <p class="text-muted">不填写代表长期有效</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <%= f.submit '保存', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end %>

@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     #get 'about/:id/edit', to: 'about#edit'
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
-      :courses, :exercises, :users
+      :courses, :exercises, :users, :user_groups
 
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'

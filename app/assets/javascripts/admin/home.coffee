@@ -7,7 +7,3 @@ $ ->
         url: $(@).attr('href')
         method: 'delete'
     false
-
-  $('.datetime').datetimeEntry
-    datetimeFormat: 'Y-O-D H:M'
-    spinnerImage: ''

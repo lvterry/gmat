@@ -3,8 +3,6 @@
   <thead>
     <th>用户昵称</th>
     <th>注册时间</th>
-    <th>权限</th>
-    <th>权限有效期</th>
     <th>手机号</th>
     <th>操作</th>
   </thead>
@@ -13,14 +11,6 @@
       <tr data-id="<%= user.id %>">
         <td><%= user.nickname %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
-        <td><%= user.label_names %></td>
-        <td>
-          <% if user.valid_to.present? %>
-            <%= user.valid_to.to_formatted_s(:date_and_time) %>
-          <% else %>
-            <span class="text-muted">长期</span>
-          <% end -%>
-        </td>
         <td><%= user.mobile_part %></td>
         <td>
           <%= link_to '设置权限', edit_admin_user_path(user) %>
