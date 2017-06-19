@@ -35,4 +35,18 @@ class User < ApplicationRecord
     end
     ids.flatten
   end
+
+  def is_authorized_to_view?(exercises)
+    labels = exercises.label_ids
+    allowed_labels = self.allowed_labels
+    is_authorized = false
+    labels.each do |label|
+      if allowed_labels.include?(label)
+        is_authorized = true
+        break
+      end
+    end
+    is_authorized
+  end
+
 end

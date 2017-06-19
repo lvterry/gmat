@@ -2,8 +2,7 @@
 
 <div class="permission-reminder">登录后可查看题目解析 <%= link_to '登录', '/auth/open_wechat' %></div>
 
-
-<% else %>
+<% elsif current_user.is_authorized_to_view?(@exercise) %>
 
   <% options = ['A', 'B', 'C', 'D', 'E'] %>
 
@@ -37,5 +36,9 @@
         </div>
     <% end -%>
   <% end -%>
+
+<% else %>
+
+  <div class="permission-reminder">您要先购买此课程才可以查看解析</div>
 
 <% end -%>
