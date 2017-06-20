@@ -49,4 +49,10 @@ class User < ApplicationRecord
     is_authorized
   end
 
+  def user_groups_as_text
+    self.user_groups.map do |group|
+      group.name
+    end.join(', ')
+  end
+
 end

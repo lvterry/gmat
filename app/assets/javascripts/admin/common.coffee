@@ -43,3 +43,39 @@ $ ->
                         <td>
                         </td>
                       </tr>")
+
+  initUsersTable() if $('.users-table').length > 0
+
+
+initUsersTable = ->
+  button = $('.js-add-to-user-group')
+  checkboxes = $('.users-table input[type=checkbox]')
+  modal = $('#addToUserGroupModal')
+  confirmBtn = modal.find('.js-confirm')
+
+  confirmBtn.on 'click', ->
+    userIds = checkboxes.filter(':checked').map ->
+        $(@).parents('tr').data('id')
+    userGroupId = modal.find('[name=user-group]').val()
+    $.ajax
+      url: "/admin/user_groups/#{userGroupId}/add_users"
+      method: 'post'
+      data:
+        "user_ids": userIds.get()
+      success: (data) ->
+        layer.msg '操作成功'
+        setTimeout ->
+          window.location.reload()
+        , 2000
+      error: (data) ->
+        layer.msg '操作失败'
+
+  button.on 'click', (e) ->
+    if checkboxes.filter(':checked').length is 0
+      # layer message
+      layer.msg '请先选择用户'
+    else
+      modal.modal('show')
+      
+      
+

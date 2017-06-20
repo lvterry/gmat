@@ -12,4 +12,5 @@
 #= require jquery.datetimeentry
 #= require qiniu.min
 #= require moment
+#= require layer
 #= require bootstrap-datetimepicker

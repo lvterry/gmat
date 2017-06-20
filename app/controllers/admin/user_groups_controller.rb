@@ -35,6 +35,13 @@ class Admin::UserGroupsController < AdminController
     redirect_to edit_admin_user_group_path(@group)
   end
 
+  def add_users
+    group = UserGroup.find params[:id]
+    current_ids = group.user_ids
+    group.user_ids = current_ids | params[:user_ids]
+    render json: { success: 1 }
+  end
+
   private
 
   def user_group_params
