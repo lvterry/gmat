@@ -44,7 +44,7 @@ class Admin::UserGroupsController < AdminController
 
   def users
     @group = UserGroup.find params[:id]
-    @users = @group.users
+    @users = @group.users.order(created_at: :desc)
   end
 
   private

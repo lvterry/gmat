@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.all
+    @users = User.order(created_at: :desc)
     @user_groups = UserGroup.all
   end
 
