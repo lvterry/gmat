@@ -35,7 +35,7 @@
       </div>
       <div class="modal-body">
         <p>将选择的用户加入下面的用户组</p>
-        <select name="user-group">
+        <select name="user-group" class="form-control" style="width:300px">
           <option value="-1">请选择</option>
           <% @user_groups.each do |group| %>
             <option value="<%= group.id %>"> <%= group.name %>
