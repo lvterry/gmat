@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :user_groups do
       member do
         post :add_users
+        get :users
       end
     end
 

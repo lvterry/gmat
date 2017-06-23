@@ -42,6 +42,11 @@ class Admin::UserGroupsController < AdminController
     render json: { success: 1 }
   end
 
+  def users
+    @group = UserGroup.find params[:id]
+    @users = @group.users
+  end
+
   private
 
   def user_group_params

@@ -1,0 +1,19 @@
+<h4>用户组 &gt; [<%= @group.name %>]</h4>
+<p class="text-muted" style="margin-bottom: 24px">权限：<%= @group.label_names %>&nbsp; &nbsp; <%= link_to '编辑权限', edit_admin_user_group_path(@group) %> </p>
+
+<table class="table table-bordered">
+    <thead>
+        <th>昵称</th>
+        <th>注册时间</th>
+        <th>操作</th>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.nickname %></td>
+            <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
+            <td>删除</td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
