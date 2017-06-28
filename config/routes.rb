@@ -34,7 +34,6 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    #get 'about/:id/edit', to: 'about#edit'
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
       :courses, :exercises, :users
@@ -51,7 +50,5 @@ Rails.application.routes.draw do
     post "vip/questions", to: 'vip#questions'
 
     root to: 'courses#index'
-
-    #get "posts/:id/delete_attachment", to: 'posts#delete_attachment'
   end
 end
