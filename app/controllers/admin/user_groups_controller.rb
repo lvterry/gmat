@@ -47,6 +47,12 @@ class Admin::UserGroupsController < AdminController
     @users = @group.users.order(created_at: :desc)
   end
 
+  def remove_user
+    @group = UserGroup.find params[:id]
+    @group.users.delete params[:user_id]
+    render json: { success: 1 }
+  end
+
   private
 
   def user_group_params

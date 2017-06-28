@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :user_groups do
       member do
         post :add_users
+        post :remove_user
         get :users
       end
     end

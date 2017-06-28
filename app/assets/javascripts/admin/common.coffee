@@ -66,7 +66,7 @@ initUsersTable = ->
         layer.msg '操作成功'
         setTimeout ->
           window.location.reload()
-        , 2000
+        , 1000
       error: (data) ->
         layer.msg '操作失败'
 
@@ -76,6 +76,3 @@ initUsersTable = ->
       layer.msg '请先选择用户'
     else
       modal.modal('show')
-      
-      
-
