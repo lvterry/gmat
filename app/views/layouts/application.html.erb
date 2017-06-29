@@ -12,6 +12,7 @@
     <%= javascript_include_tag 'application' %>
 
     <!-- 百度统计代码 -->
+<<<<<<< HEAD
     <% if Rails.env == 'production' %>
       <script>
         var _hmt = _hmt || [];
@@ -25,6 +26,17 @@
 
     <% end -%>
 
+=======
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e2f29d6b2044f5e23ce2309ec935ae7";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+>>>>>>> master
   </head>
 
   <body>
