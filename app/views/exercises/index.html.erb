@@ -57,7 +57,7 @@
 
       <div class="table-header">
         <label style="cursor: pointer;"><input type="checkbox" name="exclusive" <%= @exclusive.present? ? 'checked' : '' %>> 仅显示770的解析</label>
-        <div class="exercise-count">共有<span><%= @exercises.count %></span>道试题</div>
+        <div class="exercise-count">共有<span><%= @total %></span>道试题</div>
       </div>
 
       <% if @exercises.count == 0 %>

@@ -23,6 +23,8 @@ class ExercisesController < ApplicationController
 
     @exercises = search.results
 
+    @total = search.total
+
     render :index
   end
 
