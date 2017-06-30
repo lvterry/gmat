@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = Exercise.page(params[:page]).per_page(10)
-    @count = Exercise.count
+    @total = Exercise.count
   end
 
   def show
