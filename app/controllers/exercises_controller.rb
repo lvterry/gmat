@@ -16,9 +16,9 @@ class ExercisesController < ApplicationController
 
     search = Exercise.search do
       fulltext params[:query]
-      paginate page: params[:page] || 1, per_page: 10
-      with(:label_ids, params[:labels].split(",")) if params[:labels].present?
       with(:exclusive, true) if params[:exclusive].present?
+      with(:label_ids).all_of(params[:labels].split(",")) if params[:labels].present?
+      paginate page: params[:page] || 1, per_page: 10
     end
 
     @exercises = search.results
