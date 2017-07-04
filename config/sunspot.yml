@@ -3,7 +3,7 @@ production:
     hostname: localhost
     port: 8983
     log_level: WARNING
-    path: /solr
+    path: /solr/solr_sunspot_example
 
 development:
   solr:
