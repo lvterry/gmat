@@ -1,5 +1,4 @@
 class Admin::ExercisesController < AdminController
-  before_action :set_labels
 
   def index
     @exercises = Exercise.order(created_at: :desc).page(params[:page]).per_page(20)
@@ -34,12 +33,6 @@ class Admin::ExercisesController < AdminController
     @exercise = Exercise.find(params[:id])
     @exercise.destroy
     redirect_to admin_exercises_path
-  end
-
-  def set_labels
-    @difficulties = Label.where(category: '难度')
-    @subjects = Label.where(category: '题型')
-    @books = Label.where(category: '来源')
   end
 
   private

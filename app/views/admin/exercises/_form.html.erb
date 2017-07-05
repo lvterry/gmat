@@ -99,7 +99,7 @@
   <div class="form-group">
     <label for="book" class="col-sm-2 control-label">来源</label>
     <div class="col-sm-10">
-      <% @books.each do |book| %>
+      <% Label.books.each do |book| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="exercise[label_ids][]" value="<%= book.id %>" <%= (@exercise.label_ids.include?(book.id)) ? 'checked' : '' %>>
           <%= book.name %>
@@ -111,7 +111,7 @@
   <div class="form-group">
     <label for="subject" class="col-sm-2 control-label">题型</label>
     <div class="col-sm-10">
-      <% @subjects.each do |subject| %>
+      <% Label.subjects.each do |subject| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="exercise[label_ids][]" value="<%= subject.id %>" <%= (@exercise.label_ids.include?(subject.id)) ? 'checked' : '' %>>
           <%= subject.name %>
@@ -123,7 +123,7 @@
   <div class="form-group">
     <label for="difficulty" class="col-sm-2 control-label">难度</label>
     <div class="col-sm-10">
-      <% @difficulties.each do |d| %>
+      <% Label.difficulties.each do |d| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="exercise[label_ids][]" value="<%= d.id %>" <%= (@exercise.label_ids.include?(d.id)) ? 'checked' : '' %>>
           <%= d.name %>
