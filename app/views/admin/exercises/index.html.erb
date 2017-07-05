@@ -24,6 +24,10 @@
   </tbody>
 </table>
 
+<div class="container-narrow">
+  <%= will_paginate @exercises, previous_label: "«", next_label: "»" %>
+</div>
+
 <% content_for :scripts do %>
   <%= javascript_include_tag 'admin/exercises' %>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>

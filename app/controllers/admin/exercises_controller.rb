@@ -2,7 +2,7 @@ class Admin::ExercisesController < AdminController
   before_action :set_labels
 
   def index
-    @exercises = Exercise.order(created_at: :desc)
+    @exercises = Exercise.order(created_at: :desc).page(params[:page]).per_page(20)
   end
 
   def new
