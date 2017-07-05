@@ -1,5 +1,4 @@
 class ExercisesController < ApplicationController
-  before_action :set_labels
 
   def index
     @exercises = Exercise.page(params[:page]).per_page(10)
@@ -22,15 +21,8 @@ class ExercisesController < ApplicationController
     end
 
     @exercises = search.results
-
     @total = search.total
-
     render :index
   end
 
-  def set_labels
-    @difficulties = Label.where(category: '难度')
-    @subjects = Label.where(category: '题型')
-    @books = Label.where(category: '来源')
-  end
 end

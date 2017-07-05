@@ -26,7 +26,7 @@
             <td>来源</td>
             <td>
 
-              <% @books.each do |book| %>
+              <% Label.books.each do |book| %>
                 <a href="#" data-value="<%= book.id %>" class="<%= @labels.present? && @labels.include?(book.id.to_s) ? 'selected' : '' %>"><%= book.name %></a>
               <% end -%>
             </td>
@@ -34,7 +34,7 @@
           <tr>
             <td>题型</td>
             <td>
-              <% @subjects.each do |subject| %>
+              <% Label.subjects.each do |subject| %>
                 <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
               <% end -%>
             </td>
@@ -42,7 +42,7 @@
           <tr>
             <td>难度</td>
             <td class="js-difficulty" data-label="difficulty">
-              <% @difficulties.each do |difficulty| %>
+              <% Label.difficulties.each do |difficulty| %>
                 <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
               <% end -%>
             </td>
