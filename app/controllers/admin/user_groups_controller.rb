@@ -1,7 +1,7 @@
 class Admin::UserGroupsController < AdminController
 
   def index
-    @groups = UserGroup.all
+    @groups = UserGroup.order(updated_at: :desc)
   end
 
   def new
@@ -15,8 +15,7 @@ class Admin::UserGroupsController < AdminController
       redirect_to edit_admin_user_group_path(@user_group)
     else
       render "admin/user_groups/new"
-    end
-    
+    end 
   end
 
   def edit

@@ -14,16 +14,17 @@
         <td><%= g.name %></td>
         <td><%= g.label_names %></td>
         <td>
-          <% if g.valid_to.present? %>
-            <%= g.valid_to.to_formatted_s(:date_and_time) %>
+          <%= render partial: "admin/user_groups/valid_to", locals: { group: g } %>
+        </td>
+        <td>
+          <% if g.users.count > 0 %>
+            <%= link_to g.users.count, "/admin/user_groups/#{g.id}/users" %>
           <% else %>
-            <span class="text-muted">长期</span>
+            0
           <% end -%>
         </td>
-        <td><%= link_to g.users.count, "/admin/user_groups/#{g.id}/users" %></td>
         <td>
           <%= link_to '编辑', edit_admin_user_group_path(g) %>
-          <%= link_to '删除', '#' %>
         </td>
       </tr>
     <% end -%>

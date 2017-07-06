@@ -1,0 +1,9 @@
+<% if group.valid_to.present? %>
+    <%= group.valid_to.to_formatted_s(:date_and_time) %>
+
+    <% if group.valid_to < Time.now %>
+        <span style="color: red">&nbsp;(已过期)</span>
+    <% end -%>
+<% else %>
+    长期
+<% end -%>
