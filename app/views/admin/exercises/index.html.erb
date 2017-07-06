@@ -1,5 +1,41 @@
 <h4>题库管理</h4>
 <a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">添加题目</a>
+
+<div class="well">
+  <form class="form-inline exercise-filter-form" action="/admin/exercises" method="get">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-group">
+      <label>来源</label>
+      <select class="form-control" name="filters[]">
+        <option value="0" <%= (@filters.first.to_i == 0) ? "selected" : "" %>>全部</option>
+        <% Label.books.each do |book| %>
+          <option value="<%= book.id %>" <%= (@filters.first.to_i == book.id) ? "selected" : "" %>><%= book.name %></option>
+        <% end -%>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>题型</label>
+      <select class="form-control" name="filters[]">
+        <option value="0" <%= (@filters[1].to_i == 0) ? "selected" : "" %>>全部</option>
+        <% Label.subjects.each do |s| %>
+          <option value="<%= s.id %>" <%= (@filters[1].to_i == s.id) ? "selected" : "" %>><%= s.name %></option>
+        <% end -%>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>难度</label>
+      <select class="form-control" name="filters[]">
+        <option value="0" <%= (@filters.last.to_i == 0) ? "selected" : "" %>>全部</option>
+        <% Label.difficulties.each do |d| %>
+          <option value="<%= d.id %>" <%= (@filters.last.to_i == d.id) ? "selected" : "" %>><%= d.name %></option>
+        <% end -%>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-default">查询</button>
+  </form>
+</div>
+
+
 <table class="table table-bordered">
   <thead>
     <th style="width: 500px;">题目</th>
