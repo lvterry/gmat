@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617145305) do
+ActiveRecord::Schema.define(version: 20170709135336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20170617145305) do
     t.string   "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "attachments", force: :cascade do |t|
@@ -66,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170617145305) do
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
@@ -96,8 +103,8 @@ ActiveRecord::Schema.define(version: 20170617145305) do
   create_table "labels_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "label_id"
-    t.index ["label_id"], name: "index_users_labels_on_label_id", using: :btree
-    t.index ["user_id"], name: "index_users_labels_on_user_id", using: :btree
+    t.index ["label_id"], name: "index_labels_users_on_label_id", using: :btree
+    t.index ["user_id"], name: "index_labels_users_on_user_id", using: :btree
   end
 
   create_table "meeting_blocks", force: :cascade do |t|
