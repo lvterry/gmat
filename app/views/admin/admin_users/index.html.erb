@@ -1,0 +1,21 @@
+<h4>管理员</h4>
+<a href="<%= new_admin_admin_user_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">创建管理员账号</a>
+<table class="table table-bordered">
+  <thead>
+    <th>登录名</th>
+    <th>操作</th>
+  </thead>
+  <tbody>
+    <% @admin_users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td>
+          <%= link_to '编辑', edit_admin_admin_user_path(user) %>
+          <%= link_to '删除', admin_user_path(user), class: 'delete-admin-user' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%= debug(@admin_users) if Rails.env.development? %>

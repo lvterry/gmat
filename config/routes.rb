@@ -34,9 +34,10 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
-      :courses, :exercises, :users
+      :courses, :exercises, :users, :admin_users
 
     resources :user_groups do
       member do
@@ -51,5 +52,7 @@ Rails.application.routes.draw do
     post "vip/questions", to: 'vip#questions'
 
     root to: 'courses#index'
+
+    get 'wzkf', to: 'admin_users#index'
   end
 end
