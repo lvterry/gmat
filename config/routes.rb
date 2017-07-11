@@ -54,5 +54,9 @@ Rails.application.routes.draw do
     root to: 'courses#index'
 
     get 'wzkf', to: 'admin_users#index'
+
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    delete 'login', to: 'sessions#destroy'
   end
 end
