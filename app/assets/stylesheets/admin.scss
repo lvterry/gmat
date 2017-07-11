@@ -15,6 +15,7 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  min-height: 600px;
 }
 
 .navbar-default {
@@ -147,5 +148,22 @@ table.files .delete-attachment {
 .exercise-filter-form {
   select {
     margin-right: 24px;
+  }
+}
+
+.admin-narrow-container {
+  width:500px; 
+  text-align: center;
+  border: 1px solid #eee;
+  background: white; 
+  margin: 0 auto;
+  margin-bottom: 24px;
+
+  .login-form {
+    margin: 32px 24px 24px 24px;
+
+    .input-row {
+      margin-bottom: 16px;
+    }
   }
 }
