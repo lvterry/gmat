@@ -1,0 +1,19 @@
+one:
+  label_id: 1
+  user_group_id: 2
+
+two:
+  label_id: 3
+  user_group_id: 2
+
+three:
+  label_id: 5
+  user_group_id: 2
+
+four:
+  label_id: 2
+  user_group_id: 3
+
+five:
+  label_id: 4
+  user_group_id: 3

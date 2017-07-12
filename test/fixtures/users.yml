@@ -1,23 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  openid: MyString
-  nickname: MyString
+terry:
+  id: 4
+  openid: o3fsu01Q26JY_T1VHJ3VJFEH8So8
+  nickname: 王三十九
   sex: 1
-  language: MyString
-  city: MyString
-  province: MyString
-  country: MyString
-  headimgurl: MyString
-  unionid: MyString
-
-two:
-  openid: MyString
-  nickname: MyString
-  sex: 1
-  language: MyString
-  city: MyString
-  province: MyString
-  country: MyString
-  headimgurl: MyString
-  unionid: MyString
+  language: en
+  city: Haidian
+  province: Beijing
+  country: CN
+  headimgurl: http://wx.qlogo.cn/mmopen/PiajxSqBRaEJCg5lljH0gVv
+  unionid: o8-wAj2t7A4MxYzaD_LeGWea38xM
+  mobile: 13426291107
+  provider: wechat
+  token: placeholder
+  uid: o8-wAj2t7A4MxYzaD_LeGWea38xM

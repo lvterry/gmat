@@ -7,4 +7,16 @@ class Label < ApplicationRecord
   @difficulties = Label.where(category: '难度')
   @subjects = Label.where(category: '题型')
   @books = Label.where(category: '来源')
+
+  def self.subject_ids
+    @subjects.map { |s| s.id }
+  end
+
+  def self.book_ids
+    @books.map { |s| s.id }
+  end
+
+  def self.difficulty_ids
+    @difficulties.map { |s| s.id }
+  end
 end

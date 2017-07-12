@@ -31,22 +31,27 @@ class User < ApplicationRecord
 
   def allowed_labels
     ids = self.user_groups.map do |user_group|
-      user_group.label_ids
+      user_group.label_ids if user_group.is_valid?
     end
-    ids.flatten
+    ids.flatten.compact
   end
 
-  def is_authorized_to_view?(exercises)
-    labels = exercises.label_ids
-    allowed_labels = self.allowed_labels
-    is_authorized = false
-    labels.each do |label|
-      if allowed_labels.include?(label)
-        is_authorized = true
-        break
-      end
+  def is_authorized_to_view?(exercise)
+    is_authorized = true
+    if (self.allowed_subject_ids & exercise.subjects).blank?
+      is_authorized = false
+    elsif (self.allowed_book_ids & exercise.books).blank?
+      is_authorized = false
     end
     is_authorized
+  end
+
+  def allowed_subject_ids
+    self.allowed_labels & Label.subject_ids
+  end
+
+  def allowed_book_ids
+    self.allowed_labels & Label.book_ids
   end
 
   def user_groups_as_text

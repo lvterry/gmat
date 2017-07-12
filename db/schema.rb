@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 20170617145305) do
   create_table "labels_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "label_id"
-    t.index ["label_id"], name: "index_users_labels_on_label_id", using: :btree
-    t.index ["user_id"], name: "index_users_labels_on_user_id", using: :btree
+    t.index ["label_id"], name: "index_labels_users_on_label_id", using: :btree
+    t.index ["user_id"], name: "index_labels_users_on_user_id", using: :btree
   end
 
   create_table "meeting_blocks", force: :cascade do |t|
