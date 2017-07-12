@@ -1,9 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
+  id: 1
+  name: 测试小组1
   valid_to: 2017-06-12 22:59:06
 
 two:
-  name: MyString
-  valid_to: 2017-06-12 22:59:06
+  id: 2
+  name: 测试小组2
+
+three:
+  id: 3
+  name: 测试小组3
+  valid_to: 2020-06-12 22:59:06

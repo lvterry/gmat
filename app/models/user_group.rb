@@ -13,4 +13,8 @@ class UserGroup < ApplicationRecord
       label.name
     end.join ", "
   end
+
+  def is_valid?
+    self.valid_to.blank? || (self.valid_to > Time.now)
+  end
 end

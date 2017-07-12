@@ -15,4 +15,16 @@ class Exercise < ApplicationRecord
     end
     val
   end
+
+  def subjects
+    self.label_ids & Label.subject_ids
+  end
+
+  def books
+    self.label_ids & Label.book_ids
+  end
+
+  def difficulties
+    self.label_ids & Label.difficulty_ids
+  end
 end
