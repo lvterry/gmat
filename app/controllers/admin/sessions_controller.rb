@@ -1,4 +1,6 @@
 class Admin::SessionsController < AdminController
+  skip_before_action :logged_in
+
   layout 'simple'
 
   def new

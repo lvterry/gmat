@@ -1,5 +1,7 @@
 class Admin::AdminUsersController < AdminController
 
+  skip_before_action :logged_in
+
   def index
     @admin_users = AdminUser.all
   end
