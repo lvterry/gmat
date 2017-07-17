@@ -23,7 +23,7 @@
         <td><%= user.nickname %></td>
         <td><%= (user.sex == 1) ? '男' : '女' %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
-        <td><%= user.mobile_part %></td>
+        <td><%= user.mobile %></td>
         <td><%= user.user_groups_as_text %></td>
       </tr>
     <% end -%>
