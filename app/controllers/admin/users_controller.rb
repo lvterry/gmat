@@ -19,6 +19,11 @@ class Admin::UsersController < AdminController
     redirect_to edit_admin_user_path(@user)
   end
 
+  def lonely
+    @users = User.left_outer_joins(:user_groups).where(user_groups: { id: nil }).order(created_at: :desc)
+    @user_groups = UserGroup.all
+  end
+
   private
 
   def user_params
