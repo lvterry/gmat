@@ -24,6 +24,13 @@ class Admin::UsersController < AdminController
     @user_groups = UserGroup.all
   end
 
+  def search
+    @q = params[:q]
+    @users = User.where("nickname LIKE ? OR mobile LIKE ?", "%#{@q}%", "%#{@q}%").order(created_at: :desc)
+    @user_groups = UserGroup.all
+    render 'index'
+  end
+
   private
 
   def user_params

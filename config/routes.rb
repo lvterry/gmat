@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
 
     get 'users/lonely', to: 'users#lonely', as: 'lonely_users'
+    post 'users/search', to: 'users#search'
 
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,

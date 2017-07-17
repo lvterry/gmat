@@ -8,6 +8,13 @@
   <%= link_to '显示不在任何用户组中的用户', admin_lonely_users_path %>
 </div>
 
+<div style="float:right; margin: -8px 16px 0 0; padding-right: 16px; border-right: 1px solid #ddd">
+  <form action="/admin/users/search" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="text" name="q" class="form-control" placeholder="搜索手机号、昵称" value="<%= @q %>">
+  </form>
+</div>
+
 
 <%= render partial: 'admin/users/user_list', locals: { users: @users } %>
 
