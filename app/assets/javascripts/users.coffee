@@ -1,5 +1,25 @@
 $ ->
   updateUserMobileForm()
+  initCustomerService()
+
+initCustomerService = ->
+  cs = $('.customer-service')
+  closeBtn = cs.find('.close')
+  contact = cs.find('.contact')
+  qrcode = cs.find('img')
+
+  contact.hide()
+  closeBtn.on 'click', (e)->
+    e.preventDefault()
+    contact.show()
+    qrcode.hide()
+    closeBtn.hide()
+  
+  contact.on 'click', (e)->
+    e.preventDefault()
+    contact.hide()
+    qrcode.show()
+    closeBtn.show()
 
 
 updateUserMobileForm = ->
