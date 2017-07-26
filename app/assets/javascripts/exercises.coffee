@@ -1,4 +1,5 @@
 #= require url-search-params
+#= require video
 
 $ ->
   exerciseFilters = $('.exercise-filters a')

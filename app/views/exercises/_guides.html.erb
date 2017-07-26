@@ -30,9 +30,11 @@
   <% if @exercise.video_url.present? %>
     <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
     <% if true # 权限检查 %>
+      <!--
         <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
+      -->
         <div>
-          <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/course-%E6%95%B0%E5%AD%A6%E8%AE%AD%E7%BB%83%E8%90%A5-2..png', width: 423, height: 244 %>
+          <%= videojs_rails sources: { mp4: @exercise.video_url }, setup: "{}", controls: true, width: 400, height: 273, class: 'vjs-big-play-centered' %>
         </div>
     <% end -%>
   <% end -%>

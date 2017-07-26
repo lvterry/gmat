@@ -78,3 +78,5 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 gem 'config'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+
+gem 'videojs_rails'

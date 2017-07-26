@@ -18,5 +18,19 @@
  *= require courses
  *= require exercises
  *= require users
+ *= require video-js
  *= require_self
  */
+
+ .vjs-default-skin .vjs-big-play-button:before {
+    line-height: 2em;
+}
+
+.vjs-default-skin .vjs-big-play-button {
+    width: 2em;
+    height: 2em;
+    -webkit-border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    border-radius: 1.5em;
+    border: none;
+}
