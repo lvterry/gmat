@@ -1,9 +1,13 @@
 <h4>题库管理</h4>
-<a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">添加题目</a>
+<a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-right" style="margin-top: -45px">添加题目</a>
 
 <div class="well">
   <form class="form-inline exercise-filter-form" action="/admin/exercises" method="get">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-group">
+      <label>关键词</label>
+      <input type="text" name="q" class="form-control" placeholder="搜索题目" value="<%= @q %>" style="margin-right: 24px">
+    </div>
     <div class="form-group">
       <label>来源</label>
       <select class="form-control" name="filters[]">
@@ -40,7 +44,7 @@
   <thead>
     <th style="width: 500px;">题目</th>
     <th>标签</th>
-    <th>操作</th>
+    <th style="width:80px">操作</th>
   </thead>
   <tbody>
     <% @exercises.each do |exercise| %>

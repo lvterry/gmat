@@ -1,20 +1,21 @@
 class Admin::ExercisesController < AdminController
 
   def index
+    @q = params[:q]
     if filter_is_empty?(params[:filters])
-      @exercises = Exercise.order(created_at: :desc).page(params[:page]).per_page(20)
       @filters = [0,0,0]
+      labels = nil
     else
-      labels = labels_for_search params[:filters]
-      search = Exercise.search do
-        #fulltext params[:query]
-        with(:label_ids).all_of(labels)
-        paginate page: params[:page] || 1, per_page: 20
-      end
-
-      @exercises = search.results
       @filters = params[:filters]
+      labels = labels_for_search params[:filters]
     end
+
+    search = Exercise.search do
+      fulltext params[:q] if params[:q]
+      with(:label_ids).all_of(labels) unless labels.nil?
+      paginate page: params[:page] || 1, per_page: 20
+    end
+    @exercises = search.results
   end
 
   def new
