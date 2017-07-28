@@ -8,6 +8,7 @@ $ ->
 
   exerciseFilters.on 'click', (e) ->
     e.preventDefault()
+    return false if this.className is 'selected'
     labelId = $(@).data('value')
     labels = if searchParams.get('labels') then searchParams.get('labels').split(',') else []
     labels.push labelId
