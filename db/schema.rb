@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709135336) do
+ActiveRecord::Schema.define(version: 20170728090515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,21 +59,22 @@ ActiveRecord::Schema.define(version: 20170709135336) do
 
   create_table "exercises", force: :cascade do |t|
     t.text     "title"
-    t.text     "choices",    default: [],                array: true
+    t.text     "choices",        default: [],                 array: true
     t.integer  "anwser"
-    t.text     "guides",     default: [],                array: true
+    t.text     "guides",         default: [],                 array: true
     t.string   "video_url"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "exclusive",  default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "exclusive",      default: true
     t.text     "math_guide"
+    t.boolean  "hide_from_view", default: false
   end
 
   create_table "exercises_labels", id: false, force: :cascade do |t|
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|

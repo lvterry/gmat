@@ -54,7 +54,7 @@ class Admin::ExercisesController < AdminController
   def exercise_params
     params.require(:exercise).permit(:title, :math_guide, {:choices => []}, :anwser,
       {:guides => []}, :video_url, :exercise_tags,
-      {:label_ids => []}, :exclusive)
+      {:label_ids => []}, :exclusive, :hide_from_view)
   end
 
   def filter_is_empty?(filters)
