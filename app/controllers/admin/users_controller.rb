@@ -1,7 +1,12 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.order(created_at: :desc)
+    if params[:group] && params[:group] != '0'
+      @users = UserGroup.find(params[:group]).users
+    else
+      @users = User.order(created_at: :desc)
+    end
+    @group = params[:group]
     @user_groups = UserGroup.all
   end
 

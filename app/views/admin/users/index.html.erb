@@ -4,6 +4,15 @@
   <button class="btn btn-default js-add-to-user-group">加入用户组</button>
 </div>
 
+<div style="float:right; margin: -8px 0 0 16px; padding-left: 16px; border-left: 1px solid #ddd">
+  <select class="form-control js-user-group-filter">
+    <option value="0">-- 选择用户组 --</option>
+    <% @user_groups.each do |g| %>
+      <option value="<%= g.id %>" <%= (g.id.to_s == @group) ? "selected" : "" %>><%= g.name %></option>
+    <% end -%>
+  </select>
+</div>
+
 <div style="float:right">
   <%= link_to '显示不在任何用户组中的用户', admin_lonely_users_path %>
 </div>
@@ -14,7 +23,6 @@
     <input type="text" name="q" class="form-control" placeholder="搜索手机号、昵称" value="<%= @q %>">
   </form>
 </div>
-
 
 <%= render partial: 'admin/users/user_list', locals: { users: @users } %>
 
