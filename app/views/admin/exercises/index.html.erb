@@ -42,6 +42,7 @@
 
 <table class="table table-bordered">
   <thead>
+    <th>题号</th>
     <th style="width: 500px;">题目</th>
     <th>标签</th>
     <th>是否隐藏</th>
@@ -50,6 +51,7 @@
   <tbody>
     <% @exercises.each do |exercise| %>
       <tr>
+        <td><%= exercise.seq %></td>
         <td><%= raw exercise.title.truncate(180) %></td>
         <td>
           <% exercise.labels.each do |label| %>
