@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728090515) do
+ActiveRecord::Schema.define(version: 20170731063804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170728090515) do
     t.boolean  "exclusive",      default: true
     t.text     "math_guide"
     t.boolean  "hide_from_view", default: false
+    t.integer  "seq",            default: 0
   end
 
   create_table "exercises_labels", id: false, force: :cascade do |t|
