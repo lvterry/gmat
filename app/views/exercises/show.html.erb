@@ -1,5 +1,14 @@
 <div class="bg-snow pb2">
-  <div class="pt2 header-margin breadcrumb">
+
+  <div class="pt2 header-margin search-bar">
+    <div class="container">
+      <%= form_tag search_exercises_path, :method => :get do %>
+        <%= text_field_tag :query, params[:query], placeholder: '输入题目关键词' %> <%= submit_tag "搜索" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="pt1 breadcrumb">
     <div class="container">
       <%= link_to '题库', exercises_path %>
       &gt;
