@@ -33,9 +33,7 @@
       <!--
         <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
       -->
-        <div>
-          <%= videojs_rails sources: { mp4: @exercise.video_url }, setup: "{}", controls: true, width: 400, height: 273, class: 'vjs-big-play-centered' %>
-        </div>
+        <div class="polyv" id="<%= @exercise.video_url %>"></div>
     <% end -%>
   <% end -%>
 

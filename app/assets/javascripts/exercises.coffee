@@ -49,3 +49,15 @@ $ ->
 
   $('.show-guides').on 'click', (e) ->
     $('.guides').toggle()
+  
+  initVideoGuide()
+
+
+initVideoGuide = ()->
+  videos = $('.polyv')
+  return if videos.length is 0
+  element = videos.first()
+  player = polyvObject(element).videoPlayer
+    'width': '600'
+    'height': '410'
+    'vid': element.attr('id')
