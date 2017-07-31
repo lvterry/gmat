@@ -7,6 +7,9 @@ class ExercisesController < ApplicationController
 
   def show
     @exercise = Exercise.find params[:id]
+    @seq = @exercise.seq.blank? ? 0 : @exercise.seq
+    @prev = Exercise.find_by_seq(@seq - 1) ? Exercise.find_by_seq(@seq - 1).id : -1
+    @next = Exercise.find_by_seq(@seq + 1) ? Exercise.find_by_seq(@seq + 1).id : -1
   end
 
   def search

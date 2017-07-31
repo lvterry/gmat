@@ -262,7 +262,36 @@ $green: #749d1f;
       padding: 0 4px;
     }
   }
+}
 
+.exercise-nav {
+  margin: 16px auto;
+  background: white;
 
+  a {
+    background: white;
+    padding: 12px 32px;
+
+    &:hover {
+      background: #eee;
+    }
+  }
+
+  a.disabled {
+    color: #999;
+
+    &:hover {
+      background: white;
+      cursor: pointer;
+    }
+  }
+
+  a:first-child {
+    float: left;
+  }
+
+  a:last-child {
+    float: right;
+  }
 }
 

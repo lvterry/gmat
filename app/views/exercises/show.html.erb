@@ -35,7 +35,15 @@
       </div>
     </div>
   </div>
+
+  <div class="container exercise-nav clearfix">
+    <a href="<%= (@prev == -1) ? '#' : "/exercises/#{@prev}" %>" class="<%= (@prev == -1) ? 'disabled' : '' %>">&laquo;&nbsp;上一题</a>
+    <a href="<%= (@next == -1) ? '#' : "/exercises/#{@next}" %>" class="<%= (@next == -1) ? 'disabled' : '' %>">下一题&nbsp;&raquo;</a>
+  </div>
+
 </div>
+
+
 
 <% content_for :scripts do %>
   <%= javascript_include_tag 'exercises' %>
