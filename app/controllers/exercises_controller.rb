@@ -1,7 +1,7 @@
 class ExercisesController < ApplicationController
 
   def index
-    @exercises = Exercise.viewable.page(params[:page]).per_page(10)
+    @exercises = Exercise.viewable.order(:seq).page(params[:page]).per_page(10)
     @total = Exercise.viewable.count
   end
 
@@ -18,6 +18,7 @@ class ExercisesController < ApplicationController
       with(:hide_from_view, false)
       with(:exclusive, true) if params[:exclusive].present?
       with(:label_ids).all_of(params[:labels].split(",")) if params[:labels].present?
+      order_by(:seq)
       paginate page: params[:page] || 1, per_page: 10
     end
 

@@ -9,6 +9,7 @@ class Exercise < ApplicationRecord
     boolean :exclusive
     boolean :hide_from_view
     integer :label_ids, multiple: true
+    integer :seq
   end
 
   def is_sc_cr_ps_ds?
