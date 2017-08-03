@@ -1,28 +1,31 @@
 <h4>用户</h4>
+<div class="well clearfix">
+  <div class="pull-left">
+    <select class="form-control js-user-group-filter">
+      <option value="0">-- 选择用户组 --</option>
+      <% @user_groups.each do |g| %>
+        <option value="<%= g.id %>" <%= (g.id.to_s == @group) ? "selected" : "" %>><%= g.name %></option>
+      <% end -%>
+    </select>
+  </div>
+
+  <div class="pull-left" style="line-height:34px;margin:0 16px;padding: 0 16px;border-left: 1px solid #ddd;border-right:1px solid #ddd">
+    <%= link_to '显示无组用户', admin_lonely_users_path %>
+  </div>
+
+  <div class="pull-left">
+    <form action="/admin/users/search" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" name="q" class="form-control" placeholder="搜索手机号、昵称" value="<%= @q %>">
+    </form>
+  </div>
+</div>
 
 <div class="btn-group btn-group-sm" role="group" style="margin-bottom: 16px;">
   <button class="btn btn-default js-add-to-user-group">加入用户组</button>
 </div>
 
-<div style="float:right; margin: -8px 0 0 16px; padding-left: 16px; border-left: 1px solid #ddd">
-  <select class="form-control js-user-group-filter">
-    <option value="0">-- 选择用户组 --</option>
-    <% @user_groups.each do |g| %>
-      <option value="<%= g.id %>" <%= (g.id.to_s == @group) ? "selected" : "" %>><%= g.name %></option>
-    <% end -%>
-  </select>
-</div>
-
-<div style="float:right">
-  <%= link_to '显示不在任何用户组中的用户', admin_lonely_users_path %>
-</div>
-
-<div style="float:right; margin: -8px 16px 0 0; padding-right: 16px; border-right: 1px solid #ddd">
-  <form action="/admin/users/search" method="post">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <input type="text" name="q" class="form-control" placeholder="搜索手机号、昵称" value="<%= @q %>">
-  </form>
-</div>
+<div class="pull-right text-muted" style="margin-top:10px">找到 <%= @users.count %> 用户</div>
 
 <%= render partial: 'admin/users/user_list', locals: { users: @users } %>
 
