@@ -39,14 +39,16 @@
               <% end -%>
             </td>
           </tr>
-          <tr>
-            <td>难度</td>
-            <td class="js-difficulty" data-label="difficulty">
-              <% Label.difficulties.each do |difficulty| %>
-                <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
-              <% end -%>
-            </td>
-          </tr>
+          <% if false %>
+            <tr>
+              <td>难度</td>
+              <td class="js-difficulty" data-label="difficulty">
+                <% Label.difficulties.each do |difficulty| %>
+                  <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
+                <% end -%>
+              </td>
+            </tr>
+          <% end -%>
         </tbody>
       </table>
     </div>
