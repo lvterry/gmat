@@ -6,6 +6,16 @@
 
   <% options = ['A', 'B', 'C', 'D', 'E'] %>
 
+  <% if @exercise.video_url.present? %>
+    <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
+    <% if true # 权限检查 %>
+      <!--
+        <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
+      -->
+        <div class="polyv" id="<%= @exercise.video_url %>"></div>
+    <% end -%>
+  <% end -%>
+
 
   <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
 
@@ -25,16 +35,6 @@
       </ul>
     <% end -%>
 
-  <% end -%>
-
-  <% if @exercise.video_url.present? %>
-    <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
-    <% if true # 权限检查 %>
-      <!--
-        <div class="permission-reminder">您尚未获得视频解析权限，仅限<a href="#">逻辑小班</a>或<a href="#">VIP一对一</a>学员有权观看</div>
-      -->
-        <div class="polyv" id="<%= @exercise.video_url %>"></div>
-    <% end -%>
   <% end -%>
 
 <% else %>
