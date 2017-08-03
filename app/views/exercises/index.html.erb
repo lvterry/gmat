@@ -22,20 +22,20 @@
 
       <table class="exercise-filters">
         <tbody>
+        <tr>
+            <td>题型</td>
+            <td>
+              <% Label.subjects.each do |subject| %>
+                <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
+              <% end -%>
+            </td>
+          </tr>
           <tr>
             <td>来源</td>
             <td>
 
               <% Label.books.each do |book| %>
                 <a href="#" data-value="<%= book.id %>" class="<%= @labels.present? && @labels.include?(book.id.to_s) ? 'selected' : '' %>"><%= book.name %></a>
-              <% end -%>
-            </td>
-          </tr>
-          <tr>
-            <td>题型</td>
-            <td>
-              <% Label.subjects.each do |subject| %>
-                <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
               <% end -%>
             </td>
           </tr>
