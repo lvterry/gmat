@@ -18,3 +18,13 @@ $ ->
             layer.msg '操作失败'
         error: ->
           layer.msg '操作失败'
+  
+  $('.js-select-all').on 'click', (e) ->
+    e.preventDefault()
+    button = $(this)
+    if button.text() is '全选'
+      button.text '取消全选'
+      button.parents('.form-group').find('input').prop 'checked', 'checked'
+    else
+      button.text '全选'
+      button.parents('.form-group').find('input').removeProp 'checked'

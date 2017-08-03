@@ -9,6 +9,9 @@
   <div class="form-group">
     <label for="book" class="col-sm-2 control-label">来源</label>
     <div class="col-sm-10">
+      <label class="checkbox-inline">
+        <a href="#" class="js-select-all">全选</a>
+      </label>
       <% Label.books.each do |book| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="user_group[label_ids][]" value="<%= book.id %>" <%= (@user_group.label_ids.include?(book.id)) ? 'checked' : '' %>>
@@ -21,6 +24,9 @@
   <div class="form-group">
     <label for="subject" class="col-sm-2 control-label">题型</label>
     <div class="col-sm-10">
+      <label class="checkbox-inline">
+        <a href="#" class="js-select-all">全选</a>
+      </label>
       <% Label.subjects.each do |subject| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="user_group[label_ids][]" value="<%= subject.id %>" <%= (@user_group.label_ids.include?(subject.id)) ? 'checked' : '' %>>
@@ -33,6 +39,9 @@
   <div class="form-group">
     <label for="difficulty" class="col-sm-2 control-label">难度</label>
     <div class="col-sm-10">
+      <label class="checkbox-inline">
+        <a href="#" class="js-select-all">全选</a>
+      </label>
       <% Label.difficulties.each do |d| %>
         <label class="checkbox-inline">
           <input type="checkbox" name="user_group[label_ids][]" value="<%= d.id %>" <%= (@user_group.label_ids.include?(d.id)) ? 'checked' : '' %>>
