@@ -21,14 +21,6 @@ class User < ApplicationRecord
     user
   end
 
-  def mobile_part
-    if self.mobile.present?
-      mobile = self.mobile
-      mobile[3..6] = '****'
-      mobile
-    end
-  end
-
   def allowed_labels
     ids = self.user_groups.map do |user_group|
       user_group.label_ids if user_group.is_valid?
@@ -36,22 +28,14 @@ class User < ApplicationRecord
     ids.flatten.compact
   end
 
-  # def is_authorized_to_view?(exercise)
-  #   is_authorized = true
-  #   if (self.allowed_subject_ids & exercise.subjects).blank?
-  #     is_authorized = false
-  #   elsif (self.allowed_book_ids & exercise.books).blank?
-  #     is_authorized = false
-  #   end
-  #   is_authorized
-  # end
-
   def permission_type(exercise)
     if (self.allowed_subject_ids & exercise.subjects).blank?
       return Permission.NO_PERMISSION
-    elsif (self.allowed_book_ids & exercise.books).blank?
+    end
+    if (self.allowed_book_ids & exercise.books).blank?
       return Permission.NO_PERMISSION
     end
+
     Permission.TEXT_VIDEO
   end
 

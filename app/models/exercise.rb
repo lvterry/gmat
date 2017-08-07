@@ -12,14 +12,6 @@ class Exercise < ApplicationRecord
     integer :seq
   end
 
-  # def is_sc_cr_ps_ds?
-  #   val = false
-  #   Settings.label_ids.each do |label_id|
-  #     val = true if self.label_ids.include?(label_id)
-  #   end
-  #   val
-  # end
-
   def subjects
     self.label_ids & Label.subject_ids
   end
