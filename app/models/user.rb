@@ -36,14 +36,23 @@ class User < ApplicationRecord
     ids.flatten.compact
   end
 
-  def is_authorized_to_view?(exercise)
-    is_authorized = true
+  # def is_authorized_to_view?(exercise)
+  #   is_authorized = true
+  #   if (self.allowed_subject_ids & exercise.subjects).blank?
+  #     is_authorized = false
+  #   elsif (self.allowed_book_ids & exercise.books).blank?
+  #     is_authorized = false
+  #   end
+  #   is_authorized
+  # end
+
+  def permission_type(exercise)
     if (self.allowed_subject_ids & exercise.subjects).blank?
-      is_authorized = false
+      return Permission.NO_PERMISSION
     elsif (self.allowed_book_ids & exercise.books).blank?
-      is_authorized = false
+      return Permission.NO_PERMISSION
     end
-    is_authorized
+    Permission.TEXT_VIDEO
   end
 
   def allowed_subject_ids

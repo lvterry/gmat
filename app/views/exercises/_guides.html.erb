@@ -2,7 +2,11 @@
 
 <div class="permission-reminder">登录后可查看题目解析 <%= link_to '登录', '/auth/open_wechat' %></div>
 
-<% elsif current_user.is_authorized_to_view?(@exercise) %>
+<% elsif current_user.permission_type(@exercise) == Permission.NO_PERMISSION %>
+
+  <div class="permission-reminder">您要先购买此课程才可以查看解析</div>
+
+<% else %>
 
   <% options = ['A', 'B', 'C', 'D', 'E'] %>
 
@@ -19,26 +23,8 @@
 
   <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
 
-  <% if @exercise.is_sc_cr_ps_ds? %>
-
-    <div class="guide-content" unselectable="on">
-      <%= raw @exercise.math_guide %>
-    </div>
-
-  <% else %>
-
-    <% if @exercise.guides.join("").present? %>
-      <ul style="padding-right: 64px;">
-        <% @exercise.guides.each_with_index do |guide, index| %>
-          <li class="<%= (index == @exercise.anwser) ? 'correct' : '' %>"><b><%= options[index] %></b>&nbsp;<%= raw guide %></li>
-        <% end -%>
-      </ul>
-    <% end -%>
-
-  <% end -%>
-
-<% else %>
-
-  <div class="permission-reminder">您要先购买此课程才可以查看解析</div>
-
+  <div class="guide-content" unselectable="on">
+    <%= raw @exercise.math_guide %>
+  </div>
+  
 <% end -%>
