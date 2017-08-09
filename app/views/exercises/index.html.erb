@@ -23,7 +23,15 @@
       <table class="exercise-filters">
         <tbody>
         <tr>
-            <td>题型</td>
+            <td>训练营</td>
+            <td>
+              <% Label.camps.each do |camp| %>
+                <a href="#" data-value="<%= camp.id %>" class="<%= @labels.present? && @labels.include?(camp.id.to_s) ? 'selected' : '' %>"><%= camp.name %></a>
+              <% end -%>
+            </td>
+          </tr>
+        <tr>
+            <td style="width:70px">题型</td>
             <td>
               <% Label.subjects.each do |subject| %>
                 <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
@@ -39,6 +47,7 @@
               <% end -%>
             </td>
           </tr>
+          
           <% if false %>
             <tr>
               <td>难度</td>
