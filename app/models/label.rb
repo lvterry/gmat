@@ -4,11 +4,12 @@ class Label < ApplicationRecord
   has_many :permissions
   has_many :user_groups, through: :permissions
 
-  class << self; attr_accessor :difficulties, :subjects, :books end
+  class << self; attr_accessor :difficulties, :subjects, :books, :camps end
 
   @difficulties = Label.where(category: '难度')
   @subjects = Label.where(category: '题型')
   @books = Label.where(category: '来源')
+  @camps = Label.where(category: '训练营')
 
   def self.subject_ids
     @subjects.map { |s| s.id }
@@ -20,5 +21,9 @@ class Label < ApplicationRecord
 
   def self.difficulty_ids
     @difficulties.map { |s| s.id }
+  end
+
+  def self.camp_ids
+    @camps.map { |s| s.id }
   end
 end
