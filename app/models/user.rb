@@ -31,7 +31,19 @@ class User < ApplicationRecord
   def permission_type(exercise)
     if (self.allowed_subject_ids & exercise.subjects).blank?
       return Permission.NO_PERMISSION
+    else
+      labels = self.allowed_subject_ids & exercise.subjects
+      label_id = labels[0]
+
+      groups = self.user_groups.map do |group|
+        group.label_ids.include?(label_id) ? group : nil
+      end
+
+      groups.compact
+
+      return Permission.where(user_group_id: groups[0].id, label_id: label_id).first.permission_type
     end
+
     if (self.allowed_book_ids & exercise.books).blank?
       return Permission.NO_PERMISSION
     end
