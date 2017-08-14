@@ -39,8 +39,7 @@ class User < ApplicationRecord
         group.label_ids.include?(label_id) ? group : nil
       end
 
-      groups.compact
-
+      groups.compact!
       return Permission.where(user_group_id: groups[0].id, label_id: label_id).first.permission_type
     end
 
