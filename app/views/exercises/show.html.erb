@@ -24,7 +24,7 @@
       <ul>
         <% options = ['A', 'B', 'C', 'D', 'E'] %>
         <% @exercise.choices.each_with_index do |c, index| %>
-          <li><label><input type="radio" name="choice"><b><%= options[index] %></b>&nbsp;<%= c %></label></li>
+          <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
         <% end -%>
       </ul>
       <button class="btn show-guides">显示正确答案和解析</button>
