@@ -9,6 +9,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+    redirect_back(fallback_location: root_path)
+  end
+
   protected
 
   def auth_hash

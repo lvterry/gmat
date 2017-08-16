@@ -125,6 +125,24 @@ nav li a:hover, nav li a.active,
 
 .login {
   float: right;
+  position: relative;
+  z-index: 2;
+
+  a.logout {
+    position: absolute;
+    top: 43px;
+    right: 0;
+    width: 94px;
+    text-align: center;
+    background: #616771;
+    transition: top ease-in-out 0.3s;
+    display: none;
+  }
+
+  &:hover a.logout {
+    display: block;
+    background: lighten(#616771, 0.1);
+  }
 }
 
 .why-us h4 {

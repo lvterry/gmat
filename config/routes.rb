@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create', as: 'login'
 
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+
   get 'update_mobile', to: 'users#update_mobile', as: 'update_mobile'
 
   get 'welcome/index'
