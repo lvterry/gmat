@@ -6,10 +6,10 @@ class Label < ApplicationRecord
 
   class << self; attr_accessor :difficulties, :subjects, :books, :camps end
 
-  @difficulties = Label.where(category: '难度')
-  @subjects = Label.where(category: '题型')
-  @books = Label.where(category: '来源')
-  @camps = Label.where(category: '训练营')
+  @difficulties = Label.where(category: '难度').order(:updated_at)
+  @subjects = Label.where(category: '题型').order(:updated_at)
+  @books = Label.where(category: '来源').order(:updated_at)
+  @camps = Label.where(category: '训练营').order(:updated_at)
 
   def self.subject_ids
     @subjects.map { |s| s.id }
