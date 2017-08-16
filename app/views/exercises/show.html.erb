@@ -8,39 +8,47 @@
     </div>
   </div>
 
-  <div class="pt1 breadcrumb">
-    <div class="container">
-      <%= link_to '题库', exercises_path %>
-      &gt;
-      <%= link_to @exercise.labels.first.name, "/exercises/search?labels=#{@exercise.labels.first.id}" %>
-      &gt;
-      题目详情
-    </div>
-  </div>
+  <div class="container clearfix">
 
-  <div class="exercise-detail">
-    <div class="container">
-      <p class="question"><%= raw @exercise.title %></p>
-      <ul>
-        <% options = ['A', 'B', 'C', 'D', 'E'] %>
-        <% unless @exercise.empty_choices? %>
-          <% @exercise.choices.each_with_index do |c, index| %>
-            <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
-          <% end -%>
-        <% end -%>
-      </ul>
-      <button class="btn show-guides">显示正确答案和解析</button>
+    <div style="width: 1000px; float: left;">
 
-      <div class="guides">
-        <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
-        <%= render "exercises/guides" %>
+      <div class="pt1 breadcrumb">
+        <%= link_to '题库', exercises_path %>
+        &gt;
+        <%= link_to @exercise.labels.first.name, "/exercises/search?labels=#{@exercise.labels.first.id}" %>
+        &gt;
+        题目详情
       </div>
-    </div>
-  </div>
 
-  <div class="container exercise-nav clearfix">
-    <a href="<%= (@prev == -1) ? '#' : "/exercises/#{@prev}" %>" class="<%= (@prev == -1) ? 'disabled' : '' %>">&laquo;&nbsp;上一题</a>
-    <a href="<%= (@next == -1) ? '#' : "/exercises/#{@next}" %>" class="<%= (@next == -1) ? 'disabled' : '' %>">下一题&nbsp;&raquo;</a>
+      <div class="exercise-detail">
+        <p class="question"><%= raw @exercise.title %></p>
+        <ul>
+          <% options = ['A', 'B', 'C', 'D', 'E'] %>
+          <% unless @exercise.empty_choices? %>
+            <% @exercise.choices.each_with_index do |c, index| %>
+              <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
+            <% end -%>
+          <% end -%>
+        </ul>
+        <button class="btn show-guides">显示正确答案和解析</button>
+
+        <div class="guides">
+          <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
+          <%= render "exercises/guides" %>
+        </div>
+      </div>
+
+      <div class="exercise-nav clearfix">
+        <a href="<%= (@prev == -1) ? '#' : "/exercises/#{@prev}" %>" class="<%= (@prev == -1) ? 'disabled' : '' %>">&laquo;&nbsp;上一题</a>
+        <a href="<%= (@next == -1) ? '#' : "/exercises/#{@next}" %>" class="<%= (@next == -1) ? 'disabled' : '' %>">下一题&nbsp;&raquo;</a>
+      </div>
+
+    </div>
+
+    <div style="width: 174px; float: right; margin-top: 54px;">
+      <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/qrcode0622.png', width: 150 %>
+    </div>
+
   </div>
 
 </div>

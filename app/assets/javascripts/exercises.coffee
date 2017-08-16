@@ -2,6 +2,8 @@
 #= require video
 
 $ ->
+  $('.customer-service').hide()
+  
   exerciseFilters = $('.exercise-filters a')
   selectedFilters = $('.selected-filters a')
   searchParams = new URLSearchParams(location.search)
