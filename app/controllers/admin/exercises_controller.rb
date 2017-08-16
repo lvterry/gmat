@@ -3,7 +3,7 @@ class Admin::ExercisesController < AdminController
   def index
     @q = params[:q]
     if filter_is_empty?(params[:filters])
-      @filters = [0,0,0]
+      @filters = [0,0,0,0]
       labels = nil
     else
       @filters = params[:filters]

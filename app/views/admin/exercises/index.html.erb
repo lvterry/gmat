@@ -5,7 +5,6 @@
   <form class="form-inline exercise-filter-form" action="/admin/exercises" method="get">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="form-group">
-      <label>关键词</label>
       <input type="text" name="q" class="form-control" placeholder="搜索题目" value="<%= @q %>" style="margin-right: 24px">
     </div>
     <div class="form-group">
@@ -29,8 +28,17 @@
     <div class="form-group">
       <label>难度</label>
       <select class="form-control" name="filters[]">
-        <option value="0" <%= (@filters.last.to_i == 0) ? "selected" : "" %>>全部</option>
+        <option value="0" <%= (@filters[2].to_i == 0) ? "selected" : "" %>>全部</option>
         <% Label.difficulties.each do |d| %>
+          <option value="<%= d.id %>" <%= (@filters[2].to_i == d.id) ? "selected" : "" %>><%= d.name %></option>
+        <% end -%>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>训练营</label>
+      <select class="form-control" name="filters[]">
+        <option value="0" <%= (@filters.last.to_i == 0) ? "selected" : "" %>>全部</option>
+        <% Label.camps.each do |d| %>
           <option value="<%= d.id %>" <%= (@filters.last.to_i == d.id) ? "selected" : "" %>><%= d.name %></option>
         <% end -%>
       </select>
