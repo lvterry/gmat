@@ -8,98 +8,109 @@
     </div>
   </div>
 
-  <div class="filters">
-    <div class="container bg-white">
-      <div class="selected-filters">
-        <span class="text-muted">全部结果 &gt;</span>
-        <% if @labels.present? %>
-          <% @labels.each do |label| %>
-            <% label = Label.find(label) %>
-            <a href="#" data-value="<%= label.id %>"><%= label.name %><%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
-          <% end -%>
-        <% end -%>
-      </div>
+   <div class="container clearfix">
 
-      <table class="exercise-filters">
-        <tbody>
-        <tr>
-            <td>训练营</td>
-            <td>
-              <% Label.camps.each do |camp| %>
-                <a href="#" data-value="<%= camp.id %>" class="<%= @labels.present? && @labels.include?(camp.id.to_s) ? 'selected' : '' %>"><%= camp.name %></a>
-              <% end -%>
-            </td>
-          </tr>
-        <tr>
-            <td style="width:70px">题型</td>
-            <td>
-              <% Label.subjects.each do |subject| %>
-                <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
-              <% end -%>
-            </td>
-          </tr>
-          <tr>
-            <td>来源</td>
-            <td>
+    <div style="width: 1000px; float: left;">
 
-              <% Label.books.each do |book| %>
-                <a href="#" data-value="<%= book.id %>" class="<%= @labels.present? && @labels.include?(book.id.to_s) ? 'selected' : '' %>"><%= book.name %></a>
+      <div class="filters">
+        <div class="container bg-white">
+          <div class="selected-filters">
+            <span class="text-muted">全部结果 &gt;</span>
+            <% if @labels.present? %>
+              <% @labels.each do |label| %>
+                <% label = Label.find(label) %>
+                <a href="#" data-value="<%= label.id %>"><%= label.name %><%= image_tag 'delete_filter.png', width: 10, height: 10 %></a>
               <% end -%>
-            </td>
-          </tr>
-          
-          <% if false %>
+            <% end -%>
+          </div>
+
+          <table class="exercise-filters">
+            <tbody>
             <tr>
-              <td>难度</td>
-              <td class="js-difficulty" data-label="difficulty">
-                <% Label.difficulties.each do |difficulty| %>
-                  <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
-                <% end -%>
-              </td>
-            </tr>
-          <% end -%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="exercises">
-    <div class="container">
-
-      <div class="table-header">
-        <label style="cursor: pointer;"><input type="checkbox" name="exclusive" <%= @exclusive.present? ? 'checked' : '' %>> 仅显示770的解析</label>
-        <div class="exercise-count">共有<span><%= @total %></span>道试题</div>
-      </div>
-
-      <% if @exercises.count == 0 %>
-        <p style="text-align: center; color: #999">没有找到相关题目，请重新搜索</p>
-      <% else %>
-
-        <table cellspacing="0">
-          <tbody>
-            <% @exercises.each do |e| %>
-              <tr class="exercise">
-                <td class="text-center title" style="padding: 16px">
-                  <%= e.seq %>
-                </td>
-                <td class="title">
-                  <%= link_to raw(e.title), exercise_path(e) %>
+                <td>训练营</td>
+                <td>
+                  <% Label.camps.each do |camp| %>
+                    <a href="#" data-value="<%= camp.id %>" class="<%= @labels.present? && @labels.include?(camp.id.to_s) ? 'selected' : '' %>"><%= camp.name %></a>
+                  <% end -%>
                 </td>
               </tr>
-            <% end -%>
-          </tbody>
-        </table>
+            <tr>
+                <td style="width:70px">题型</td>
+                <td>
+                  <% Label.subjects.each do |subject| %>
+                    <a href="#" data-value="<%= subject.id %>" class="<%= @labels.present? && @labels.include?(subject.id.to_s) ? 'selected' : '' %>"><%= subject.name %></a>
+                  <% end -%>
+                </td>
+              </tr>
+              <tr>
+                <td>来源</td>
+                <td>
 
-        <div class="container-narrow">
-          <%= will_paginate @exercises, previous_label: "«", next_label: "»" %>
+                  <% Label.books.each do |book| %>
+                    <a href="#" data-value="<%= book.id %>" class="<%= @labels.present? && @labels.include?(book.id.to_s) ? 'selected' : '' %>"><%= book.name %></a>
+                  <% end -%>
+                </td>
+              </tr>
+              
+              <% if false %>
+                <tr>
+                  <td>难度</td>
+                  <td class="js-difficulty" data-label="difficulty">
+                    <% Label.difficulties.each do |difficulty| %>
+                      <a href="#" data-value="<%= difficulty.id %>" class="<%= @labels.present? && @labels.include?(difficulty.id.to_s) ? 'selected' : '' %>"><%= difficulty.name %></a>
+                    <% end -%>
+                  </td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="exercises">
+        <div class="container">
+
+          <div class="table-header">
+            <label style="cursor: pointer;"><input type="checkbox" name="exclusive" <%= @exclusive.present? ? 'checked' : '' %>> 仅显示770的解析</label>
+            <div class="exercise-count">共有<span><%= @total %></span>道试题</div>
+          </div>
+
+          <% if @exercises.count == 0 %>
+            <p style="text-align: center; color: #999">没有找到相关题目，请重新搜索</p>
+          <% else %>
+
+            <table cellspacing="0">
+              <tbody>
+                <% @exercises.each do |e| %>
+                  <tr class="exercise">
+                    <td class="text-center title" style="padding: 16px">
+                      <%= e.seq %>
+                    </td>
+                    <td class="title">
+                      <%= link_to raw(e.title), exercise_path(e) %>
+                    </td>
+                  </tr>
+                <% end -%>
+              </tbody>
+            </table>
+
+            <div class="container-narrow">
+              <%= will_paginate @exercises, previous_label: "«", next_label: "»" %>
+            </div>
+
+          <% end -%>
+
         </div>
 
-      <% end -%>
+      </div>
 
     </div>
 
-  </div>
+    <div style="width: 174px; float: right;">
+      <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/qrcode0622.png', width: 150 %>
+    </div>
 
+  </div>
 
 </div>
 
