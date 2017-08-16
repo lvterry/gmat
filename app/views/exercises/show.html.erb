@@ -23,8 +23,10 @@
       <p class="question"><%= raw @exercise.title %></p>
       <ul>
         <% options = ['A', 'B', 'C', 'D', 'E'] %>
-        <% @exercise.choices.each_with_index do |c, index| %>
-          <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
+        <% unless @exercise.empty_choices? %>
+          <% @exercise.choices.each_with_index do |c, index| %>
+            <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
+          <% end -%>
         <% end -%>
       </ul>
       <button class="btn show-guides">显示正确答案和解析</button>
