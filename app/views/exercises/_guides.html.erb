@@ -2,6 +2,10 @@
 
   <div class="permission-reminder">登录后可查看题目解析 <%= link_to '登录', '/auth/open_wechat' %></div>
 
+<% elsif current_user.mobile.blank? %>
+
+  <div class="permission-reminder">绑定手机号后可查看题目解析 <%= link_to '去绑定手机号', '/update_mobile' %></div>
+
 <% elsif current_user.permission_type(@exercise) == Permission.NO_PERMISSION %>
 
   <div class="permission-reminder">您要先购买此课程才可以查看解析</div>
