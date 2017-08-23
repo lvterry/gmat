@@ -167,3 +167,21 @@ table.files .delete-attachment {
     }
   }
 }
+
+.user-group-form {
+  .quick-select {
+    padding: 7px 0 8px 0;
+  }
+  .permission-item {
+    padding: 10px 20px;
+    background: #f5f5f5;
+    border-bottom: 1px solid white;
+
+    label {
+      margin-right: 16px;
+    }
+  }
+  .checkbox-inline {
+    width: 160px;
+  }
+}

@@ -9,7 +9,8 @@ class Admin::UserGroupsController < AdminController
   end
 
   def create
-    @user_group = UserGroup.new(user_group_params)
+    #@user_group = UserGroup.new
+    @user_group = build_user_group params
     if @user_group.save
       flash[:notice] = "保存成功"
       redirect_to edit_admin_user_group_path(@user_group)
@@ -23,8 +24,8 @@ class Admin::UserGroupsController < AdminController
   end
 
   def update
-    @user_group = UserGroup.find params[:id]
-    if @user_group.update(user_group_params)
+    @user_group = build_user_group params
+    if @user_group.save
       flash[:notice] = '保存成功'
       redirect_to edit_admin_user_group_path(@user_group)
     else
@@ -53,7 +54,29 @@ class Admin::UserGroupsController < AdminController
   private
 
   def user_group_params
-    params.require(:user_group).permit(:valid_to, :name, {:label_ids => []})
+    params.require(:user_group).permit(:valid_to, :name, {:permissions => [[:label_id, :permission_type]]})
+  end
+
+  def build_user_group(params)
+    if params[:id]
+      user_group = UserGroup.find(params[:id])
+    else
+      user_group = UserGroup.new
+    end
+    user_group.name = params[:user_group][:name]
+    user_group.valid_to = params[:user_group][:valid_to]
+    user_group.permissions.clear
+
+    params[:user_group][:permissions].each do |p|
+      next if p[:label_id].nil?
+      temp = user_group.permissions.new(label_id: p[:label_id])
+      temp.permission_type = p[:permission_type] ? p[:permission_type] : 1
+      temp.save
+    end
+
+    user_group.save
+
+    return user_group
   end
 
 end

@@ -15,4 +15,13 @@ class UserGroup < ApplicationRecord
   def is_valid?
     self.valid_to.blank? || (self.valid_to > Time.now)
   end
+
+  def permission(label_id)
+    p = self.permissions.find_by_label_id(label_id)
+    if p.nil?
+      Permission.NO_PERMISSION
+    else
+      p.permission_type
+    end
+  end
 end

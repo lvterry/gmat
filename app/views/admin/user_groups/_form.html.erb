@@ -9,14 +9,20 @@
   <div class="form-group">
     <label for="camps" class="col-sm-2 control-label">训练营</label>
     <div class="col-sm-10">
-      <label class="checkbox-inline">
-        <a href="#" class="js-select-all">全选</a>
-      </label>
+      <div class="quick-select">
+        <a href="#" class="js-select-all">选中全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="js-select-all-text">选中全部文字</a>
+      </div>
       <% Label.camps.each do |camp| %>
-        <label class="checkbox-inline">
-          <input type="checkbox" name="user_group[label_ids][]" value="<%= camp.id %>" <%= (@user_group.label_ids.include?(camp.id)) ? 'checked' : '' %>>
-          <%= camp.name %>
-        </label>
+        <div class="permission-item">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="user_group[permissions][][label_id]" value="<%= camp.id %>" <%= (@user_group.permission(camp.id) != Permission.NO_PERMISSION) ? 'checked' : '' %>>
+            <%= camp.name %>(文字)
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="user_group[permissions][][permission_type]" value="2" <%= (@user_group.permission(camp.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+          </label>
+        </div>
       <% end -%>
     </div>
   </div>
@@ -24,14 +30,20 @@
   <div class="form-group">
     <label for="book" class="col-sm-2 control-label">来源</label>
     <div class="col-sm-10">
-      <label class="checkbox-inline">
-        <a href="#" class="js-select-all">全选</a>
-      </label>
+      <div class="quick-select">
+        <a href="#" class="js-select-all">选中全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="js-select-all-text">选中全部文字</a>
+      </div>
       <% Label.books.each do |book| %>
-        <label class="checkbox-inline">
-          <input type="checkbox" name="user_group[label_ids][]" value="<%= book.id %>" <%= (@user_group.label_ids.include?(book.id)) ? 'checked' : '' %>>
-          <%= book.name %>
-        </label>
+        <div class="permission-item">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="user_group[permissions][][label_id]" value="<%= book.id %>" <%= (@user_group.permission(book.id) != Permission.NO_PERMISSION) ? 'checked' : '' %>>
+            <%= book.name %>(文字)
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(book.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+          </label>
+        </div>
       <% end -%>
     </div>
   </div>
@@ -39,29 +51,20 @@
   <div class="form-group">
     <label for="subject" class="col-sm-2 control-label">题型</label>
     <div class="col-sm-10">
-      <label class="checkbox-inline">
-        <a href="#" class="js-select-all">全选</a>
-      </label>
+      <div class="quick-select">
+        <a href="#" class="js-select-all">选中全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="js-select-all-text">选中全部文字</a>
+      </div>
       <% Label.subjects.each do |subject| %>
-        <label class="checkbox-inline">
-          <input type="checkbox" name="user_group[label_ids][]" value="<%= subject.id %>" <%= (@user_group.label_ids.include?(subject.id)) ? 'checked' : '' %>>
-          <%= subject.name %>
-        </label>
-      <% end -%>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="difficulty" class="col-sm-2 control-label">难度</label>
-    <div class="col-sm-10">
-      <label class="checkbox-inline">
-        <a href="#" class="js-select-all">全选</a>
-      </label>
-      <% Label.difficulties.each do |d| %>
-        <label class="checkbox-inline">
-          <input type="checkbox" name="user_group[label_ids][]" value="<%= d.id %>" <%= (@user_group.label_ids.include?(d.id)) ? 'checked' : '' %>>
-          <%= d.name %>
-        </label>
+        <div class="permission-item">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="user_group[permissions][][label_id]" value="<%= subject.id %>" <%= (@user_group.permission(subject.id) != Permission.NO_PERMISSION) ? 'checked' : '' %>>
+            <%= subject.name %>(文字)
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(subject.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+          </label>
+        </div>
       <% end -%>
     </div>
   </div>
