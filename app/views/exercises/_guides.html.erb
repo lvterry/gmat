@@ -12,11 +12,12 @@
 
 <% else %>
 
-  <% if current_user.permission_type(@exercise) == Permission.TEXT_VIDEO %>
-
-    <% if @exercise.video_url.present? %>
-      <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
+  <% if @exercise.video_url.present? %>
+    <h3><%= image_tag 'icon-guides-video.png' %>视频解析</h3>
+    <% if current_user.permission_type(@exercise) == Permission.TEXT_VIDEO %>
       <div class="polyv" id="<%= @exercise.video_url %>"></div>
+    <% else %>
+      <div class="permission-reminder">您没有购买视频解析权限</div>
     <% end -%>
 
   <% end %>
@@ -28,7 +29,7 @@
     <div class="guide-content" unselectable="on">
       <%= raw @exercise.math_guide %>
     </div>
-    
+
   <% end -%>
   
 <% end -%>
