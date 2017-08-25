@@ -21,10 +21,14 @@
 
   <% end %>
 
-  <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
+  <% if @exercise.math_guide.present? %>
 
-  <div class="guide-content" unselectable="on">
-    <%= raw @exercise.math_guide %>
-  </div>
+    <h3><%= image_tag 'icon-guides.png' %>题目解析</h3>
+
+    <div class="guide-content" unselectable="on">
+      <%= raw @exercise.math_guide %>
+    </div>
+    
+  <% end -%>
   
 <% end -%>

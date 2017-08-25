@@ -40,7 +40,12 @@ class User < ApplicationRecord
       end
 
       groups.compact!
-      return Permission.where(user_group_id: groups[0].id, label_id: label_id).first.permission_type
+
+      permissions = groups.map do |group|
+        Permission.where(user_group_id: group.id, label_id: label_id).first.permission_type
+      end
+
+      return permissions.max
     end
 
     if (self.allowed_book_ids & exercise.books).blank?
