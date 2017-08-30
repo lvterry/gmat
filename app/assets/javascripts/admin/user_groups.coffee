@@ -38,3 +38,26 @@ $ ->
     else
       button.text '选中全部文字'
       button.parents('.form-group').find('input[name="user_group[permissions][][label_id]"]').removeProp 'checked'
+
+  
+  # delete user group
+  modal = $('#confirmUserGroupDeletion')
+  confirmButton = modal.find('.js-confirm')
+
+  $('.js-delete-user-group').on 'click', (e) ->
+    id = $(@).parents('tr').data('id')
+    e.preventDefault()
+    confirmButton.attr 'data-id', id
+    modal.modal 'show'
+
+  confirmButton.on 'click', (e)->
+    e.preventDefault()
+    id = $(@).attr 'data-id'
+    $.ajax
+      url: "/admin/user_groups/#{id}"
+      method: 'delete'
+
+    modal.on 'hidden.bs.modal', ->
+      $('.user-group-table tr').filter("[data-id=#{id}]").remove()
+
+    modal.modal 'hide'

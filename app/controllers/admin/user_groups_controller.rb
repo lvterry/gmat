@@ -33,6 +33,15 @@ class Admin::UserGroupsController < AdminController
     end
   end
 
+  def destroy
+    group = UserGroup.find params[:id]
+    group.users.each do |user|
+      user.user_group_ids = user.user_group_ids - [params[:id]]
+    end
+    group.permissions.destroy_all
+    group.destroy
+  end
+
   def add_users
     group = UserGroup.find params[:id]
     current_ids = group.user_ids
