@@ -24,6 +24,10 @@ class Exercise < ApplicationRecord
     self.label_ids & Label.difficulty_ids
   end
 
+  def camps
+    self.label_ids & Label.camp_ids
+  end
+
   def empty_choices?
     return (choices[0] == '') && (choices[1] == '') && (choices[2] == '') && (choices[3] == '') && (choices[4] == '')
   end

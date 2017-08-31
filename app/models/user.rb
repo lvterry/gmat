@@ -29,12 +29,23 @@ class User < ApplicationRecord
   end
 
   def permission_type(exercise)
-    if (self.allowed_subject_ids & exercise.subjects).blank?
+    label_id = nil
+
+    unless (self.allowed_camp_ids & exercise.camps).blank?
+      label_id = (self.allowed_camp_ids & exercise.camps).first
+    end
+
+    unless (self.allowed_subject_ids & exercise.subjects).blank?
+      label_id = (self.allowed_subject_ids & exercise.subjects).first
+    end
+
+    unless (self.allowed_book_ids & exercise.books).blank?
+      label_id = (self.allowed_book_ids & exercise.books).first
+    end
+
+    if label_id.nil?
       return Permission.NO_PERMISSION
     else
-      labels = self.allowed_subject_ids & exercise.subjects
-      label_id = labels[0]
-
       groups = self.user_groups.map do |group|
         group.label_ids.include?(label_id) ? group : nil
       end
@@ -47,12 +58,6 @@ class User < ApplicationRecord
 
       return permissions.max
     end
-
-    if (self.allowed_book_ids & exercise.books).blank?
-      return Permission.NO_PERMISSION
-    end
-
-    Permission.TEXT_VIDEO
   end
 
   def allowed_subject_ids
@@ -61,6 +66,10 @@ class User < ApplicationRecord
 
   def allowed_book_ids
     self.allowed_labels & Label.book_ids
+  end
+
+  def allowed_camp_ids
+    self.allowed_labels & Label.camp_ids
   end
 
   def user_groups_as_text
