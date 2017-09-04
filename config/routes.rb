@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
+    root to: 'courses#index'
+
     get 'users/lonely', to: 'users#lonely', as: 'lonely_users'
     post 'users/search', to: 'users#search'
 
@@ -56,12 +58,12 @@ Rails.application.routes.draw do
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'
 
-    root to: 'courses#index'
-
     get 'wzkf', to: 'admin_users#index'
 
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     delete 'login', to: 'sessions#destroy'
+
+    get 'quick_exercises', to: 'exercises#quick', as: 'quick'
   end
 end

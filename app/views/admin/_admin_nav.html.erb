@@ -14,7 +14,8 @@
   <li class="<%= controller_name == 'posts' ? 'active' : '' %>"><a href="<%= admin_posts_path %>">文章</a></li>
   <li class="<%= controller_name == 'tags' ? 'active' : '' %>"><a href="<%= admin_tags_path %>">标签</a></li>
   <li><div>题库管理</div></li>
-  <li class="<%= controller_name == 'exercises' ? 'active' : '' %>"><a href="<%= admin_exercises_path %>">题库和解析</a></li>
+  <li class="<%= ((controller_name == 'exercises') && (action_name == 'index')) ? 'active' : '' %>"><a href="<%= admin_exercises_path %>">题库和解析</a></li>
+  <li class="<%= action_name == 'quick' ? 'active' : '' %>"><a href="<%= admin_quick_path %>">快捷标签管理</a></li>
   <li><div>用户管理</div></li>
   <li class="<%= controller_name == 'users' ? 'active' : '' %>"><a href="<%= admin_users_path %>">用户列表</a></li>
   <li class="<%= controller_name == 'user_groups' ? 'active' : '' %>"><a href="<%= admin_user_groups_path %>">用户组</a></li>

@@ -1,21 +1,12 @@
 class Admin::ExercisesController < AdminController
 
   def index
-    @q = params[:q]
-    if filter_is_empty?(params[:filters])
-      @filters = [0,0,0,0]
-      labels = nil
-    else
-      @filters = params[:filters]
-      labels = labels_for_search params[:filters]
-    end
+    self.search
+  end
 
-    search = Exercise.search do
-      fulltext params[:q] if params[:q]
-      with(:label_ids).all_of(labels) unless labels.nil?
-      paginate page: params[:page] || 1, per_page: 20
-    end
-    @exercises = search.results
+  def quick
+    self.search
+    render 'quick_index'
   end
 
   def new
@@ -29,8 +20,11 @@ class Admin::ExercisesController < AdminController
   def update
     @exercise = Exercise.find(params[:id])
     @exercise.update(exercise_params)
-    flash[:notice] = '保存成功'
-    redirect_to edit_admin_exercise_path(@exercise)
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: admin_exercises_path, notice: '保存成功' }
+      format.json { render 'update' }
+    end
   end
 
   def create
@@ -47,6 +41,25 @@ class Admin::ExercisesController < AdminController
     @exercise = Exercise.find(params[:id])
     @exercise.destroy
     redirect_to admin_exercises_path
+  end
+
+  def search
+    @q = params[:q]
+    if filter_is_empty?(params[:filters])
+      @filters = [0,0,0,0]
+      labels = nil
+    else
+      @filters = params[:filters]
+      labels = labels_for_search params[:filters]
+    end
+
+    search = Exercise.search do
+      fulltext params[:q] if params[:q]
+      with(:label_ids).all_of(labels) unless labels.nil?
+      paginate page: params[:page] || 1, per_page: 20
+      order_by(:seq, :asc)
+    end
+    @exercises = search.results
   end
 
   private
