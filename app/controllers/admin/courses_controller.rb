@@ -2,7 +2,7 @@ class Admin::CoursesController < AdminController
   #before_action :get_tags
 
   def index
-    @courses = Course.order(seq: :asc, created_at: :desc)
+    @courses = Course.order(created_at: :desc)
   end
 
   def new
