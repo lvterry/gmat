@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     else
       where_conditions = "fee > 0 and subject = '#{@subject}'"
     end
-    @courses = Course.where(where_conditions).order(seq: :desc, created_at: :desc).page(params[:page]).per_page(10)
+    @courses = Course.where(where_conditions).order(start_time: :desc, created_at: :desc)
   end
 
   def free
