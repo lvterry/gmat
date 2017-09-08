@@ -2,7 +2,7 @@
 
   <div class="container header-margin pt2">
     <div class="clearfix card filters">
-      <span class="gray mr2">筛选科目</span>
+      <span class="gray mr2">选择科目</span>
       <a href="<%= @archive ? '/courses/free/archive' : '/courses/free' %>" class="<%= (@subject == "" || @subject.nil?) ? "active" : "" %>">全部</a>
       <% Course.subjects.each_with_index do |subject, index| %>
       <a href="<%= free_courses_subject_url(index, @archive) %>" class="<%= (index.to_s == @subject) ? 'active' : '' %>"><%= subject %></a>
