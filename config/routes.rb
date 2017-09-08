@@ -30,8 +30,6 @@ Rails.application.routes.draw do
 
   get 'courses/free', to: 'courses#free', as: 'free_courses'
 
-  get 'courses/free/archive', to: 'courses#free_archive', as: 'free_courses_archive'
-
   get 'courses/:id', to: 'courses#show', as: 'course_show'
 
 
