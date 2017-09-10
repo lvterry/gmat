@@ -1,7 +1,7 @@
 class Admin::UserGroupsController < AdminController
 
   def index
-    @groups = UserGroup.order(updated_at: :desc)
+    @groups = UserGroup.order(created_at: :desc)
   end
 
   def new
