@@ -41,7 +41,9 @@
         <select name="user-group" class="form-control" style="width:300px">
           <option value="-1">请选择</option>
           <% @user_groups.each do |group| %>
-            <option value="<%= group.id %>"> <%= group.name %>
+            <% if group.is_valid? %>
+              <option value="<%= group.id %>"> <%= group.name %>
+            <% end -%>
           <% end %>
         </select>
       </div>

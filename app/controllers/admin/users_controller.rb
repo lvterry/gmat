@@ -7,7 +7,7 @@ class Admin::UsersController < AdminController
       @users = User.order(created_at: :desc)
     end
     @group = params[:group]
-    @user_groups = UserGroup.all
+    @user_groups = UserGroup.order(created_at: :desc)
   end
 
   def edit
