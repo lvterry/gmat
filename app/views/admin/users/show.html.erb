@@ -1,0 +1,42 @@
+<table class="table table-bordered table-striped" style="margin-top: 32px">
+  <tr>
+    <th>用户ID</th>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <th>昵称</th>
+    <td><%= @user.nickname %></td>
+  </tr>
+  <tr>
+    <th>注册时间</th>
+    <td><%= @user.created_at %></td>
+  </tr>
+  <tr>
+    <th>手机号</th>
+    <td><%= @user.mobile %></td>
+  </tr>
+  <tr>
+    <th>用户组</th>
+    <td>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+          <% @user.user_groups.each do |g| %>
+            <tr>
+              <td><%= g.name %></td>
+              <td>
+                <table class="table-bordered table-condensed table">
+                <% g.permissions.each do |permission| %>
+                  <tr>
+                    <td><%= permission.label.name %></td>
+                    <td><%= permission.permission_type %></td>
+                  </tr>
+                <% end -%>
+                </table>
+              </td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>

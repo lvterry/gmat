@@ -2,6 +2,7 @@
 <a href="<%= new_admin_user_group_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">新建用户组</a>
 <table class="table table-bordered user-group-table">
   <thead>
+    <th>用户组ID</th>
     <th>组名</th>
     <th>权限</th>
     <th style="width: 150px">权限有效期</th>
@@ -11,6 +12,7 @@
   <tbody>
     <% @groups.each do |g| %>
       <tr data-id="<%= g.id %>">
+        <td><%= g.id %></td>
         <td><%= g.name %></td>
         <td><%= g.label_names %></td>
         <td>
