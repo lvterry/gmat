@@ -42,13 +42,19 @@ Rails.application.routes.draw do
 
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
-      :courses, :exercises, :users, :admin_users
+      :courses, :exercises, :admin_users
 
     resources :user_groups do
       member do
         post :add_users
         post :remove_user
         get :users
+      end
+    end
+
+    resources :users do
+      member do
+        get :check_permission
       end
     end
 

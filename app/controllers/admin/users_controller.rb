@@ -40,6 +40,12 @@ class Admin::UsersController < AdminController
     @user = User.find params[:id]
   end
 
+  def check_permission
+    @user = User.find params[:id]
+    permission = @user.permission_type Exercise.find(params[:exerciseId])
+    render json: { permission: permission }
+  end
+
   private
 
   def user_params
