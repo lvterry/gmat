@@ -22,7 +22,12 @@
         <tbody>
           <% @user.user_groups.each do |g| %>
             <tr>
-              <td><%= g.name %></td>
+              <td>
+                <%= g.name %>
+                <% unless g.is_valid? %>
+                  <br/><span style="color: red">已过期</span>
+                <% end -%>
+              </td>
               <td>
                 <table class="table-bordered table-condensed table">
                 <% g.permissions.each do |permission| %>
