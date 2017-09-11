@@ -3,6 +3,7 @@
 
 <table class="table table-bordered" data-group="<%= @group.id %>">
     <thead>
+        <th>ID</th>
         <th>昵称</th>
         <th>注册时间</th>
         <th>操作</th>
@@ -10,6 +11,7 @@
     <tbody>
         <% @users.each do |user| %>
         <tr>
+            <td><%= user.id %></td>
             <td><%= user.nickname %></td>
             <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
             <td><a href="#" class="js-remove-user" data-id="<%= user.id %>">移除</a></td>
