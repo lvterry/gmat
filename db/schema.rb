@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821140531) do
+ActiveRecord::Schema.define(version: 20170913140630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170821140531) do
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 20170821140531) do
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_group_id"
     t.integer  "label_id"
-    t.integer  "permission_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "permission_type", default: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["label_id"], name: "index_permissions_on_label_id", using: :btree
     t.index ["user_group_id"], name: "index_permissions_on_user_group_id", using: :btree
   end
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(version: 20170821140531) do
     t.string   "token"
     t.string   "uid"
     t.string   "session_id"
+    t.string   "pinyin"
   end
 
   create_table "vips", force: :cascade do |t|

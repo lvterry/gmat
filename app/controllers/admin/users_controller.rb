@@ -4,7 +4,7 @@ class Admin::UsersController < AdminController
     if params[:group] && params[:group] != '0'
       @users = UserGroup.find(params[:group]).users
     else
-      @users = User.order(created_at: :desc)
+      @users = User.order(pinyin: :asc)
     end
     @group = params[:group]
     @user_groups = UserGroup.order(created_at: :desc)

@@ -70,6 +70,7 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    chinese_pinyin (1.0.1)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coffee-rails (4.2.1)
@@ -263,6 +264,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails (~> 1.1, >= 1.1.8)
   capistrano-rvm (~> 0.1.2)
+  chinese_pinyin
   codemirror-rails
   coffee-rails (~> 4.2)
   config

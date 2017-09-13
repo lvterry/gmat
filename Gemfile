@@ -80,3 +80,4 @@ gem 'config'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 gem 'videojs_rails'
+gem 'chinese_pinyin'
