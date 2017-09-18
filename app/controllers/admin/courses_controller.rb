@@ -41,7 +41,7 @@ class Admin::CoursesController < AdminController
   def course_params
     params.require(:course).permit(:title, :description, :img_url,
       :start_time, :end_time, :subject, :fee, :link, :video_id, :seq,
-      :teacher_id)
+      :teacher_id, :is_hidden)
   end
 
 end
