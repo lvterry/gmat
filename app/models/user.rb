@@ -16,7 +16,7 @@ class User < ApplicationRecord
       headimgurl: auth_hash.info.headimgurl,
       unionid: auth_hash.info.unionid,
       provider: auth_hash.provider,
-      token: auth_hash.credentials.token
+      token: auth_hash.credentials.token,
       pinyin: Pinyin.t(auth_hash.nickname).gsub(' ','')
     )
     user
