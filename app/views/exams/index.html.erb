@@ -1,0 +1,31 @@
+<div class="bg-snow pb2">
+
+  <div class="container header-margin pt2">
+    <div class="clearfix card filters">
+      <span class="gray mr2">选择系列</span>
+      <a href="/courses">全部</a>
+      <a href="#">GWD系列</a>
+      <a href="#">770系列</a>
+    </div>
+  </div>
+
+  <div class="exams clearfix mb2">
+    <div class="container">
+      <% 10.times do |exam| %>
+        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px">
+          <a href="#" class="h4">PREP模考1</a>
+          <div class="h5 py1 gray">
+            <div>系列：GWD</div>
+            <div>练习人数：80</div>
+            <div class="gray">
+              <span>平均错题数量：</span>
+              <span>Verbal 4.5</span>
+              <span>Quant 10.2</span>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+
+</div>

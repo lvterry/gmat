@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   get 'welcome/uptoken'
 
-  resources :posts
-  resources :users
+  resources :posts, :users, :exams
   resources :exercises do
     collection do
       get :search
