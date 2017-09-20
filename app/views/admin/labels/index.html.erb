@@ -1,0 +1,21 @@
+<h4>标签管理</h4>
+<a href="<%= new_admin_label_path %>" class="btn btn-primary pull-right" style="margin-top: -45px">添加标签</a>
+
+<table class="table table-bordered">
+  <thead>
+    <th>ID</th>
+    <th>名称</th>
+    <th>分类</th>
+    <th>操作</th>
+  </thead>
+  <tbody>
+    <% @labels.each do |label| %>
+      <tr>
+        <td><%= label.id %></td>
+        <td><%= label.name %></td>
+        <td><%= label.category %></td>
+        <td><%= link_to '编辑', edit_admin_label_path(label) %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

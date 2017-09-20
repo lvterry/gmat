@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
-      :courses, :exercises, :admin_users
+      :courses, :exercises, :admin_users, :labels
 
     resources :user_groups do
       member do
