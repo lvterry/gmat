@@ -2,12 +2,13 @@
 <a href="<%= new_admin_course_path %>" class="btn btn-primary pull-right" style="margin-top: -45px;">添加课程</a>
 <table class="table table-bordered">
   <thead>
-    <th style="width: 400px;">课程标题</th>
+    <th style="width: 300px;">课程标题</th>
     <th>科目</th>
     <th>开课时间</th>
     <th>讲师</th>
+    <th>是否隐藏</th>
     <th>收费</th>
-    <th style="width: 150px;">操作</th>
+    <th style="width: 100px;">操作</th>
   </thead>
   <tbody>
     <% @courses.each do |course| %>
@@ -16,6 +17,7 @@
         <td><%= course.subject_name %></td>
         <td><%= course.start_time.to_formatted_s(:date_and_time) %></td>
         <td><%= course.teacher.present? ? course.teacher.name : '' %></td>
+        <td><%= course.is_hidden ? '是' : '否' %></td>
         <td><%= course.fee %></td>
         <td>
           <%= link_to '编辑', edit_admin_course_path(course) %>
