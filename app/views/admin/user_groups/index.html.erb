@@ -7,7 +7,7 @@
     <th>权限</th>
     <th style="width: 150px">权限有效期</th>
     <th style="width: 75px">学生人数</th>
-    <th style="width: 100px">操作</th>
+    <th style="width: 180px">操作</th>
   </thead>
   <tbody>
     <% @groups.each do |g| %>
@@ -26,7 +26,7 @@
           <% end -%>
         </td>
         <td>
-          <%= link_to '编辑', edit_admin_user_group_path(g) %>&nbsp;&nbsp;&nbsp;<%= link_to '删除', '#', class: 'js-delete-user-group' %>
+          <%= link_to '编辑', edit_admin_user_group_path(g) %>&nbsp;&nbsp;&nbsp;<%= link_to '删除', '#', class: 'js-delete-user-group' %>&nbsp;&nbsp;&nbsp;<a href="#" class="js-get-qrcode">获取二维码</a>
         </td>
       </tr>
     <% end -%>
@@ -35,3 +35,4 @@
 
 
 <%= render partial: "admin/confirm_delete_user_group_modal", locals: { tag: @tag } %>
+<%= render partial: "admin/user_groups/qrcode_modal" %>

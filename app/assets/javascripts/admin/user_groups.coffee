@@ -61,3 +61,14 @@ $ ->
       $('.user-group-table tr').filter("[data-id=#{id}]").remove()
 
     modal.modal 'hide'
+
+  # get qrcode
+  qrcodeModal = $('#qrcode_modal')
+  $('.js-get-qrcode').on 'click', (e) ->
+    e.preventDefault()
+    id = $(@).parents('tr').data('id')
+    #url = "#{window.location.origin}/user_groups/#{id}/join"
+    url = "#{window.location.origin}/auth/open_wechat"
+    console.log url
+    new QRCode(document.getElementById("qrcode-container"), url)
+    qrcodeModal.modal 'show'

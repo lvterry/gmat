@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :users
+  resources :temp_users
   resources :exercises do
     collection do
       get :search
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
   get 'courses/free', to: 'courses#free', as: 'free_courses'
 
   get 'courses/:id', to: 'courses#show', as: 'course_show'
+
+  get 'user_groups/:id/join', to: 'user_groups#join'
 
 
   namespace :admin do

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GMAT"/>
+    <meta name="description" content="GMAT,英语,考试,MBA,培训"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- 百度统计代码 -->
+    <%= stylesheet_link_tag 'mobile', media: 'all' %>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4e2f29d6b2044f5e23ce2309ec935ae7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+  </head>
+
+  <body>
+    <%= yield %>
+
+  </body>
+</html>
