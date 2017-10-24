@@ -18,7 +18,7 @@ $ ->
             layer.msg '操作失败'
         error: ->
           layer.msg '操作失败'
-  
+
   $('.js-select-all').on 'click', (e) ->
     e.preventDefault()
     button = $(this)
@@ -39,7 +39,7 @@ $ ->
       button.text '选中全部文字'
       button.parents('.form-group').find('input[name="user_group[permissions][][label_id]"]').removeProp 'checked'
 
-  
+
   # delete user group
   modal = $('#confirmUserGroupDeletion')
   confirmButton = modal.find('.js-confirm')
@@ -67,8 +67,8 @@ $ ->
   $('.js-get-qrcode').on 'click', (e) ->
     e.preventDefault()
     id = $(@).parents('tr').data('id')
-    #url = "#{window.location.origin}/user_groups/#{id}/join"
-    url = "#{window.location.origin}/auth/open_wechat"
-    console.log url
+    url = "#{window.location.origin}/user_groups/#{id}/join"
+    $('#qrcode-container').empty()
+    qrcodeModal.find('.js-group-name').text $(@).parents('tr').find('.group-name').text()
     new QRCode(document.getElementById("qrcode-container"), url)
     qrcodeModal.modal 'show'
