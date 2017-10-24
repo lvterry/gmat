@@ -61,7 +61,6 @@ Rails.application.routes.draw do
       end
     end
 
-
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'
 

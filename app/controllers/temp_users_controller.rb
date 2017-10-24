@@ -3,7 +3,10 @@ class TempUsersController < ApplicationController
   layout 'mobile'
 
   def create
-    @temp_user = TempUser.create temp_user_params
+    @temp_user = TempUser.find_by(mobile: params[:temp_user][:mobile], user_group_id: params[:temp_user][:user_group_id])
+    unless @temp_user
+      @temp_user = TempUser.create temp_user_params
+    end
     redirect_to temp_user_path(@temp_user)
   end
 
