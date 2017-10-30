@@ -1,0 +1,14 @@
+<div class="header container">
+  <%= image_tag 'http://7xso19.com2.z0.glb.clouddn.com/logo.png', width: 150, class: 'block' %>
+</div>
+
+<div class="text-center dark container">
+  <p class="text-muted">你正在加入群</p>
+  <h1><%= @group.name %></h1>
+  <%= form_for @temp_user do |f| %>
+    <%= f.hidden_field :user_group_id, value: @group.id %>
+    <div style="margin-bottom: 16px"><%= f.text_field :name, placeholder: '你的名字' %></div>
+    <div style="margin-bottom: 16px"><%= f.text_field :mobile, placeholder: '你的手机号' %></div>
+    <div><%= f.submit '确定加入' %></div>
+  <% end -%>
+</div>

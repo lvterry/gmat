@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #333;
+  margin: 0;
+}
+
+input, button {
+  font-size: 16px;
+  -webkit-appearance:none;
+}
+
+.container {
+  padding: 16px;
+}
+
+.header {
+  background: #373c44;
+}
+
+.text-muted {
+  color: #999;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+
+input[type=text] {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  width: 90%;
+}
+
+input[type=submit] {
+  background: #749d1f;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 0;
+  width: 90%;
+}

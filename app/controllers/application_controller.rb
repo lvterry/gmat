@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  include UserHelper
+
   protect_from_forgery with: :exception
   before_action :current_user
 
@@ -13,7 +16,7 @@ class ApplicationController < ActionController::Base
         reset_session
       end
     end
-    # @current_user = User.find 4
+    #@current_user = User.find 4
   end
 
   helper_method :current_user

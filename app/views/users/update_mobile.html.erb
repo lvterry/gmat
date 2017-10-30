@@ -2,16 +2,19 @@
 
   <div class="container-small">
     <h3 style="margin-bottom:8px">绑定手机号</h3>
-    <div class="text-muted mb3" style="mb2">请填写真实手机号，以免影响正常使用</div>
+    <div class="text-muted mb3" style="mb2">请填写真实手机号，以免影响正常使用。</div>
 
     <% if current_user %>
 
       <%= form_for @current_user do |f| %>
         <div>
           <%= f.text_field :mobile, placeholder: '手机号', autofocus: true %>
+        </div>
+        <div style="margin-top: 16px">
           <%= f.submit '保 存', class: 'btn' %>
         </div>
         <div class="error">手机号格式错误</div>
+        <p class="text-muted h5">如果你之前扫码加入群，填写相同的手机号自动获得权限。</p>
       <% end -%>
 
     <% end -%>

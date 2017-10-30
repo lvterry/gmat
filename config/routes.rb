@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   get 'welcome/uptoken'
 
-  resources :posts, :users, :exams
+  resources :posts, :users, :exams, :temp_users
+
   resources :exercises do
     collection do
       get :search
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   get 'courses/free', to: 'courses#free', as: 'free_courses'
 
   get 'courses/:id', to: 'courses#show', as: 'course_show'
+
+  get 'user_groups/:id/join', to: 'user_groups#join'
 
 
   namespace :admin do
@@ -56,7 +59,6 @@ Rails.application.routes.draw do
         get :check_permission
       end
     end
-
 
     post "vip/flows", to: 'vip#flows'
     post "vip/questions", to: 'vip#questions'

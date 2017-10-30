@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if @user.mobile.blank?
       redirect_to update_mobile_path
     else
+      add_groups_to_user(@user, @user.mobile)
       redirect_to root_path
     end
   end

@@ -83,9 +83,6 @@
               <tbody>
                 <% @exercises.each do |e| %>
                   <tr class="exercise">
-                    <td class="text-center title" style="padding: 16px">
-                      <%= e.seq %>
-                    </td>
                     <td class="title">
                       <%= link_to raw(e.title), exercise_path(e) %>
                     </td>

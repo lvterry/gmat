@@ -15,4 +15,5 @@
 #= require qiniu.min
 #= require moment
 #= require layer
+#= require qrcode.min
 #= require bootstrap-datetimepicker
