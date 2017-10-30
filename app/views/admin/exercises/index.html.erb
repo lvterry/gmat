@@ -60,7 +60,7 @@
     <% @exercises.each do |exercise| %>
       <tr>
         <td><%= exercise.seq %></td>
-        <td><%= raw exercise.title.truncate(180) %></td>
+        <td><%= truncate_html(exercise.title, length: 120) %></td>
         <td>
           <% exercise.labels.each do |label| %>
             <span><%= label.name %></span>,&nbsp;
