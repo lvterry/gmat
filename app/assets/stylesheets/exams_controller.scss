@@ -1,14 +1,18 @@
-$exam_blue: #006eae;
+$blue: #006eae;
+$yellow: #fefe00;
+
+.text-center {
+  text-align: center;
+}
 
 .exam-main {
+  width: 100%;
+  height: 100%;
   max-width: 1024px;
   min-width: 1000px;
-  width: 100%;
-  max-height: 768px;
-  height: 100%;
-  background: $exam_blue;
+  background: $blue;
   position: relative;
-  margin: 0 auto;
+  margin: 30px auto 20px auto;
 
   .header {
     font-size: 18px;
@@ -29,15 +33,15 @@ $exam_blue: #006eae;
   .content {
     padding: 0 24px;
     margin: 0 20px;
+    min-height: 600px;
     color: #333;
     background: #fff;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: auto;
 
     h1 {
       margin: 30px 0 20px 0;
       font-size: 20px;
-      font-weight: normal;
       text-align: center;
     }
 
@@ -57,7 +61,7 @@ $exam_blue: #006eae;
     }
 
     input[type=submit] {
-      background: $exam_blue;
+      background: $blue;
       color: white;
       border: none;
       padding: 12px 24px;
@@ -69,6 +73,35 @@ $exam_blue: #006eae;
       &:hover {
         background: #0889d4;
       }
+    }
+
+    p {
+      line-height: 28px;
+      margin-top: 20px;
+    }
+
+    li {
+      margin: 15px 0 0 50px;
+    }
+
+    .multi-choice-list {
+      padding: 0;
+
+      li {
+        margin: 10px 0 0 0;
+        list-style: none;
+      }
+    }
+
+    .left-container {
+      width: 46%;
+      float: left;
+    }
+    .right-container {
+      width: 50%;
+      float: right;
+      border-left: 20px solid $blue;
+      padding-left: 24px;
     }
   }
   .tips {
@@ -86,16 +119,25 @@ $exam_blue: #006eae;
     font-size: 18px;
     margin-left: 20px;
     border-left: 2px solid white;
+    text-align: center;
 
-    > div {
-      float: left;
-      text-align: center;
-      border-right: 2px solid white;
+    > a {
+      text-decoration: none;
+      color: white;
 
       &:hover {
-        color: #fefe00;
-        cursor: pointer;
+        color: $yellow;
       }
+    }
+
+    .left {
+      float: left;
+      border-right: 2px solid white;
+    }
+
+    .right {
+      float: right;
+      border-left: 2px solid white;
     }
 
     i {
@@ -130,5 +172,188 @@ $exam_blue: #006eae;
     .btn-end:hover i {
       background-image: url(http://oya5a097g.bkt.clouddn.com/quit-hover.png);
     }
+
+    .btn-skip {
+      width: 122px;
+    }
+
+    .btn-next {
+      width: 82px;
+
+      i {
+        background-image: url(http://oya5a097g.bkt.clouddn.com/next.png);
+      }
+    }
+
+    .btn-next:hover i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/next-hover.png);
+    }
   }
+}
+
+.thesis-container {
+  border-top: 20px solid $blue;
+  margin: 0 -30px;
+  padding: 8px;
+  padding-top: 2px;
+
+  .thesis-input {
+    padding: 2px 4px;
+    width: 100%;
+    height: 240px;
+    border: none;
+    box-sizing: border-box;
+    line-height: 24px;
+    font-size: 16px;
+  }
+
+  .thesis-input:focus {
+    outline: none;
+  }
+
+  .toolbar {
+    background: #7eafe1;
+    line-height: 37px;
+    padding-left: 12px;
+
+    a {
+      color: white;
+      text-decoration: none;
+      margin-right: 12px;
+
+      &:hover {
+        color: $yellow;
+      }
+
+      &.disable {
+        color: #404040;
+      }
+    }
+
+    i {
+      display: inline-block;
+      width: 18px;
+      height: 37px;
+      margin-right: 6px;
+      vertical-align: bottom;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .toolbar-btn-cut i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/cut.png);
+    }
+    .toolbar-btn-copy i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/copy.png);
+    }
+    .toolbar-btn-paste i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/paste.png);
+    }
+    .toolbar-btn-redo i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/redo.png);
+    }
+    .toolbar-btn-cut:hover i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/cut-hover.png);
+    }
+    .toolbar-btn-copy:hover i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/copy-hover.png);
+    }
+    .toolbar-btn-paste:hover i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/paste-hover.png);
+    }
+    .toolbar-btn-redo:hover i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/redo-hover.png);
+    }
+    .toolbar-btn-undo.disable i {
+      background-image: url(http://oya5a097g.bkt.clouddn.com/undo-disable.png);
+    }
+  }
+}
+
+.intro-next-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 75px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -89px -5px no-repeat;
+}
+
+.intro-end-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 116px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -173px -5px no-repeat;
+}
+
+.intro-page-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -300px -5px no-repeat;
+}
+
+.intro-clock-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 38px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -405px -5px no-repeat;
+}
+
+.intro-book-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 38px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -5px -85px no-repeat;
+}
+
+.intro-help-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 75px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -5px -5px no-repeat;
+}
+
+.intro-cut-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 64px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -5px -45px no-repeat;
+}
+
+.intro-copy-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 80px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -85px -45px no-repeat;
+}
+
+.intro-paste-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 84px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -175px -45px no-repeat;
+}
+
+.intro-undo-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 84px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -270px -45px no-repeat;
+}
+
+.intro-redo-button {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 84px;
+  height: 30px;
+  background: url(http://oya5a097g.bkt.clouddn.com/intr-icon.png) -365px -45px no-repeat;
 }

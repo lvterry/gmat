@@ -12,7 +12,12 @@ html {
   font-family: Tahoma, "Helvetica Neue", "微软雅黑", sans-serif;
 }
 
-body { 
+button, input, textarea {
+  font-family: Tahoma, "Helvetica Neue", "微软雅黑", sans-serif;
+  resize: none;
+}
+
+body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
