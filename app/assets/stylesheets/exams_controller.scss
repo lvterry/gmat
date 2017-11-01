@@ -387,7 +387,6 @@ $yellow: #fefe00;
 }
 
 .dialog {
-  width: 344px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -416,25 +415,25 @@ $yellow: #fefe00;
   }
 
   .body {
-    padding: 0 14px;
-    text-align: center;
-    margin-top: 20px;
+    padding: 20px 14px 30px 14px;
   }
 
-  .dialog-close {
-    border: 1px solid #fff;
-    padding: 4px 18px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
+  .footer {
     text-align: center;
-    margin: 0 auto;
-    margin-top: 30px;
-    position: relative;
-    display: inline-block;
+
+    a {
+      display: inline-block;
+      border: 1px solid #fff;
+      padding: 4px 18px;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
   }
 
-  .dialog-close:before {
+  .bordered:before {
     content: " ";
     position: absolute;
     z-index: -1;
