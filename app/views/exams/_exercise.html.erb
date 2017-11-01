@@ -1,0 +1,8 @@
+<p><%= raw @exercise.title %></p>
+<ul>
+  <% unless @exercise.empty_choices? %>
+    <% @exercise.choices.each do |c| %>
+      <li><label><input type="radio" name="choice"><%= c %></label></li>
+    <% end -%>
+  <% end -%>
+</ul>

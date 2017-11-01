@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :posts, :users, :exams, :temp_users
 
   get 'exams/:id/instructions/:page_id', to: 'exams#instructions'
+  get 'exams/:id/exercises/:exercise_id', to: 'exams#exercise'
 
   resources :exercises do
     collection do

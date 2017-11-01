@@ -1,8 +1,15 @@
 <div class="exam-main">
-  <div class="header"><h1>GMAT 考试说明</h1></div>
+  <div class="header">
+    <h1>Exam name</h1>
+    <div class="right">
+      <div class="clock"><i></i>Time cost 66:55</div>
+      <div class="location"><i></i>Location 1 of 37</div>
+    </div>
+
+  </div>
   <div class="top-bar"></div>
   <div class="content">
-    <%= render "exams/intro#{@page_id}" %>
+    <%= render "exams/exercise", locals: { exercise: @exercise } %>
   </div>
   <div class="bottom-bar">
     <a class="btn-help left" href="#">
@@ -16,9 +23,6 @@
     <a class="btn-next right" href="/exams/1/instructions/<%= (@page_id.to_i + 1) %>">
       <span><u>N</u>ext</span>
       <i></i>
-    </a>
-    <a class="btn-skip right" href="#">
-      <span>跳过说明</span>
     </a>
   </div>
 </div>
