@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-  layout 'exam', only: [:show, :instructions, :exercise]
+  layout 'exam', only: [:show, :instructions, :exercise, :pause]
 
   def index
   end

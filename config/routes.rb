@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'exams/:id/instructions/:page_id', to: 'exams#instructions'
   get 'exams/:id/exercises/:exercise_id', to: 'exams#exercise'
+  get 'exams/:id/pause', to: 'exams#pause'
 
   resources :exercises do
     collection do
