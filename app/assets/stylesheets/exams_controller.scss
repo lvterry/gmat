@@ -12,9 +12,6 @@ $yellow: #fefe00;
   margin: 30px auto 20px auto;
 
   .header {
-    // font-size: 18px;
-    // font-weight: bold;
-    // line-height: 45px;
     padding-left: 8px;
     color: white;
     overflow: hidden;
@@ -88,15 +85,16 @@ $yellow: #fefe00;
       border-bottom: 1px solid #e5e5e5;
     }
 
-    input[type=submit] {
+    .start-exam {
       background: $blue;
       color: white;
-      border: none;
-      padding: 12px 24px;
+      text-align: center;
+      width: 120px;
+      padding: 12px 0;
       font-size: 18px;
       display: block;
+      text-decoration: none;
       margin: 30px auto;
-      cursor: pointer;
 
       &:hover {
         background: #0889d4;
