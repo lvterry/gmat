@@ -11,11 +11,11 @@
 
   <div class="exams clearfix mb2">
     <div class="container">
-      <% 10.times do |exam| %>
+      <% @exams.each do |exam| %>
         <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px">
-          <%= link_to 'PREP模考1', exam_path(1), class: 'h4' %>
+          <%= link_to exam.name, exam_path(exam), class: 'h4' %>
           <div class="h5 py1 gray">
-            <div>系列: GWD</div>
+            <div>系列: <%= exam.exam_type_label %></div>
             <div>练习人数: 80</div>
             <div class="gray">
               <span>平均错题数: </span>

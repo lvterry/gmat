@@ -18,4 +18,8 @@ module ExamsControllerHelper
     id = exam.exercise_ids[index + 1] if index < (exam.exercise_ids.length - 1)
     "/exams/#{exam.id}/exercises/#{id}"
   end
+
+  def current_location(exam, current_exercise)
+    exam.exercise_ids.index(current_exercise.id.to_s) + 1
+  end
 end

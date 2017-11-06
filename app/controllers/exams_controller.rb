@@ -2,6 +2,7 @@ class ExamsController < ApplicationController
   layout 'exam', only: [:show, :instructions, :exercise, :pause]
 
   def index
+    @exams = Exam.all
   end
 
   def show
