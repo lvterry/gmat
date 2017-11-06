@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+#= require jquery
+
+$ ->
+
+  $('.js-next-exercise').on 'click', (e) ->
+    e.preventDefault()
+    if $('.multi-choice-list input:checked').length is 0
+      $('.js-unanwsered').show()
+      return false
+
+  $('.js-end-exam').on 'click', (e) ->
+    e.preventDefault()
+    $('.js-end-exam-dialog').show()
+
+  $('.dialog-close, .dialog .close').on 'click', (e) ->
+    $(this).parents('.dialog').hide()

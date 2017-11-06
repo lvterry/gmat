@@ -8,5 +8,5 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( exams_controller.css exam_layout.css mobile.scss admin.css admin.js admin/teachers.js admin/posts.js welcome.js vip.js admin/courses.js exercises.js admin/exercises.js )
+Rails.application.config.assets.precompile += %w( exams_controller.css exams_controller.js exam_layout.css mobile.scss admin.css admin.js admin/teachers.js admin/posts.js welcome.js vip.js admin/courses.js exercises.js admin/exercises.js )
 Rails.application.config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
