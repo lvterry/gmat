@@ -7,11 +7,11 @@
     <i></i>
     <span><u>E</u>nd Exam</span>
   </a>
-  <a class="btn-next right" href="/exams/1/instructions/<%= (@page_id.to_i + 1) %>">
+  <a class="btn-next right" href="<%= next_instruction_url(@exam, @page_id) %>">
     <span><u>N</u>ext</span>
     <i></i>
   </a>
-  <a class="btn-skip right" href="/exams/1/exercises/7">
+  <a class="btn-skip right" href="<%= skip_instructions_url(@exam) %>">
     <span>跳过说明</span>
   </a>
 </div>

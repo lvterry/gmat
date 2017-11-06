@@ -10,7 +10,7 @@
   <a class="btn-end left" href="#">
     <span><u>P</u>ause Exam</span>
   </a>
-  <a class="btn-next right" href="/exams/1/instructions/<%= (@page_id.to_i + 1) %>">
+  <a class="btn-next right" href="<%= next_exercise_url(@exam, @exercise) %>">
     <span><u>N</u>ext</span>
     <i></i>
   </a>

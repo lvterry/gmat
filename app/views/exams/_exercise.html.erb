@@ -1,8 +1,8 @@
 <p><%= raw @exercise.title %></p>
-<ul>
+<ul class="multi-choice-list">
   <% unless @exercise.empty_choices? %>
     <% @exercise.choices.each do |c| %>
-      <li><label><input type="radio" name="choice"><%= c %></label></li>
+      <li><label><input type="radio" name="choice">&nbsp;<%= c %></label></li>
     <% end -%>
   <% end -%>
 </ul>
