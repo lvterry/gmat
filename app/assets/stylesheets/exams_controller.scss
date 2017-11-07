@@ -129,6 +129,12 @@ $yellow: #fefe00;
       border-left: 20px solid $blue;
       padding-left: 24px;
     }
+
+    .pause-exam-content {
+      text-align: center;
+      line-height: 600px;
+      display: none;
+    }
   }
   .tips {
     font-size: 12px;
@@ -447,3 +453,4 @@ $yellow: #fefe00;
     color: $yellow;
   }
 }
+

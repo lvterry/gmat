@@ -3,7 +3,8 @@
 
   <div class="top-bar"></div>
   <div class="content">
-    <%= render "exams/exercise", locals: { exercise: @exercise } %>
+    <div class="exercise-content"><%= render "exams/exercise", locals: { exercise: @exercise } %></div>
+    <p class="pause-exam-content">You have paused your exam. Click the Resume Exam button below to continue.</p>
   </div>
 
   <%= render "exams/exercise_footer" %>

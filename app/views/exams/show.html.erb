@@ -26,13 +26,15 @@
   </div>
   <div class="tips">建议：模考期间建议您将可能给您考试带来干扰的设备或软件调至静音状态。</div>
   <div class="bottom-bar">
-    <div class="btn-help left">
+    <a class="btn-help left" href="#">
       <i></i>
       <span><u>H</u>elp</span>
-    </div>
-    <div class="btn-end left">
+    </a>
+    <a class="btn-end left js-end-exam" href="#">
       <i></i>
       <span><u>E</u>nd Exam</span>
-    </div>
+    </a>
   </div>
 </div>
+
+<%= render 'exams/end_exam_dialog' %>

@@ -1,7 +1,7 @@
 <div class="header">
   <h1><%= @exam.name %></h1>
   <div class="right">
-    <div class="clock"><i></i>Time cost <%= @exam.estimated_time %>:00</div>
+    <div class="clock" id="clock"><i></i>Time cost <span class="minutes"><%= @exam.estimated_time %></span>:<span class="seconds">00</span></div>
     <div class="location"><i></i>Location <%= current_location(@exam, @exercise) %> of <%= @exam.exercise_ids.length %></div>
   </div>
 </div>
