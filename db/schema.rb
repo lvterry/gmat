@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20171106134635) do
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
@@ -131,9 +131,9 @@ ActiveRecord::Schema.define(version: 20171106134635) do
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_group_id"
     t.integer  "label_id"
-    t.integer  "permission_type", default: 1
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "permission_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["label_id"], name: "index_permissions_on_label_id", using: :btree
     t.index ["user_group_id"], name: "index_permissions_on_user_group_id", using: :btree
   end

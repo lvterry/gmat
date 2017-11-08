@@ -9,6 +9,7 @@ class Clock
   start: ->
     currentTime = Date.parse(new Date())
     deadline = new Date(currentTime + @deadline * 60 * 1000)
+
     @timer = setInterval =>
       t = @getTimeRemaining(deadline)
       @updateDisplay(t.minutes, t.seconds)
@@ -18,7 +19,7 @@ class Clock
 
   updateDisplay: (m, s)->
     @minutes.innerText = m
-    @seconds.innerText = s
+    @seconds.innerText = ('0' + s).slice(-2)
 
   getTimeRemaining: (endtime) ->
     t = Date.parse(endtime) - Date.parse(new Date())
