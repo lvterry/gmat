@@ -4,14 +4,14 @@
 #= require countdown.min
 
 class Clock
-  constructor: (@deadline, @el) ->
+  constructor: (@el) ->
     @minutes = @el.querySelector '.minutes'
     @seconds = @el.querySelector '.seconds'
 
     if Cookies.get('myClock')
       @deadline = Cookies.get('myClock')
     else
-      @deadline = @deadline * 60 * 1000 + (new Date()).getTime()
+      @deadline = @minutes.innerText * 60 * 1000 + (new Date()).getTime()
       Cookies.set('myClock', @deadline, { expires: 1 })
 
   start: =>
@@ -52,6 +52,6 @@ $ ->
     $('.pause-exam-content').toggle()
     $('.exercise-content').toggle()
 
-  clock = new Clock(75, document.getElementById('clock'))
+  clock = new Clock(document.getElementById('clock'))
   clock.start()
 

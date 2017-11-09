@@ -1,0 +1,32 @@
+<h4>模考管理</h4>
+<a href="<%= new_admin_exam_path %>" class="btn btn-primary pull-right" style="margin-top: -45px">添加模考</a>
+
+<table class="table table-bordered">
+  <thead>
+    <th>ID</th>
+    <th>名称</th>
+    <th>类型</th>
+    <th>预计耗时</th>
+    <th>题目</th>
+    <th style="width:80px">操作</th>
+  </thead>
+  <tbody>
+    <% @exams.each do |exam| %>
+      <tr>
+        <td><%= exam.id %></td>
+        <td><%= exam.name %></td>
+        <td><%= exam.exam_type == 1 ? 'GWD系列' : '770系列' %></td>
+        <td><%= exam.estimated_time %> mins</td>
+        <td><%= exam.exercises %></td>
+        <td>
+          <%= link_to '编辑', edit_admin_exam_path(exam) %>
+          <%= link_to '删除', admin_exam_path(exam), class: 'delete-exam' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'admin/exams' %>
+<% end -%>

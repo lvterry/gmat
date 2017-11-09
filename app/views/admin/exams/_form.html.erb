@@ -1,0 +1,31 @@
+<%= form_for [:admin, @exam], html: { class: 'form-horizontal exam-form' } do |f| %>
+  <div class="form-group">
+    <label for="seq" class="col-sm-2 control-label">名称</label>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="seq" class="col-sm-2 control-label">系列</label>
+    <div class="col-sm-10">
+      <%= f.text_field :exam_type, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="seq" class="col-sm-2 control-label">考题</label>
+    <div class="col-sm-10">
+      <%= f.text_field :exercises, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="seq" class="col-sm-2 control-label">预计时长</label>
+    <div class="col-sm-10">
+      <%= f.text_field :estimated_time, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <%= f.submit '保存', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
