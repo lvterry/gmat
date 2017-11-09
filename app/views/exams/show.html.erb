@@ -16,9 +16,11 @@
       <div>
         <h2>选择考试顺序</h2>
         <div class="form-control">
-          <input type="radio" name="seq" checked> V -> Q
+          <input type="radio" name="seq" checked> AWA &rarr; IR &rarr; Q &rarr; V
           &nbsp;&nbsp;&nbsp;
-          <input type="radio" name="seq"> Q -> V
+          <input type="radio" name="seq"> V &rarr; Q &rarr; AWA &rarr; IR
+          &nbsp;&nbsp;&nbsp;
+          <input type="radio" name="seq"> Q &rarr; V &rarr; AWA &rarr; IR
         </div>
       </div>
       <a href="/exams/<%= @exam_id %>/instructions/1" class="start-exam">开始考试</a>
