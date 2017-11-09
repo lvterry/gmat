@@ -60,6 +60,6 @@ initVideoGuide = ()->
   return if videos.length is 0
   element = videos.first()
   player = polyvObject(element).videoPlayer
-    'width': '600'
-    'height': '410'
+    'width': '840'
+    'height': '573'
     'vid': element.attr('id')
