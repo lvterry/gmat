@@ -1,4 +1,6 @@
 #= require jquery
+#= require rAF
+#= require js.cookie
 #= require countdown.min
 
 class Clock
@@ -6,34 +8,18 @@ class Clock
     @minutes = @el.querySelector '.minutes'
     @seconds = @el.querySelector '.seconds'
 
-  start: ->
-    currentTime = Date.parse(new Date())
-    deadline = new Date(currentTime + @deadline * 60 * 1000)
+    if Cookies.get('myClock')
+      @deadline = Cookies.get('myClock')
+    else
+      @deadline = @deadline * 60 * 1000 + (new Date()).getTime()
+      Cookies.set('myClock', @deadline, { expires: 1 })
 
-    @timer = setInterval =>
-      t = @getTimeRemaining(deadline)
-      @updateDisplay(t.minutes, t.seconds)
-      clearInterval(@timer) if t.total < 0
-    , 1000
-    @updateDisplay(@deadline, '00')
-
-  updateDisplay: (m, s)->
-    @minutes.innerText = m
-    @seconds.innerText = ('0' + s).slice(-2)
-
-  getTimeRemaining: (endtime) ->
-    t = Date.parse(endtime) - Date.parse(new Date())
-    seconds = Math.floor( (t/1000) % 60 )
-    minutes = Math.floor( (t/1000/60) % 60 )
-    hours = Math.floor( (t/(1000*60*60)) % 24 )
-    days = Math.floor( t/(1000*60*60*24) )
-    return {
-      'total': t
-      'days': days
-      'hours': hours
-      'minutes': minutes
-      'seconds': seconds
-    }
+  start: =>
+    date = new Date()
+    timespan = countdown date, @deadline, countdown.MINUTES|countdown.SECONDS
+    @minutes.innerHTML = timespan.minutes
+    @seconds.innerHTML = ('0' + timespan.seconds).slice(-2)
+    requestAnimationFrame @start, 60
 
 $ ->
 
