@@ -95,6 +95,8 @@ $yellow: #fefe00;
       display: block;
       text-decoration: none;
       margin: 30px auto;
+      border: none;
+      cursor: pointer;
 
       &:hover {
         background: #0889d4;

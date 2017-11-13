@@ -6,7 +6,9 @@ class ExamsController < ApplicationController
   end
 
   def show
-    @exam_id = params[:id]
+    @exam = Exam.find params[:id]
+    @take = Take.new
+    render "exams/show"
   end
 
   def instructions

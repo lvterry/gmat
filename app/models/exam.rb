@@ -1,4 +1,8 @@
 class Exam < ApplicationRecord
+
+  has_many :takes
+  has_many :users, through: :takes
+
   def exercise_ids
     self.exercises.split(',')
   end

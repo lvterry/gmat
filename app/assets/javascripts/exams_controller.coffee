@@ -53,6 +53,8 @@ $ ->
     $('.pause-exam-content').toggle()
     $('.exercise-content').toggle()
 
-  clock = new Clock(document.getElementById('clock'))
-  clock.start()
+  # if the page contains countdown
+  if document.getElementById('clock')
+    clock = new Clock(document.getElementById('clock'))
+    clock.start()
 

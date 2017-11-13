@@ -2,6 +2,9 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :user_groups
 
+  has_many :takes
+  has_many :exams, through: :takes
+
   def self.find_or_create_from_auth_hash(auth_hash)
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
     user.update(

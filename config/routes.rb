@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'welcome/uptoken'
 
-  resources :posts, :users, :exams, :temp_users
+  resources :posts, :users, :exams, :temp_users, :takes
 
   get 'exams/:id/instructions/:page_id', to: 'exams#instructions'
   get 'exams/:id/exercises/:exercise_id', to: 'exams#exercise'
