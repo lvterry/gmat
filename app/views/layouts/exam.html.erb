@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'exam_layout', media: 'all' %>
   <%= javascript_include_tag "exams_controller" %>
+  <%= yield :scripts %>
 </head>
 <body>
   <%= yield %>

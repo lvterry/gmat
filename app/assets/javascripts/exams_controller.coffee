@@ -36,6 +36,7 @@ $ ->
     $('.js-end-exam-dialog').show()
 
   $('.dialog-close, .dialog .close').on 'click', (e) ->
+    e.preventDefault()
     $(this).parents('.dialog').hide()
 
   $('.js-yes').on 'click', (e) ->
