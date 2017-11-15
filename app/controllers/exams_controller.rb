@@ -20,6 +20,12 @@ class ExamsController < ApplicationController
   def exercise
     @exam = Exam.find params[:id]
     @exercise = Exercise.find params[:exercise_id]
+    @take = current_user.takes.last
     render 'exams/exercise'
+  end
+
+  def result
+    @exam = Exam.find params[:id]
+    @take = @exam.takes.where(user_id: current_user.id).last
   end
 end

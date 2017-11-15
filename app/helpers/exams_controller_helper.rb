@@ -15,7 +15,11 @@ module ExamsControllerHelper
   def next_exercise_url(exam, current_exercise)
     index = exam.exercise_ids.index(current_exercise.id.to_s)
     id = current_exercise.id
-    id = exam.exercise_ids[index + 1] if index < (exam.exercise_ids.length - 1)
+    if index < (exam.exercise_ids.length - 1)
+      id = exam.exercise_ids[index + 1]
+    else
+      id = -1
+    end
     "/exams/#{exam.id}/exercises/#{id}"
   end
 

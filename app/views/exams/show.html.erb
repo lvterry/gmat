@@ -3,31 +3,31 @@
   <div class="top-bar"></div>
   <div class="content">
     <h1>欢迎使用 GMAT770 模考系统</h1>
-    <form>
-      <%= form_for @take do |f| %>
-        <div>
-          <h2>选择模考题目</h2>
-          <%= f.hidden_field :subjects, value: 'V,Q' %>
-          <div class="form-control">
-            <input type="checkbox" name="" checked> Verbal (共12题)
-          </div>
-          <div class="form-control">
-            <input type="checkbox" name="" checked> Quant (共20题)
-          </div>
+    <%= form_for @take do |f| %>
+      <div>
+        <h2>选择模考题目</h2>
+        <%= f.hidden_field :exam_id, value: @exam.id %>
+        <%= f.hidden_field :user_id, value: @current_user.id %>
+        <%= f.hidden_field :subjects, value: 'V,Q' %>
+        <div class="form-control">
+          <input type="checkbox" name="" checked> Verbal (共12题)
         </div>
-        <div>
-          <h2>选择考试顺序</h2>
-          <div class="form-control">
-            <input type="radio" name="take[seq]" value="AWA,IR,Q,V" checked> AWA &rarr; IR &rarr; Q &rarr; V
-            &nbsp;&nbsp;&nbsp;
-            <input type="radio" name="take[seq]" value="V,Q,AWA,IR"> V &rarr; Q &rarr; AWA &rarr; IR
-            &nbsp;&nbsp;&nbsp;
-            <input type="radio" name="take[seq]" value="Q,V,AWA,IR"> Q &rarr; V &rarr; AWA &rarr; IR
-          </div>
+        <div class="form-control">
+          <input type="checkbox" name="" checked> Quant (共20题)
         </div>
-        <%= f.submit '开始考试', class: 'start-exam' %>
-      <% end -%>
-    </form>
+      </div>
+      <div>
+        <h2>选择考试顺序</h2>
+        <div class="form-control">
+          <input type="radio" name="take[seq]" value="AWA,IR,Q,V" checked> AWA &rarr; IR &rarr; Q &rarr; V
+          &nbsp;&nbsp;&nbsp;
+          <input type="radio" name="take[seq]" value="V,Q,AWA,IR"> V &rarr; Q &rarr; AWA &rarr; IR
+          &nbsp;&nbsp;&nbsp;
+          <input type="radio" name="take[seq]" value="Q,V,AWA,IR"> Q &rarr; V &rarr; AWA &rarr; IR
+        </div>
+      </div>
+      <%= f.submit '开始考试', class: 'start-exam' %>
+    <% end -%>
   </div>
   <div class="tips">建议：模考期间建议您将可能给您考试带来干扰的设备或软件调至静音状态。</div>
   <div class="bottom-bar">

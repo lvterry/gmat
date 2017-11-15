@@ -1,4 +1,5 @@
 #= require jquery
+#= require csrf
 #= require rAF
 #= require js.cookie
 #= require countdown.min
@@ -30,6 +31,22 @@ $ ->
       return false
     else
       $('.js-confirm-anwser').show()
+
+  $('.js-confirm-anwser-yes').on 'click', (e) ->
+    url = @getAttribute 'data-url'
+    takeId = @getAttribute 'data-take-id'
+    examId = @getAttribute 'data-exam-id'
+    $.ajax
+      url: "/takes/#{takeId}"
+      method: 'PATCH'
+      data:
+        thisAnwser: $('[name=choice]:checked').val()
+        timeUsed: 40
+      success: (data) ->
+        if url.indexOf("-1") is -1
+          window.location = url
+        else
+          window.location = "/exams/#{examId}/result"
 
   $('.js-end-exam').on 'click', (e) ->
     e.preventDefault()
