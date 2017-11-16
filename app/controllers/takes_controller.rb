@@ -7,17 +7,25 @@ class TakesController < ApplicationController
 
   def update
     @take = Take.find params[:id]
-    @take.time_used = params[:timeUsed]
+    @exam = Exam.find params[:examId]
+    @take.time_used = time_used_in_seconds(@exam.estimated_time, params[:timeLeft])
     if @take.anwsers.nil?
       @take.anwsers = params[:thisAnwser]
     else
       @take.anwsers = @take.anwsers + ",#{params[:thisAnwser]}"
     end
     @take.save
-    render text: "ok"
+    render plain: "ok"
   end
 
   private
+
+  def time_used_in_seconds(estimate, cost)
+    minutes = cost.split(":")[0].to_i
+    seconds = cost.split(":")[1].to_i
+    time_cost = minutes * 60 + seconds
+    estimate * 60 - time_cost
+  end
 
   def take_params
     params.require(:take).permit(:subjects, :seq, :exam_id, :user_id, :time_used)

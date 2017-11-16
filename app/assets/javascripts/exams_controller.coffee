@@ -36,12 +36,15 @@ $ ->
     url = @getAttribute 'data-url'
     takeId = @getAttribute 'data-take-id'
     examId = @getAttribute 'data-exam-id'
+    minutes = $('#clock .minutes').text()
+    seconds = $('#clock .seconds').text()
     $.ajax
       url: "/takes/#{takeId}"
       method: 'PATCH'
       data:
         thisAnwser: $('[name=choice]:checked').val()
-        timeUsed: 40
+        timeLeft: "#{minutes}:#{seconds}"
+        examId: examId
       success: (data) ->
         if url.indexOf("-1") is -1
           window.location = url
