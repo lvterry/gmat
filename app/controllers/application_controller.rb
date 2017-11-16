@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
         reset_session
       end
     end
-    @current_user = User.find 4
+    #@current_user = User.find 4
   end
 
   helper_method :current_user
