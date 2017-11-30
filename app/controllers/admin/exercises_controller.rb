@@ -11,6 +11,7 @@ class Admin::ExercisesController < AdminController
 
   def new
     @exercise = Exercise.new
+    @is_rc = params[:rc]
   end
 
   def edit
@@ -65,7 +66,7 @@ class Admin::ExercisesController < AdminController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:title, :math_guide, {:choices => []}, :anwser,
+    params.require(:exercise).permit(:title, :passage, :math_guide, {:choices => []}, :anwser,
       {:guides => []}, :video_url, :exercise_tags,
       {:label_ids => []}, :exclusive, :hide_from_view, :seq)
   end

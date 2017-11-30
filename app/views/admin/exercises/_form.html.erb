@@ -1,4 +1,22 @@
 <%= form_for [:admin, @exercise], html: { class: 'form-horizontal exercise-form' } do |f| %>
+
+  <% if @is_rc %>
+
+    <div class="form-group" style="background-color: #e7f6ff; padding: 24px; border-radius: 6px;">
+      <label class="col-sm-2 control-label">文章</label>
+      <div class="col-sm-10">
+        <%= f.text_area :passage, class: 'form-control', rows: 10 %>
+        <p class="text-muted" style="margin-top: 4px">
+          1.使用 <a href="http://asciimath.org/#syntax" target="_blank">AsciiMath</a> 语法来输入数学公式<br/>
+          2.下划线 &lt;u&gt;&lt;/u&gt;，粗体 &lt;b&gt;&lt;/b&gt;，斜体 &lt;i&gt;&lt;/i&gt;，换行符 &lt;br/&gt;<br/>
+          3.可先把图片上传到七牛，然后使用 &lt;img src="url" /&gt; 插入图片<br/>
+          4.想highlight(标黄)某句话，用&lt;span class="highlight"&gt;&lt;/span&gt;包围这句话
+        </p>
+      </div>
+    </div>
+
+  <% end -%>
+
   <div class="form-group">
     <label for="seq" class="col-sm-2 control-label">题号</label>
     <div class="col-sm-10">

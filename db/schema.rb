@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113141839) do
+ActiveRecord::Schema.define(version: 20171130144946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171113141839) do
     t.text     "math_guide"
     t.boolean  "hide_from_view", default: false
     t.integer  "seq",            default: 0
+    t.text     "passage"
   end
 
   create_table "exercises_labels", id: false, force: :cascade do |t|
@@ -179,8 +180,9 @@ ActiveRecord::Schema.define(version: 20171113141839) do
     t.string   "seq"
     t.string   "anwsers"
     t.integer  "time_used"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "time_series"
     t.index ["exam_id"], name: "index_takes_on_exam_id", using: :btree
     t.index ["user_id"], name: "index_takes_on_user_id", using: :btree
   end

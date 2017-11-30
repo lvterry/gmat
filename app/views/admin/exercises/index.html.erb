@@ -1,5 +1,8 @@
 <h4>题库管理</h4>
-<a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-right" style="margin-top: -45px">添加题目</a>
+<div class="pull-right" style="margin-top: -45px">
+  <a href="<%= new_admin_exercise_path %>" class="btn btn-primary pull-left">添加题目</a>
+<a href="<%= new_admin_exercise_path(rc: true) %>" class="btn btn-primary pull-left" style="margin-left: 16px;">添加阅读题目</a>  
+</div>
 
 <div class="well">
   <form class="form-inline exercise-filter-form" action="/admin/exercises" method="get">
