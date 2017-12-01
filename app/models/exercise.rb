@@ -12,6 +12,10 @@ class Exercise < ApplicationRecord
     integer :seq
   end
 
+  def is_rc
+    !self.labels.find_by_category('题型').nil? && (self.labels.find_by_category('题型').name == '阅读RC')
+  end
+
   def subjects
     self.label_ids & Label.subject_ids
   end

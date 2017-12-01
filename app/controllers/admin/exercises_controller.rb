@@ -16,14 +16,22 @@ class Admin::ExercisesController < AdminController
 
   def edit
     @exercise = Exercise.find(params[:id])
+    if @exercise.labels.find_by_category('题型').nil?
+      @is_rc = false
+    elsif @exercise.labels.find_by_category('题型').name == '阅读RC'
+      @is_rc = true
+    else
+      @is_rc = false
+    end
   end
 
   def update
     @exercise = Exercise.find(params[:id])
     @exercise.update(exercise_params)
+    @is_rc = params[:is_rc]
 
     respond_to do |format|
-      format.html { redirect_back fallback_location: admin_exercises_path, notice: '保存成功' }
+      format.html { redirect_back fallback_location: admin_exercises_path(is_rc: @is_rc), notice: '保存成功' }
       format.json { render 'update' }
     end
   end

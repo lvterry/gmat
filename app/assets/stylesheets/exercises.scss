@@ -260,6 +260,22 @@ $green: #749d1f;
       padding: 0 4px;
     }
   }
+
+  .passage {
+    height: 600px;
+    float: left;
+    overflow: scroll;
+    width: 50%;
+    padding-right: 24px;
+  }
+
+  .passage-right {
+    float: right;
+    padding: 0 24px;
+    height: 600px;
+    width: 50%;
+    border-left: 1px solid #ddd;
+  }
 }
 
 .exercise-nav {
