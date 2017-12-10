@@ -26,4 +26,11 @@ module ExamsControllerHelper
   def current_location(exam, current_exercise)
     exam.exercise_ids.index(current_exercise.id.to_s) + 1
   end
+
+  def exercise_number_css_class(i, anwser_results)
+    classes = ''
+    classes = 'current' if i == 0
+    classes += ' wrong' unless anwser_results[i]
+    classes
+  end
 end

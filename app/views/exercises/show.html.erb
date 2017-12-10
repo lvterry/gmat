@@ -21,35 +21,7 @@
       </div>
 
       <div class="exercise-detail">
-        <% if @exercise.is_rc %>
-          <div class="left passage">
-            <p>
-              <%= raw @exercise.passage %>
-            </p>
-          </div>
-        <% end -%>
-        <% if @exercise.is_rc %>
-          <div class="passage-right">
-        <% end -%>
-            <p class="question"><%= raw @exercise.title %></p>
-            <ul>
-              <% options = ['A', 'B', 'C', 'D', 'E'] %>
-              <% unless @exercise.empty_choices? %>
-                <% @exercise.choices.each_with_index do |c, index| %>
-                  <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
-                <% end -%>
-              <% end -%>
-            </ul>
-          <% if @exercise.is_rc %> 
-            </div>
-          <% end -%>
-        
-        <button class="btn show-guides">显示正确答案和解析</button>
-
-        <div class="guides">
-          <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
-          <%= render "exercises/guides" %>
-        </div>
+        <%= render partial: 'exercises/exercise', locals: { options: ['A', 'B', 'C', 'D', 'E'], hide_guides: true, user_anwser: nil } %>
       </div>
 
       <div class="exercise-nav clearfix">

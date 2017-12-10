@@ -718,3 +718,97 @@ nav li a:hover, nav li a.active,
     border-color: #eee;
   }
 }
+
+.exam-result {
+  h1 {
+    font-size: 32px;
+    margin: 0 0 16px 0;
+  }
+
+  .subject-switch {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+
+    li {
+      float: left;
+    }
+
+    a {
+      float: left;
+      padding: 4px 24px;
+      color: #749d1f;
+
+      &.active {
+        border-bottom: 2px solid #749d1f;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .exercise-detail {
+    padding: 0;
+
+    .guides {
+      display: block;
+      margin-top: 40px;
+    }
+  }
+}
+
+.exercise-numbers {
+  list-style: none;
+  margin: 24px 0 0 0;
+  padding: 0;
+
+  li {
+    float: left;
+    margin-right: 16px;
+  }
+
+  a {
+    float: left;
+    width: 48px;
+    line-height: 42px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #66aa00;
+    border-bottom: 3px solid #66aa00;
+    background: url(http://7xtg0z.com2.z0.glb.clouddn.com/correct.png) 95% 95% no-repeat;
+    background-size: 8px 6px;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &.current {
+      background-color: #66aa00;
+      color: white;
+      background-image: url(http://7xtg0z.com2.z0.glb.clouddn.com/correct-white.png);
+
+      &:hover {
+        background-color: #66aa00;
+      }
+    }
+
+    &.wrong {
+      border-bottom-color: #dd4477;
+      color: #dd4477;
+      background: url(http://7xtg0z.com2.z0.glb.clouddn.com/wrong.png) 95% 95% no-repeat;
+      background-size: 7px 7px;
+
+      &.current {
+        background-color: #dd4477;
+        color: white;
+        background-image: url(http://7xtg0z.com2.z0.glb.clouddn.com/wrong-white.png);
+
+        &:hover {
+          background-color: #dd4477;
+        }
+      }
+    }
+  }
+}

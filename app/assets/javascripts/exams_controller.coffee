@@ -44,6 +44,7 @@ $ ->
       data:
         thisAnwser: $('[name=choice]:checked').val()
         timeLeft: "#{minutes}:#{seconds}"
+        currentTimestamp: Date.now()
         examId: examId
       success: (data) ->
         if url.indexOf("-1") is -1

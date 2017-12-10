@@ -1,6 +1,50 @@
-<div class="container p2 header-margin">
-  <h1>Yay, you're done! Here is your result: </h1>
-  <p>Anwsers: <%= @take.anwsers %></p>
-  <p>Results: <%= @take.anwser_results %></p>
-  <p>Time used: <%= @take.time_used_as_string %> mins</p>
+<div class="bg-snow pb2 exam-result">
+  <div class="pt2 header-margin">
+    <div class="container pb2">
+      <a href="/exams">&larr; 返回模考列表</a>
+    </div>
+    <div class="container bg-white p3 clearfix">
+      <h1>答题时间分析</h1>
+      <ul class="subject-switch">
+        <li><a href="#" class="active">Verbal</a></li>
+        <li><a href="#">Math</a></li>
+      </ul>
+      <div id="time-chart" style="height: 350px;"></div>
+      <div>
+        <div class="left" style="width: 50%;">
+          <h2>Sub-section time management</h2>
+          <div id="subsection-time-mgmt" style="height: 350px;"></div>
+        </div>
+        <div class="left" style="width: 50%">
+          <h2>Sub-section right vs wrong</h2>
+          <div id="subsection-right-wrong" style="height: 350px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt2">
+    <div class="container bg-white p3">
+      <h1>答案及解析</h1>
+      <ul class="subject-switch">
+        <li><a href="#" class="active">Verbal</a></li>
+        <li><a href="#">Math</a></li>
+      </ul>
+      <div class="clearfix">
+        <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
+          <% @exercises.each_with_index do |ex, i| %>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @anwser_results) %>"><%= i+1 %></a></li>
+          <% end -%>
+        </ol>
+      </div>
+      <div class="exercise-detail"></div>
+    </div>
+  </div>
 </div>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'exam_results' %>
+  <script type="text/javascript">
+    var times = <%= @take.times %>;
+  </script>
+<% end -%>

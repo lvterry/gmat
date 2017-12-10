@@ -14,6 +14,13 @@ class TakesController < ApplicationController
     else
       @take.anwsers = @take.anwsers + ",#{params[:thisAnwser]}"
     end
+
+    if @take.time_series.nil?
+      @take.time_series = params[:currentTimestamp]
+    else
+      @take.time_series = @take.time_series + ",#{params[:currentTimestamp]}"
+    end
+    
     @take.save
     render plain: "ok"
   end
@@ -28,6 +35,6 @@ class TakesController < ApplicationController
   end
 
   def take_params
-    params.require(:take).permit(:subjects, :seq, :exam_id, :user_id, :time_used)
+    params.require(:take).permit(:subjects, :seq, :exam_id, :user_id, :time_used, :time_series)
   end
 end

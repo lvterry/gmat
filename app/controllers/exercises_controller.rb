@@ -10,6 +10,17 @@ class ExercisesController < ApplicationController
     @seq = @exercise.seq.blank? ? 0 : @exercise.seq
     @prev = Exercise.find_by_seq(@seq - 1) ? Exercise.find_by_seq(@seq - 1).id : -1
     @next = Exercise.find_by_seq(@seq + 1) ? Exercise.find_by_seq(@seq + 1).id : -1
+
+    @user_anwser = nil
+    if params[:take_id]
+      anwser_index = params[:anwser_index].to_i
+      @user_anwser = Take.find(params[:take_id]).anwsers.split(',')[anwser_index]
+    end
+
+    respond_to do |format|
+      format.html
+      format.js { render "show.js.erb" }
+    end
   end
 
   def search

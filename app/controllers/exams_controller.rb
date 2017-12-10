@@ -21,11 +21,17 @@ class ExamsController < ApplicationController
     @exam = Exam.find params[:id]
     @exercise = Exercise.find params[:exercise_id]
     @take = current_user.takes.last
+    if @exam.exercises.split(',').index(params[:exercise_id]) == 0
+      @take.update(time_series: (Time.now.to_f * 1000).to_i.to_s)
+    end
     render 'exams/exercise'
   end
 
   def result
     @exam = Exam.find params[:id]
     @take = @exam.takes.where(user_id: current_user.id).last
+    @exercises = Exercise.find @exam.exercises.split(',')
+    @exercise = @exercises.first
+    @anwser_results = @take.anwser_results
   end
 end

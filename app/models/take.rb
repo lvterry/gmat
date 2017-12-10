@@ -16,4 +16,13 @@ class Take < ApplicationRecord
     end
     results
   end
+
+  def times
+    times = []
+    time_series_arr = self.time_series.split(',')
+    time_series_arr.each_with_index do |point, index|
+      times.push(point.to_i - time_series_arr[index - 1].to_i) if index > 0
+    end
+    times
+  end
 end

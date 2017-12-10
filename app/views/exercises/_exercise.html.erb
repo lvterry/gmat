@@ -1,0 +1,33 @@
+<% if @exercise.is_rc %>
+  <div class="left passage">
+    <p>
+      <%= raw @exercise.passage %>
+    </p>
+  </div>
+<% end -%>
+<% if @exercise.is_rc %>
+  <div class="passage-right">
+<% end -%>
+    <p class="question"><%= raw @exercise.title %></p>
+    <ul>
+      <% unless @exercise.empty_choices? %>
+        <% @exercise.choices.each_with_index do |c, index| %>
+          <li><label><input type="radio" name="choice"><b>(<%= options[index] %>)</b>&nbsp;<%= c %></label></li>
+        <% end -%>
+      <% end -%>
+    </ul>
+  <% if @exercise.is_rc %> 
+    </div>
+  <% end -%>
+
+<% if hide_guides %>
+  <button class="btn show-guides">显示正确答案和解析</button>
+<% end -%>
+
+<div class="guides">
+  <% unless user_anwser.nil? %>
+    <p>你的答案: <span><%= options[user_anwser.to_i] %></span></p>
+  <% end -%>
+  <p>正确答案: <span><%= @exercise.anwser.present? ? options[@exercise.anwser] : '' %></span></p>
+  <%= render "exercises/guides" %>
+</div>
