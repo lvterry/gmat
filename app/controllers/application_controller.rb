@@ -16,9 +16,7 @@ class ApplicationController < ActionController::Base
         reset_session
       end
     end
-    unless Rails.env.production?
-      @current_user = User.find 1
-    end
+    #@current_user = User.find 1
   end
 
   helper_method :current_user
