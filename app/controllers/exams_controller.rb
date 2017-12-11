@@ -32,6 +32,5 @@ class ExamsController < ApplicationController
     @take = @exam.takes.where(user_id: current_user.id).last
     @exercises = Exercise.find @exam.exercises.split(',')
     @exercise = @exercises.first
-    @anwser_results = @take.anwser_results
   end
 end

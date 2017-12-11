@@ -33,7 +33,7 @@
       <div class="clearfix">
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
           <% @exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @anwser_results) %>"><%= i+1 %></a></li>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.anwser_results) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
       </div>
@@ -46,5 +46,8 @@
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
     var times = <%= @take.times %>;
+    var timeManagementData = <%= @take.time_management_data %>;
+    var wrongData = <%= @take.wrong_data %>;
+    var rightData = <%= @take.right_data %>;
   </script>
 <% end -%>

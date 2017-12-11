@@ -5,6 +5,7 @@ $ ->
   timeAnalysisChart = document.getElementById('time-chart')
   timeMgmt = document.getElementById('subsection-time-mgmt')
   rightWrong = document.getElementById('subsection-right-wrong')
+  subjects = ['RC', 'CR', 'SC', 'Overall']
 
   hideModeBar = { displayModeBar: false }
 
@@ -15,7 +16,8 @@ $ ->
     xaxis:
       fixedrange: true
     yaxis:
-      fixedrange: true
+      autorange: true
+      rangemode: 'tozero'
     autosize: false
     height: 350
     width: 1090
@@ -29,8 +31,8 @@ $ ->
   Plotly.plot(timeAnalysisChart, trace, layout0, hideModeBar)
 
   trace =
-    y: ['Overall', 'SC', 'CR', 'RC']
-    x: [12, 24, 18, 20]
+    y: subjects
+    x: timeManagementData
     type: 'bar'
     orientation: 'h'
     marker:
@@ -53,9 +55,9 @@ $ ->
 
   Plotly.plot(timeMgmt, [trace], layout1, hideModeBar)
 
-  trace1 = 
-    x: [20, 14, 23, 11],
-    y: ['Overall', 'SC', 'CR', 'RC']
+  wrong = 
+    x: wrongData,
+    y: subjects
     name: 'Wrong',
     orientation: 'h',
     marker: {
@@ -64,9 +66,9 @@ $ ->
     },
     type: 'bar'
 
-  trace2 =
-    x: [12, 17, 19, 21],
-    y: ['Overall', 'SC', 'CR', 'RC']
+  right =
+    x: rightData,
+    y: subjects
     name: 'Right',
     orientation: 'h',
     marker: {
@@ -75,7 +77,7 @@ $ ->
     },
     type: 'bar'
 
-  data = [trace1, trace2]
+  data = [wrong, right]
 
   layout2 =
     xaxis:
