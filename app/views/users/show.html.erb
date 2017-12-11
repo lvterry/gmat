@@ -1,0 +1,46 @@
+<% if @current_user.id == @user.id %>
+
+
+<div class="bg-snow pb3">
+  <div class="bg-white header-margin">
+    <div class="container profile-header clearfix">
+      <%= image_tag @user.headimgurl, class: 'avatar' %>
+      <div class="info">
+        <div class="username"><%= @user.nickname %></div>
+        <div class="joined">已加入高分狗<%= (Time.zone.now - @user.created_at).to_i / 1.days %>天</div>
+      </div>
+      <div class="related">
+        <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/wechat.png', width: 30, height: 30 %>
+        <span>已绑定</span>
+        <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/mobile.png', width: 30, height: 30 %>
+        <% if @user.mobile.blank? %>
+          <span>未绑定</span>
+        <% else %>
+          <span>已绑定</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <% if @user.takes.count > 0 %>
+      <h3>我参加过的模考</h3>
+      <% @user.takes.each do |take| %>
+        <div class="take">
+          <span class="exam-title"><%= take.exam.name %></span>
+          <span class="time-taken"><%= take.created_at.to_formatted_s(:date_and_time) %></span>
+          <%= link_to '查看报告', "/exams/#{take.exam.id}/result" %>
+        </div>
+      <% end -%>
+    <% else %>
+      <div style="text-align: center; padding: 60px 0 420px; color: #999; font-size: 24px;">
+        你参加的模考将会出现在这里
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<% else %>
+  <%= render 'users/unauthorized' %>
+<% end -%>
