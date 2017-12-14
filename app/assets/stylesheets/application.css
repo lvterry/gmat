@@ -18,11 +18,12 @@
  *= require courses
  *= require exercises
  *= require users
+ *= require exams
  *= require video-js
  *= require_self
  */
 
- .vjs-default-skin .vjs-big-play-button:before {
+.vjs-default-skin .vjs-big-play-button:before {
     line-height: 2em;
 }
 
