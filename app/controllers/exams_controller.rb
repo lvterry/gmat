@@ -8,7 +8,15 @@ class ExamsController < ApplicationController
   def show
     @exam = Exam.find params[:id]
     @take = Take.new
-    render "exams/show"
+    if @exam.exam_type == 1
+      render 'exams/show'
+    else
+      @take.exam = @exam
+      @take.user = current_user
+      @take.save
+      @page_id = 1
+      render 'exams/instructions'
+    end
   end
 
   def instructions
