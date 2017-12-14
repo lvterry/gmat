@@ -13,7 +13,11 @@
     <div class="container">
       <% @exams.each do |exam| %>
         <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px">
-          <%= link_to exam.name, exam_path(exam), class: 'h4' %>
+          <% if current_user %>
+            <%= link_to exam.name, exam_path(exam), class: 'h4' %>
+          <% else %>
+            <%= link_to exam.name, '#unauthorized', class: 'h4' %>
+          <% end -%>
           <div class="h5 py1 gray">
             <div>系列: <%= exam.exam_type_label %></div>
             <div>练习人数: 80</div>
@@ -29,3 +33,9 @@
   </div>
 
 </div>
+
+<script>
+  $('[href="#unauthorized"]').on('click', function(e){
+    layer.msg('您必须先登录才能查看模考内容');
+  });
+</script>
