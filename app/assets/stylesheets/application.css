@@ -20,6 +20,7 @@
  *= require users
  *= require exams
  *= require video-js
+ *= require layer
  *= require_self
  */
 
