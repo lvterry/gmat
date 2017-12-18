@@ -124,4 +124,17 @@ $ ->
 
   getFirstExercise()
 
+  # switch subjects
+  subjectSwitch = $('.subject-switch a')
+  tabs = $('.js-tab')
+  subjectSwitch.on 'click', (e) ->
+    e.preventDefault()
+    console.log $(@)
+    unless $(@).hasClass('active')
+      subjectSwitch.removeClass 'active'
+      $(@).addClass 'active'
+      tabs.hide()
+      tabs.filter("[data-tab='#{@hash.replace('#','')}']").show()
+
+
 

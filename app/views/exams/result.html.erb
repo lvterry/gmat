@@ -5,18 +5,20 @@
     </div>
     <div class="container bg-white p3 clearfix">
       <h1>答题时间分析</h1>
-      <ul class="subject-switch">
-        <li><a href="#" class="active">Verbal</a></li>
-        <li><a href="#">Math</a></li>
-      </ul>
+      <% if @exam.exam_type == 2 %>
+        <ul class="subject-switch">
+          <li><a href="#" class="active">Verbal</a></li>
+          <li><a href="#">Math</a></li>
+        </ul>
+      <% end -%>
       <div id="time-chart" style="height: 350px;"></div>
       <div>
         <div class="left" style="width: 50%;">
-          <h2>Sub-section time management</h2>
+          <h3>Sub-section time management</h3>
           <div id="subsection-time-mgmt" style="height: 350px;"></div>
         </div>
         <div class="left" style="width: 50%">
-          <h2>Sub-section right vs wrong</h2>
+          <h3>Sub-section right vs wrong</h3>
           <div id="subsection-right-wrong" style="height: 350px;"></div>
         </div>
       </div>
@@ -26,13 +28,22 @@
   <div class="pt2">
     <div class="container bg-white p3">
       <h1>答案及解析</h1>
-      <ul class="subject-switch">
-        <li><a href="#" class="active">Verbal</a></li>
-        <li><a href="#">Math</a></li>
-      </ul>
-      <div class="clearfix">
+      <% if @exam.exam_type == 2 %>
+        <ul class="subject-switch">
+          <li><a href="#verbal" class="active">Verbal</a></li>
+          <li><a href="#math">Math</a></li>
+        </ul>
+      <% end -%>
+      <div class="clearfix js-tab" data-tab="verbal">
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
-          <% @exercises.each_with_index do |ex, i| %>
+          <% @verbal_exercises.each_with_index do |ex, i| %>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.anwser_results) %>"><%= i+1 %></a></li>
+          <% end -%>
+        </ol>
+      </div>
+      <div class="clearfix hidden js-tab" data-tab="math">
+        <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
+          <% @math_exercises.each_with_index do |ex, i| %>
             <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.anwser_results) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
