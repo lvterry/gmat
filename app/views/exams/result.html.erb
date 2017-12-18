@@ -6,9 +6,9 @@
     <div class="container bg-white p3 clearfix">
       <h1>答题时间分析</h1>
       <% if @exam.exam_type == 2 %>
-        <ul class="subject-switch">
-          <li><a href="#" class="active">Verbal</a></li>
-          <li><a href="#">Math</a></li>
+        <ul class="subject-switch js-time-chart-switch">
+          <li><a href="#verbal" class="active">Verbal</a></li>
+          <li><a href="#math">Math</a></li>
         </ul>
       <% end -%>
       <div id="time-chart" style="height: 350px;"></div>
@@ -29,7 +29,7 @@
     <div class="container bg-white p3">
       <h1>答案及解析</h1>
       <% if @exam.exam_type == 2 %>
-        <ul class="subject-switch">
+        <ul class="subject-switch js-exercise-switch">
           <li><a href="#verbal" class="active">Verbal</a></li>
           <li><a href="#math">Math</a></li>
         </ul>
@@ -57,6 +57,8 @@
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
     var times = <%= @take.times %>;
+    var verbalTimes = <%= @verbal_times %>;
+    var mathTimes = <%= @math_times %>;
     var timeManagementData = <%= @take.time_management_data %>;
     var wrongData = <%= @take.wrong_data %>;
     var rightData = <%= @take.right_data %>;

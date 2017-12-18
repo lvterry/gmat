@@ -9,26 +9,28 @@ $ ->
 
   hideModeBar = { displayModeBar: false }
 
-  data =
-    x: [1..times.length]
-    y: times
-  layout0 =
-    xaxis:
-      fixedrange: true
-    yaxis:
-      autorange: true
-      rangemode: 'tozero'
-    autosize: false
-    height: 350
-    width: 1090
-    margin:
-      l: 50
-      r: 50
-      b: 50
-      t: 20
-      pad: 4
-  trace = [data]
-  Plotly.plot(timeAnalysisChart, trace, layout0, hideModeBar)
+  drawTimesChart = (times)->
+    
+    data =
+      x: [1..times.length]
+      y: times
+    layout0 =
+      xaxis:
+        fixedrange: true
+      yaxis:
+        autorange: true
+        rangemode: 'tozero'
+      autosize: false
+      height: 350
+      width: 1090
+      margin:
+        l: 50
+        r: 50
+        b: 50
+        t: 20
+        pad: 4
+    trace = [data]
+    Plotly.newPlot(timeAnalysisChart, trace, layout0, hideModeBar)
 
   trace =
     y: subjects
@@ -53,7 +55,7 @@ $ ->
       t: 20
       pad: 4
 
-  Plotly.plot(timeMgmt, [trace], layout1, hideModeBar)
+  Plotly.newPlot(timeMgmt, [trace], layout1, hideModeBar)
 
   wrong = 
     x: wrongData,
@@ -97,6 +99,8 @@ $ ->
 
   Plotly.newPlot(rightWrong, data, layout2, hideModeBar)
 
+  drawTimesChart(verbalTimes)
+
   # switch exercise details
   exerciseNumbers = $('.exercise-numbers a')
   takeId = $('.exercise-numbers').attr 'data-take-id'
@@ -125,7 +129,7 @@ $ ->
   getFirstExercise()
 
   # switch subjects
-  subjectSwitch = $('.subject-switch a')
+  subjectSwitch = $('.js-exercise-switch a')
   tabs = $('.js-tab')
   subjectSwitch.on 'click', (e) ->
     e.preventDefault()
@@ -135,6 +139,16 @@ $ ->
       $(@).addClass 'active'
       tabs.hide()
       tabs.filter("[data-tab='#{@hash.replace('#','')}']").show()
+
+  $('.js-time-chart-switch a').on 'click', (e) ->
+    e.preventDefault()
+    unless $(@).hasClass('active')
+      $('.js-time-chart-switch a').removeClass('active')
+      $(@).addClass 'active'
+      if @hash is '#verbal'
+        drawTimesChart(verbalTimes)
+      else
+        drawTimesChart(mathTimes)
 
 
 
