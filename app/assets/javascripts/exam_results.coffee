@@ -138,7 +138,7 @@ $ ->
       subjectSwitch.removeClass 'active'
       $(@).addClass 'active'
       tabs.hide()
-      tabs.filter("[data-tab='#{@hash.replace('#','')}']").show()
+      tabs.filter("[data-tab='#{@hash.replace('#','')}']").show().find('a').first().click()
 
   $('.js-time-chart-switch a').on 'click', (e) ->
     e.preventDefault()
