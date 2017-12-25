@@ -2,46 +2,73 @@ class Take < ApplicationRecord
   belongs_to :exam
   belongs_to :user
 
-  def anwser_results
-    exercises = self.exam.exercises.split(',')
-    anwsers = self.anwsers.split(',')
-    results = []
-    exercises.each_with_index do |id, index|
-      exercise = Exercise.find(id)
-      results.push(exercise.anwser.to_i == anwsers[index].to_i)
-    end
-    results
+  def verbal_anwser_results
+    anwser_results self.exam.verbal_exercises, self.verbal_anwsers
   end
 
-  def times
-    times = []
-    time_series_arr = self.time_series.split(',')
-    time_series_arr.each_with_index do |point, index|
-      if index > 0
-        milliseconds = point.to_i - time_series_arr[index - 1].to_i
-        seconds = milliseconds / 1000
-        times.push(seconds)
-      end
-    end
-    times
+  def quant_anwser_results
+    anwser_results self.exam.quant_exercises, self.quant_anwsers
   end
 
-  def avg_time
-    sum = self.times.reduce(:+)
-    sum / (self.times.count - 1)
+  def verbal_times
+    time_points_from_time_series(self.verbal_time_series)
+  end
+
+  def quant_times
+    if self.exam.exam_type_label == '770'
+      time_points_from_time_series(self.quant_time_series)
+    end
+  end
+
+  def avg_verbal_time
+    avg_time self.verbal_times
+  end
+
+  def avg_quant_time
+    avg_time self.quant_times
   end
 
   def time_management_data
-    [3, 6, 5, self.avg_time]
+    [3, 6, 5, self.avg_verbal_time]
   end
 
-  def wrong_data
-    total = self.anwser_results.select { |item| item == false }.count
+  def verbal_wrong_data
+    total = self.verbal_anwser_results.select { |item| item == false }.count
     [11, 19, 2, total]
   end
 
-  def right_data
-    total = self.anwser_results.select { |item| item == true }.count
+  def verbal_right_data
+    total = self.verbal_anwser_results.select { |item| item == true }.count
     [12, 17, 19, total]
   end
+
+  private
+
+    def time_points_from_time_series(time_series)
+      times = []
+      time_series_arr = time_series.split(',')
+      time_series_arr.each_with_index do |point, index|
+        if index > 0
+          milliseconds = point.to_i - time_series_arr[index - 1].to_i
+          seconds = milliseconds / 1000
+          times.push(seconds)
+        end
+      end
+      times
+    end
+
+    def avg_time(times)
+      sum = times.reduce(:+)
+      sum.to_f / times.count
+    end
+
+
+    def anwser_results(exercises, anwsers)
+      results = []
+      exercises.split(',').each_with_index do |id, index|
+        exercise = Exercise.find(id)
+        results.push(exercise.anwser.to_i == anwsers[index].to_i)
+      end
+      results
+    end
 end

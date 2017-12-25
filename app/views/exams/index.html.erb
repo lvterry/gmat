@@ -12,7 +12,7 @@
   <div class="exams clearfix mb2">
     <div class="container">
       <% @exams.each do |exam| %>
-        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px">
+        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px; width: 247px;">
           <% if current_user %>
             <%= link_to exam.name, exam_path(exam), class: 'h4' %>
           <% else %>
@@ -24,7 +24,9 @@
             <div class="gray">
               <span>平均错题数: </span>
               <span>Verbal 4.5</span>
-              <span>Quant 10.2</span>
+              <% if exam.exam_type_label == '770' %>
+                <span>Quant 10.2</span>
+              <% end -%>
             </div>
           </div>
         </div>

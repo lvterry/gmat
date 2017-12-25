@@ -28,7 +28,7 @@
   <div class="pt2">
     <div class="container bg-white p3">
       <h1>答案及解析</h1>
-      <% if @exam.exam_type == 2 %>
+      <% if @exam.exam_type_label == '770' %>
         <ul class="subject-switch js-exercise-switch">
           <li><a href="#verbal" class="active">Verbal</a></li>
           <li><a href="#math">Math</a></li>
@@ -37,14 +37,14 @@
       <div class="clearfix js-tab" data-tab="verbal">
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
           <% @verbal_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.anwser_results) %>"><%= i+1 %></a></li>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
       </div>
       <div class="clearfix hidden js-tab" data-tab="math">
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
-          <% @math_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.anwser_results) %>"><%= i+1 %></a></li>
+          <% @quant_exercises.each_with_index do |ex, i| %>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
       </div>
@@ -56,11 +56,10 @@
 <% content_for :scripts do %>
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
-    var times = <%= @take.times %>;
     var verbalTimes = <%= @verbal_times %>;
     var mathTimes = <%= @math_times %>;
     var timeManagementData = <%= @take.time_management_data %>;
-    var wrongData = <%= @take.wrong_data %>;
-    var rightData = <%= @take.right_data %>;
+    var wrongData = <%= @take.verbal_wrong_data %>;
+    var rightData = <%= @take.verbal_right_data %>;
   </script>
 <% end -%>

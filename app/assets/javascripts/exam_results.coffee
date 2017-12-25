@@ -133,7 +133,6 @@ $ ->
   tabs = $('.js-tab')
   subjectSwitch.on 'click', (e) ->
     e.preventDefault()
-    console.log $(@)
     unless $(@).hasClass('active')
       subjectSwitch.removeClass 'active'
       $(@).addClass 'active'

@@ -9,16 +9,16 @@ class TakesController < ApplicationController
     @take = Take.find params[:id]
     @exam = Exam.find params[:examId]
     @take.time_used = time_used_in_seconds(@exam.estimated_time, params[:timeLeft])
-    if @take.anwsers.nil?
-      @take.anwsers = params[:thisAnwser]
+    if @take.verbal_anwsers.nil?
+      @take.verbal_anwsers = params[:thisAnwser]
     else
-      @take.anwsers = @take.anwsers + ",#{params[:thisAnwser]}"
+      @take.verbal_anwsers = @take.verbal_anwsers + ",#{params[:thisAnwser]}"
     end
 
-    if @take.time_series.nil?
-      @take.time_series = params[:currentTimestamp]
+    if @take.verbal_time_series.nil?
+      @take.verbal_time_series = params[:currentTimestamp]
     else
-      @take.time_series = @take.time_series + ",#{params[:currentTimestamp]}"
+      @take.verbal_time_series = @take.verbal_time_series + ",#{params[:currentTimestamp]}"
     end
     
     @take.save
@@ -35,6 +35,6 @@ class TakesController < ApplicationController
   end
 
   def take_params
-    params.require(:take).permit(:subjects, :seq, :exam_id, :user_id, :time_used, :time_series)
+    params.require(:take).permit(:subjects, :seq, :exam_id, :user_id, :time_used, :verbal_time_series, :quant_time_series)
   end
 end

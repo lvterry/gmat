@@ -42,6 +42,6 @@ class Admin::ExamsController < AdminController
   private
 
   def exam_params
-    params.require(:exam).permit(:name, :exam_type, :exercises, :estimated_time)
+    params.require(:exam).permit(:name, :exam_type, :verbal_exercises, :quant_exercises, :estimated_time)
   end
 end
