@@ -38,39 +38,11 @@ class ExamsController < ApplicationController
   def result
     @exam = Exam.find params[:id]
     @take = @exam.takes.where(user_id: current_user.id).last
-    #@exercises = Exercise.find @exam.verbal_exercises.split(',')
-    
+    debug
     @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
     @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
     @verbal_times = @take.verbal_times
-    @math_times = []
-    @verbal_right_wrong = []
-    @math_right_wrong = []
-
-    results = @take.verbal_anwser_results
-
-    # @exercises.each_with_index do |ex, i|
-    #   label = ex.labels.find_by_category('题型')
-    #   if ['数学PS', '数学DS'].include?(label.name)
-    #     @math_exercises.push ex
-    #     @math_times.push times[i]
-    #     @math_right_wrong.push results[i]
-    #   elsif ['语法SC', '逻辑CR', '阅读RC'].include?(label.name)
-    #     @verbal_exercises.push ex
-    #     @verbal_times.push times[i]
-    #     @verbal_right_wrong.push results[i]
-    #   end
-    # end
     @exercise = @verbal_exercises.first
   end
 
-  private
-
-  def verbal_exercises(exercises)
-
-  end
-
-  def math_exercises(exercises)
-
-  end
 end
