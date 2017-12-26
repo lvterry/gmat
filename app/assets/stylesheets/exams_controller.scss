@@ -10,6 +10,7 @@ $yellow: #fefe00;
   background: $blue;
   position: relative;
   margin: 30px auto 20px auto;
+  line-height: 1.5;
 
   .header {
     padding-left: 8px;
@@ -118,6 +119,17 @@ $yellow: #fefe00;
       li {
         margin: 10px 0 0 0;
         list-style: none;
+      }
+
+      label {
+        display: block;
+        margin-left: 20px;
+      }
+
+      [type=radio] {
+        float: left;
+        margin-left: -20px;
+        margin-top: 5px;
       }
     }
 
