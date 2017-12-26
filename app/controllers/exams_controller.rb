@@ -8,7 +8,7 @@ class ExamsController < ApplicationController
   def show
     @exam = Exam.find params[:id]
     @take = Take.new
-    if @exam.exam_type_label == 'GWD'
+    if @exam.exam_type_label == '770'
       render 'exams/show'
     else
       @take.exam = @exam
