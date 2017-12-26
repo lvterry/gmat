@@ -5,6 +5,22 @@ $yellow: #fefe00;
   text-align: center;
 }
 
+.passage {
+  float: left;
+  height: 600px;
+  overflow: scroll;
+  width: 50%;
+  padding-right: 24px;
+}
+
+.passage-right {
+  float: right;
+  padding: 0 24px;
+  height: 600px;
+  width: 50%;
+  border-left: 1px solid #ddd;
+}
+
 .exam-main {
   width: 1024px;
   background: $blue;

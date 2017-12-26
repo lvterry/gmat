@@ -1,8 +1,21 @@
-<p><%= raw @exercise.title %></p>
-<ul class="multi-choice-list">
-  <% unless @exercise.empty_choices? %>
-    <% @exercise.choices.each_with_index do |c, i| %>
-      <li><label><input type="radio" name="choice" value="<%= i %>"><%= c %></label></li>
-    <% end -%>
+<% if @exercise.is_rc %>
+  <div class="passage">
+    <p>
+      <%= raw @exercise.passage %>
+    </p>
+  </div>
+<% end -%>
+<% if @exercise.is_rc %>
+  <div class="passage-right">
+<% end -%>
+    <p class="question"><%= raw @exercise.title %></p>
+    <ul class="multi-choice-list">
+      <% unless @exercise.empty_choices? %>
+        <% @exercise.choices.each_with_index do |c, index| %>
+          <li><label><input type="radio" name="choice"><%= c %></label></li>
+        <% end -%>
+      <% end -%>
+    </ul>
+  <% if @exercise.is_rc %> 
+    </div>
   <% end -%>
-</ul>
