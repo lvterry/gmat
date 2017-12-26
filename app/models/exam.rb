@@ -4,11 +4,11 @@ class Exam < ApplicationRecord
   has_many :users, through: :takes
 
   def verbal_exercise_ids
-    self.verbal_exercises.split(',')
+    verbal_exercises.nil? ? [] : verbal_exercises.split(',')
   end
 
   def quant_exercise_ids
-    self.quant_exercises.split(',')
+    quant_exercises.nil? ? [] : quant_exercises.split(',')
   end
 
   def exam_type_label
