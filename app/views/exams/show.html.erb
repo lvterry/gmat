@@ -10,10 +10,10 @@
         <%= f.hidden_field :user_id, value: @current_user.id %>
         <%= f.hidden_field :subjects, value: 'V,Q' %>
         <div class="form-control">
-          <input type="checkbox" name="" checked> Verbal (共<%= @exam.verbal_exercise_ids.count %>题)
+          <input type="checkbox" name="config-subjects" checked value="V"> Verbal (共<%= @exam.verbal_exercise_ids.count %>题)
         </div>
         <div class="form-control">
-          <input type="checkbox" name="" checked> Quant (共<%= @exam.quant_exercise_ids.count %>题)
+          <input type="checkbox" name="config-subjects" checked value="Q"> Quant (共<%= @exam.quant_exercise_ids.count %>题)
         </div>
       </div>
       <div>

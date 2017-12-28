@@ -16,6 +16,14 @@ class Exercise < ApplicationRecord
     !self.labels.find_by_category('题型').nil? && (self.labels.find_by_category('题型').name == '阅读RC')
   end
 
+  def verbal?
+    ['语法SC','逻辑CR','阅读RC'].include? self.labels.find_by_category('题型').name
+  end
+
+  def quant?
+    ['数学PS','数学DS'].include? self.labels.find_by_category('题型').name
+  end
+
   def subjects
     self.label_ids & Label.subject_ids
   end

@@ -15,13 +15,15 @@ class ExamsController < ApplicationController
       @take.user = current_user
       @take.save
       @page_id = 1
-      render 'exams/instructions'
+      #render 'exams/instructions'
+      redirect_to action: 'instructions', take_id: @take.id
     end
   end
 
   def instructions
     @exam = Exam.find params[:id]
     @page_id = params[:page_id] || 0
+    @take = Take.find params[:take_id]
     render 'exams/instructions'
   end
 

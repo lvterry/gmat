@@ -2,7 +2,7 @@ class TakesController < ApplicationController
 
   def create
     @take = Take.create take_params
-    redirect_to "/exams/#{take_params[:exam_id]}/instructions/1"
+    redirect_to "/exams/#{take_params[:exam_id]}/instructions/1?take_id=#{@take.id}"
   end
 
   def update

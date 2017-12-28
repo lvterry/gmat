@@ -24,6 +24,19 @@ class Clock
 
 $ ->
 
+  # config subjects
+  $('[name=config-subjects]').on 'click', (e) ->
+    arr = []
+    $('[name=config-subjects]').each -> arr.push(@value) if @checked
+    $('#take_subjects').val arr.join(',')
+
+  # prevent form submission when no subjects configured
+  $('#new_take').on 'submit', (e) ->
+    if $('[name=config-subjects]').filter(':checked').length is 0
+      window.alert '请选择科目'
+      return false
+
+
   $('.js-next-exercise').on 'click', (e) ->
     e.preventDefault()
     if $('.multi-choice-list input:checked').length is 0
