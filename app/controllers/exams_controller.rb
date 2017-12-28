@@ -13,10 +13,10 @@ class ExamsController < ApplicationController
     else
       @take.exam = @exam
       @take.user = current_user
+      @take.subjects = 'V'
       @take.save
       @page_id = 1
-      #render 'exams/instructions'
-      redirect_to action: 'instructions', take_id: @take.id
+      redirect_to "/exams/#{@exam.id}/instructions/1?take_id=#{@take.id}"
     end
   end
 
