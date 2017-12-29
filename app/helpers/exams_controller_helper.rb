@@ -54,9 +54,9 @@ module ExamsControllerHelper
     end
   end
 
-  def exercise_number_css_class(i, anwser_results)
+  def exercise_number_css_class(i, anwser_results, show)
     classes = ''
-    classes = 'current' if i == 0
+    classes = 'current' if (i == 0) and show
     classes += ' wrong' unless anwser_results[i]
     classes
   end

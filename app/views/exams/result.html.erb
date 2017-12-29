@@ -5,7 +5,7 @@
     </div>
     <div class="container bg-white p3 clearfix">
       <h1>答题时间分析</h1>
-      <% if @exam.exam_type == 2 %>
+      <% if @exam.exam_type_label == '770' %>
         <ul class="subject-switch js-time-chart-switch">
           <li><a href="#verbal" class="active">Verbal</a></li>
           <li><a href="#math">Math</a></li>
@@ -37,17 +37,19 @@
       <div class="clearfix js-tab" data-tab="verbal">
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
           <% @verbal_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results) %>"><%= i+1 %></a></li>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, true) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
       </div>
-      <div class="clearfix hidden js-tab" data-tab="math">
-        <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
-          <% @quant_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results) %>"><%= i+1 %></a></li>
-          <% end -%>
-        </ol>
-      </div>
+      <% if @exam.exam_type_label == '770' %>
+        <div class="clearfix hidden js-tab" data-tab="math">
+          <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
+            <% @quant_exercises.each_with_index do |ex, i| %>
+              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, false) %>"><%= i+1 %></a></li>
+            <% end -%>
+          </ol>
+        </div>
+      <% end -%>
       <div class="exercise-detail"></div>
     </div>
   </div>
@@ -57,8 +59,18 @@
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
     var verbalTimes = <%= @verbal_times %>;
-    var timeManagementData = <%= @take.time_management_data %>;
-    var wrongData = <%= @take.verbal_wrong_data %>;
-    var rightData = <%= @take.verbal_right_data %>;
+    <% if @exam.exam_type_label == '770' %>
+    var quantTimes = <%= @quant_times %>;
+    <% end -%>
+    var verbalTimeManagementData = <%= @take.verbal_time_management_data %>;
+    <% if @exam.exam_type_label == '770' %>
+    var quantTimeManagementData = <%= @take.quant_time_management_data %>;
+    <% end -%>
+    var verbalWrongData = <%= @take.verbal_wrong_data %>;
+    var verbalRightData = <%= @take.verbal_right_data %>;
+    <% if @exam.exam_type_label == '770' %>
+    var quantWrongData = <%= @take.quant_wrong_data %>;
+    var quantRightData = <%= @take.quant_right_data %>;
+    <% end -%>
   </script>
 <% end -%>

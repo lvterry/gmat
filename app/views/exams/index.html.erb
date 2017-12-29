@@ -14,9 +14,9 @@
       <% @exams.each do |exam| %>
         <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px; width: 247px;">
           <% if current_user %>
-            <%= link_to exam.name, exam_path(exam), class: 'h4' %>
+            <%= link_to exam.name, exam_path(exam), class: 'h3' %>
           <% else %>
-            <%= link_to exam.name, '#unauthorized', class: 'h4' %>
+            <%= link_to exam.name, '#unauthorized', class: 'h3' %>
           <% end -%>
           <div class="h5 py1 gray">
             <div>系列: <%= exam.exam_type_label %></div>

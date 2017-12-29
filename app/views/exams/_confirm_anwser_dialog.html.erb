@@ -7,7 +7,7 @@
     <p>Click Yes to confirm your answer and continue to the next question.</p>
   </div>
   <div class="footer">
-    <a href="javascript:;" data-exam-id="<%= @exam.id %>" data-take-id="<%= @take.id %>" data-url="<%= next_exercise_url(@exam, @exercise, @take) %>" class="bordered js-confirm-anwser-yes"><u>Y</u>es</a>
+    <a href="javascript:;" data-exercise-id="<%= @exercise.id %>" data-exam-id="<%= @exam.id %>" data-take-id="<%= @take.id %>" data-url="<%= next_exercise_url(@exam, @exercise, @take) %>" class="bordered js-confirm-anwser-yes"><u>Y</u>es</a>
     <a href="javascript:;" class="dialog-close"><u>N</u>o</a>
   </div>
 </div>

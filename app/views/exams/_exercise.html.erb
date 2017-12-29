@@ -12,7 +12,7 @@
     <ul class="multi-choice-list">
       <% unless @exercise.empty_choices? %>
         <% @exercise.choices.each_with_index do |c, index| %>
-          <li><label><input type="radio" name="choice"><%= c %></label></li>
+          <li><label><input type="radio" name="choice" value="<%= index %>"><%= c %></label></li>
         <% end -%>
       <% end -%>
     </ul>

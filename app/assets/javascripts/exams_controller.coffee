@@ -49,6 +49,7 @@ $ ->
     url = @getAttribute 'data-url'
     takeId = @getAttribute 'data-take-id'
     examId = @getAttribute 'data-exam-id'
+    exerciseId = @getAttribute 'data-exercise-id'
     minutes = $('#clock .minutes').text()
     seconds = $('#clock .seconds').text()
     $.ajax
@@ -59,11 +60,12 @@ $ ->
         timeLeft: "#{minutes}:#{seconds}"
         currentTimestamp: Date.now()
         examId: examId
+        exerciseId: exerciseId
       success: (data) ->
         if url.indexOf("-1") is -1
           window.location = url
         else
-          window.location = "/exams/#{examId}/result"
+          window.location = "/exams/#{examId}/result?take_id=#{takeId}"
 
   $('.js-end-exam').on 'click', (e) ->
     e.preventDefault()

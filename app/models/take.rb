@@ -28,8 +28,16 @@ class Take < ApplicationRecord
     avg_time self.quant_times
   end
 
-  def time_management_data
+  def avg_quant_time
+    avg_time self.quant_times
+  end
+
+  def verbal_time_management_data
     [3, 6, 5, self.avg_verbal_time]
+  end
+
+  def quant_time_management_data
+    [3, 6, 5, self.avg_quant_time]
   end
 
   def verbal_wrong_data
@@ -39,6 +47,16 @@ class Take < ApplicationRecord
 
   def verbal_right_data
     total = self.verbal_anwser_results.select { |item| item == true }.count
+    [12, 17, 19, total]
+  end
+
+  def quant_wrong_data
+    total = self.quant_anwser_results.select { |item| item == false }.count
+    [11, 19, 2, total]
+  end
+
+  def quant_right_data
+    total = self.quant_anwser_results.select { |item| item == true }.count
     [12, 17, 19, total]
   end
 

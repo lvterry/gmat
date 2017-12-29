@@ -39,11 +39,16 @@ class ExamsController < ApplicationController
 
   def result
     @exam = Exam.find params[:id]
-    @take = @exam.takes.where(user_id: current_user.id).last
-    debug
+    @take = Take.find params[:take_id]
+    
     @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
-    @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
     @verbal_times = @take.verbal_times
+
+    if @exam.exam_type_label == '770'
+      @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
+      @quant_times = @take.quant_times
+    end
+
     @exercise = @verbal_exercises.first
   end
 
