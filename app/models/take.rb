@@ -7,8 +7,7 @@ class Take < ApplicationRecord
   end
 
   def quant_anwser_results
-    anwsers = self.quant_anwsers.nil? ? [] : self.quant_anwsers
-    anwser_results self.exam.quant_exercises, anwsers
+    anwser_results self.exam.quant_exercises, self.quant_anwsers
   end
 
   def verbal_times
@@ -84,7 +83,7 @@ class Take < ApplicationRecord
 
     def anwser_results(exercises, anwsers)
       results = []
-      unless exercises.nil?
+      unless exercises.nil? || anwsers.nil?
         exercises.split(',').each_with_index do |id, index|
           exercise = Exercise.find(id)
           results.push(exercise.anwser.to_i == anwsers[index].to_i)
