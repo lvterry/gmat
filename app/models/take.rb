@@ -8,7 +8,8 @@ class Take < ApplicationRecord
 
   def quant_anwser_results
     anwsers = self.quant_anwsers.nil? ? [] : self.quant_anwsers
-    anwser_results self.exam.quant_exercises, anwsers
+    exercises = self.quant_exercises.nil? [] : self.quant_exercises
+    anwser_results exercises, anwsers
   end
 
   def verbal_times
