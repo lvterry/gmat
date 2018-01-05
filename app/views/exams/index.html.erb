@@ -23,9 +23,9 @@
             <div>练习人数: <%= exam.user_count %></div>
             <div class="gray">
               <span>平均错题数: </span>
-              <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises %></span>
+              <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
               <% if exam.exam_type_label == '770' %>
-                <span>Quant <%= exam.avg_num_of_wrong_quant_exercises %></span>
+                <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
               <% end -%>
             </div>
           </div>
