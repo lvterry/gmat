@@ -19,14 +19,14 @@ class Exam < ApplicationRecord
     num_of_wrong_anwsers = self.takes.map do |t|
       t.verbal_anwser_results.select { |r| r == false }.count
     end
-    num_of_wrong_anwsers.reduce(:+).to_f / self.takes.count
+    (num_of_wrong_anwsers.reduce(:+).to_f / self.takes.count).round(1)
   end
 
   def avg_num_of_wrong_quant_exercises
     num_of_wrong_anwsers = self.takes.map do |t|
       t.quant_anwser_results.select { |r| r == false }.count
     end
-    num_of_wrong_anwsers.reduce(:+).to_f / self.takes.count
+    (num_of_wrong_anwsers.reduce(:+).to_f / self.takes.count).round(1)
   end
 
   def exam_type_label
