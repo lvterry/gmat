@@ -20,12 +20,12 @@
           <% end -%>
           <div class="h5 py1 gray">
             <div>系列: <%= exam.exam_type_label %></div>
-            <div>练习人数: 80</div>
+            <div>练习人数: <%= exam.user_count %></div>
             <div class="gray">
               <span>平均错题数: </span>
-              <span>Verbal 4.5</span>
+              <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises %></span>
               <% if exam.exam_type_label == '770' %>
-                <span>Quant 10.2</span>
+                <span>Quant <%= exam.avg_num_of_wrong_quant_exercises %></span>
               <% end -%>
             </div>
           </div>
