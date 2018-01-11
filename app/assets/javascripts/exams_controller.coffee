@@ -45,6 +45,18 @@ $ ->
     else
       $('.js-confirm-anwser').show()
 
+  $('.btn-skip').on 'click', (e) ->
+    url = @getAttribute 'data-url'
+    takeId = @getAttribute 'data-take-id'
+    #examId = @getAttribute 'data-exam-id'
+    $.ajax
+      url: "/takes/#{takeId}"
+      method: 'PATCH'
+      data:
+        currentTimestamp: Date.now()
+        #examId: examId
+      success: (data) -> window.location = url
+
   $('.js-confirm-anwser-yes').on 'click', (e) ->
     url = @getAttribute 'data-url'
     takeId = @getAttribute 'data-take-id'

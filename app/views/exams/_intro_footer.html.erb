@@ -11,7 +11,7 @@
     <span><u>N</u>ext</span>
     <i></i>
   </a>
-  <a class="btn-skip right" href="<%= skip_instructions_url(@exam, @take) %>">
+  <a class="btn-skip right" href="javascript:;" data-url="<%= skip_instructions_url(@exam, @take) %>" data-take-id="<%= @take.id %>" data-exam-id="<%= @exam.id %>">
     <span>Skip</span>
   </a>
 </div>

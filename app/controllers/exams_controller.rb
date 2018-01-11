@@ -40,6 +40,7 @@ class ExamsController < ApplicationController
   def result
     @exam = Exam.find params[:id]
     @take = Take.find params[:take_id]
+    @take.calculate_data
     
     @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
     @verbal_times = @take.verbal_times

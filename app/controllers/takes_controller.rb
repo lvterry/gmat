@@ -7,17 +7,24 @@ class TakesController < ApplicationController
 
   def update
     @take = Take.find params[:id]
-    @exam = Exam.find params[:examId]
-    @exercise = Exercise.find params[:exerciseId]
+    #@exam = Exam.find params[:examId]
 
-    @take.time_used = time_used_in_seconds(@exam.estimated_time, params[:timeLeft])
+    #@take.time_used = time_used_in_seconds(@exam.estimated_time, params[:timeLeft])
 
-    if @exercise.verbal?
-      @take.verbal_anwsers.nil? ? @take.verbal_anwsers = params[:thisAnwser] : @take.verbal_anwsers += ",#{params[:thisAnwser]}"
-      @take.verbal_time_series.nil? ? @take.verbal_time_series = params[:currentTimestamp] : @take.verbal_time_series += ",#{params[:currentTimestamp]}"
+    if @take.time_series.nil?
+      @take.time_series = params[:currentTimestamp]
     else
-      @take.quant_anwsers.nil? ? @take.quant_anwsers = params[:thisAnwser] : @take.quant_anwsers += ",#{params[:thisAnwser]}"
-      @take.quant_time_series.nil? ? @take.quant_time_series = params[:currentTimestamp] : @take.quant_time_series += ",#{params[:currentTimestamp]}"
+      @take.time_series += ",#{params[:currentTimestamp]}"
+    end
+
+    unless params[:exerciseId].nil?
+      @exercise = Exercise.find params[:exerciseId]
+
+      if @exercise.verbal?
+        @take.verbal_anwsers.nil? ? @take.verbal_anwsers = params[:thisAnwser] : @take.verbal_anwsers += ",#{params[:thisAnwser]}"
+      else
+        @take.quant_anwsers.nil? ? @take.quant_anwsers = params[:thisAnwser] : @take.quant_anwsers += ",#{params[:thisAnwser]}"
+      end
     end
     
     @take.save

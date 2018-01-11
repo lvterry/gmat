@@ -12,7 +12,7 @@
   <div class="exams clearfix mb2">
     <div class="container">
       <% @exams.each do |exam| %>
-        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px; width: 247px;">
+        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px; width: 280px;">
           <% if current_user %>
             <%= link_to exam.name, exam_path(exam), class: 'h3' %>
           <% else %>

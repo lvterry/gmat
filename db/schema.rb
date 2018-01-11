@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225151720) do
+ActiveRecord::Schema.define(version: 20180109160230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 20171225151720) do
     t.string   "verbal_time_series"
     t.string   "quant_anwsers"
     t.string   "quant_time_series"
+    t.string   "time_series"
     t.index ["exam_id"], name: "index_takes_on_exam_id", using: :btree
     t.index ["user_id"], name: "index_takes_on_user_id", using: :btree
   end
