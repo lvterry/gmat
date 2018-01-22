@@ -11,8 +11,15 @@
 
   <div class="exams clearfix mb2">
     <div class="container">
+      <div class="left bg-white p2 mt2 mb2 clearfix mini-quiz">
+        <h4><a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">The GMAT mini quiz</a></h4>
+        <a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">
+          <img src="http://7xtg0z.com2.z0.glb.clouddn.com/verbal.png" width="60">
+          <img src="http://7xtg0z.com2.z0.glb.clouddn.com/quant.png" width="60">
+        </a>
+      </div>
       <% @exams.each do |exam| %>
-        <div class="left bg-white p2 mt2 mb2 clearfix" style="margin-right: 16px; width: 280px;">
+        <div class="left bg-white p2 mt2 mb2 clearfix">
           <% if current_user %>
             <%= link_to exam.name, exam_path(exam), class: 'h3' %>
           <% else %>

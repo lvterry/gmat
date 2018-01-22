@@ -1,3 +1,20 @@
 .exams {
   min-height: 600px;
+
+  .container > div {
+    margin-right: 16px;
+    width: 280px;
+    height: 141px;
+  }
+
+  .mini-quiz {
+    background-color: #e1efff;
+
+    h4 {
+      margin: 8px 0;
+      font-size: 22px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
 }
