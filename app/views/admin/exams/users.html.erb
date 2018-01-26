@@ -1,0 +1,9 @@
+<h4>用户</h4>
+
+<div class="btn-group btn-group-sm" role="group" style="margin-bottom: 16px;">
+  <button class="btn btn-default js-add-to-user-group">加入用户组</button>
+</div>
+
+<div class="pull-right text-muted" style="margin-top:10px">找到 <%= @users.count %> 用户</div>
+
+<%= render partial: 'admin/exams/users_list', locals: { users: @users } %>

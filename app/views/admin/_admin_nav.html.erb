@@ -21,7 +21,10 @@
   <li class="<%= controller_name == 'user_groups' ? 'active' : '' %>"><a href="<%= admin_user_groups_path %>">用户组</a></li>
 
   <li><div>模考管理</div></li>
-  <li class="<%= controller_name == 'exams' ? 'active' : '' %>"><a href="<%= admin_exams_path %>">模考列表</a></li>
+  <li class="<%= controller_name == 'exams' && action_name !=
+  'users' ? 'active' : '' %>"><a href="<%= admin_exams_path %>">模考列表</a></li>
+  <li class="<%= controller_name == 'exams' && action_name ==
+  'users' ? 'active' : '' %>"><a href="<%= users_admin_exams_path %>">模考用户</a></li>
 
   <li><div>其他</div></li>
   <li class="<%= controller_name == 'teachers' ? 'active' : '' %>"><a href="<%= admin_teachers_path %>">教师管理</a></li>

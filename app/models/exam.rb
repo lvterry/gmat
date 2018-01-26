@@ -35,6 +35,8 @@ class Exam < ApplicationRecord
       'GWD'
     when 2
       '770'
+    when 3
+      'Prep'  
     else
       'nothing'
     end

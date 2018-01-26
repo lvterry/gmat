@@ -20,7 +20,7 @@
             <%= camp.name %>(文字)
           </label>
           <label class="checkbox-inline">
-            <input type="checkbox" name="user_group[permissions][][permission_type]" value="2" <%= (@user_group.permission(camp.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+            <input type="checkbox" name="user_group[permissions][][permission_type]" value="2" <%= (@user_group.permission(camp.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频
           </label>
         </div>
       <% end -%>
@@ -41,7 +41,7 @@
             <%= book.name %>(文字)
           </label>
           <label class="checkbox-inline">
-            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(book.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(book.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频
           </label>
         </div>
       <% end -%>
@@ -62,7 +62,24 @@
             <%= subject.name %>(文字)
           </label>
           <label class="checkbox-inline">
-            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(subject.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频 
+            <input type="checkbox" value="2" name="user_group[permissions][][permission_type]" <%= (@user_group.permission(subject.id) == Permission.TEXT_VIDEO) ? 'checked' : '' %>>视频
+          </label>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label">模考</label>
+    <div class="col-sm-10">
+      <div class="quick-select">
+        <a href="#" class="js-select-all">选中全部</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <% Label.exams.each do |exam| %>
+        <div class="permission-item">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="user_group[permissions][][label_id]" value="<%= exam.id %>" <%= (@user_group.permission(exam.id) != Permission.NO_PERMISSION) ? 'checked' : '' %>>
+            <%= exam.name %>
           </label>
         </div>
       <% end -%>

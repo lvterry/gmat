@@ -1,0 +1,28 @@
+<table class="table table-bordered users-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>用户ID</th>
+      <th>用户昵称</th>
+      <th>注册时间</th>
+      <th>手机号</th>
+      <th></th>
+      <th></th>
+      <th>用户组</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr data-id="<%= user.id %>">
+        <td><input type="checkbox"></td>
+        <td><%= user.id %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
+        <td><%= user.mobile %></td>
+        <td><%= user.takes.last.created_at.to_formatted_s(:date_and_time) %></td>
+        <td><%= user.takes.count %></td>
+        <td><%= user.user_groups_as_text %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

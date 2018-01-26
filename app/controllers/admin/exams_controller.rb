@@ -4,6 +4,10 @@ class Admin::ExamsController < AdminController
     @exams = Exam.all
   end
 
+  def users
+    @users = User.joins(:takes).uniq
+  end
+
   def new
     @exam = Exam.new
   end
@@ -14,7 +18,7 @@ class Admin::ExamsController < AdminController
 
   def update
     @exam = Exam.find params[:id]
-    
+
     if @exam.update(exam_params)
       flash[:notice] = "保存成功"
     else

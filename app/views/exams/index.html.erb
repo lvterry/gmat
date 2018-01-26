@@ -37,6 +37,9 @@
 </div>
 
 <script>
+  <% if flash[:error].present? %>
+    layer.msg("<%= flash[:error] %>")
+  <% end %>  
   $('[href="#unauthorized"]').on('click', function(e){
     layer.msg('您必须先登录才能查看模考内容');
   });
