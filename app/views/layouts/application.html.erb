@@ -38,9 +38,7 @@
             <li><a class="<%= (controller_name == 'courses' && action_name == 'index') ? 'active' : '' %>" href="/courses">精品课</a></li>
             <li><a class="<%= (controller_name == 'welcome' && action_name == 'vip') ? 'active' : '' %>" href="/welcome/vip">一对一</a></li>
             <li><a class="<%= (controller_name == 'exercises') ? 'active' : '' %>" href="/exercises">练习</a></li>
-            <% unless Rails.env.production? %>
-              <li><a class="<%= (controller_name == 'exams') ? 'active' : '' %>" href="/exams">模考</a></li>
-            <% end -%>
+            <li><a class="<%= (controller_name == 'exams') ? 'active' : '' %>" href="/exams">模考</a></li>
             <li><a class="<%= (controller_name == 'posts') ? 'active' : '' %>" href="/posts">免费资源</a></li>
             <li><a class="<%= (controller_name == 'welcome' && action_name == 'about') ? 'active' : '' %>" href="/welcome/about">关于我们</a></li>
           </ul>
