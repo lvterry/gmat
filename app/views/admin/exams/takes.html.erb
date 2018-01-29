@@ -1,7 +1,8 @@
-<h4>用户 <%= @user.nickname %></h4>
+<div style="margin-top: 24px;">
+<%= link_to '返回模考用户列表', '/admin/exams/users' %>
+</div>
 
-
-<div class="pull-right text-muted" style="margin-top:10px">参加了 <%= @takes.count %> 次模考</div>
+<h4>用户 [<%= @user.nickname %>] 参加了 <%= @takes.count %> 次模考</h4>
 
 <table class="table table-bordered users-table">
   <thead>
@@ -20,7 +21,7 @@
         <td><%= take.exam.name %></td>
         <td><%= take.created_at.to_formatted_s(:date_and_time) %></td>
         <% Label.where(category: '题型').map(&:name).each do |label| %>
-          <th><%= take.accuracy_hash[label] %></th>
+          <th><%= take.accuracy_hash[label].nil? ? "" : "#{take.accuracy_hash[label].round(2)}%" %></th>
         <% end %>
       </tr>
     <% end -%>
