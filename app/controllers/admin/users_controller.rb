@@ -33,7 +33,12 @@ class Admin::UsersController < AdminController
     @q = params[:q]
     @users = User.where("nickname LIKE ? OR mobile LIKE ?", "%#{@q}%", "%#{@q}%").order(created_at: :desc)
     @user_groups = UserGroup.all
-    render 'index'
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.xlsx
+    end
+
   end
 
   def show

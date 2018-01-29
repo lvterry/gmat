@@ -6,8 +6,8 @@
       <th>用户昵称</th>
       <th>注册时间</th>
       <th>手机号</th>
-      <th></th>
-      <th></th>
+      <th>最后模考</th>
+      <th>模考次数</th>
       <th>用户组</th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
     <% users.each do |user| %>
       <tr data-id="<%= user.id %>">
         <td><input type="checkbox"></td>
-        <td><%= user.id %></td>
+        <td><%= link_to user.id,  %></td>
         <td><%= user.nickname %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
         <td><%= user.mobile %></td>

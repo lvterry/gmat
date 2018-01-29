@@ -2,9 +2,9 @@ class Take < ApplicationRecord
   belongs_to :exam
   belongs_to :user
 
-  attr_accessor :verbal_right_data, :verbal_wrong_data, 
+  attr_accessor :verbal_right_data, :verbal_wrong_data,
     :verbal_time_management_data, :quant_time_management_data,
-    :quant_wrong_data, :quant_right_data
+    :quant_wrong_data, :quant_right_data, :accuracy_hash
 
   def verbal_anwser_results
     anwser_results self.exam.verbal_exercises, self.verbal_anwsers
@@ -134,7 +134,16 @@ class Take < ApplicationRecord
     @quant_time_management_data = [avg_time(time_ps), avg_time(time_ds), avg_quant_time]
     @quant_right_data = [right_ps, right_ds, (right_ps + right_ds)]
     @quant_wrong_data = [wrong_ps, wrong_ds, (wrong_ps + wrong_ds)]
+
+    @accuracy_hash = {'语法SC' => right_sc.to_f / (right_sc + wrong_sc).to_f * 100.0,
+                     '逻辑CR' => right_cr.to_f / (right_cr + wrong_cr).to_f * 100.0,
+                     '阅读RC' => right_rc.to_f / (right_rc + wrong_rc).to_f * 100.0,
+                     '数学DS' => right_ds.to_f / (right_ds + wrong_ds).to_f * 100.0,
+                     '数学PS' => right_ps.to_f / (right_ps + wrong_ps).to_f * 100.0}
+
+
   end
+
 
   private
 

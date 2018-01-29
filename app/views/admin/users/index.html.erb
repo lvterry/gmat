@@ -14,10 +14,11 @@
   </div>
 
   <div class="pull-left">
-    <form action="/admin/users/search" method="post">
+    <form action="/admin/users/search" method="get">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <input type="text" name="q" class="form-control" placeholder="搜索手机号、昵称" value="<%= @q %>">
     </form>
+    <%= link_to 'Download as .xlsx', admin_search_users_path(q: params[:q], format: :xlsx) %>
   </div>
 </div>
 

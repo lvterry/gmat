@@ -8,6 +8,11 @@ class Admin::ExamsController < AdminController
     @users = User.joins(:takes).uniq
   end
 
+  def takes
+    @user = User.find(params[:user_id])
+    @takes = @user.takes
+  end
+
   def new
     @exam = Exam.new
   end

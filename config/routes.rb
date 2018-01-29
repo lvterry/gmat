@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     root to: 'courses#index'
 
     get 'users/lonely', to: 'users#lonely', as: 'lonely_users'
-    post 'users/search', to: 'users#search'
+    get 'users/search', to: 'users#search', as: 'search_users'
 
     resources :posts, :tags, :about, :vip,
       :teachers, :attachments, :slides, :meetings,
@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :exams do
       collection do
         get :users
+        get :takes
       end
     end
 

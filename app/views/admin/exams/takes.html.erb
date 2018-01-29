@@ -1,0 +1,31 @@
+<h4>用户 <%= @user.nickname %></h4>
+
+
+<div class="pull-right text-muted" style="margin-top:10px">参加了 <%= @takes.count %> 次模考</div>
+
+<table class="table table-bordered users-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>模考id</th>
+      <th>时间</th>
+      <th>成绩</th>
+      <% Label.where(category: '题型').map(&:name).each do |label| %>
+        <th><%= label.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @takes.each do |take| %>
+      <% take.calculate_data %>
+      <tr data-id="<%= take.id %>">
+        <td><%= take.id %></td>
+        <td><%= take.created_at.to_formatted_s(:date_and_time) %></td>
+        <td><%=  %></td>
+        <% Label.where(category: '题型').map(&:name).each do |label| %>
+          <th><%= take.accuracy_hash[label] %></th>
+        <% end %>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

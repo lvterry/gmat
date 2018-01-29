@@ -83,3 +83,5 @@ gem 'videojs_rails'
 gem 'chinese_pinyin'
 
 gem 'truncate_html'
+
+gem 'axlsx_rails'
