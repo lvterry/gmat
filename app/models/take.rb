@@ -148,6 +148,7 @@ class Take < ApplicationRecord
   private
 
     def time_points_from_time_series
+      return [] if self.time_series.blank?
       times = []
       time_series_arr = self.time_series.split(',')
       time_series_arr.each_with_index do |point, index|
@@ -161,11 +162,15 @@ class Take < ApplicationRecord
     end
 
     def avg_time(times)
-      if times.empty?
+      if times.blank?
         return 0
       else
-        sum = times.reduce(:+)
-        sum.to_f / times.count
+        begin
+          sum = times.reduce(:+)
+          sum.to_f / times.count
+        rescue
+          return 0
+        end    
       end
     end
 

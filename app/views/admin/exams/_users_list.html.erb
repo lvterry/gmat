@@ -15,7 +15,7 @@
     <% users.each do |user| %>
       <tr data-id="<%= user.id %>">
         <td><input type="checkbox"></td>
-        <td><%= link_to user.id,  %></td>
+        <td><%= link_to user.id, takes_admin_exams_path(user_id: user.id)  %></td>
         <td><%= user.nickname %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
         <td><%= user.mobile %></td>

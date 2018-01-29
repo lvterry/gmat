@@ -1,6 +1,9 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Users") do |sheet|
+  sheet.add_row %w(用户ID 用户昵称 性别 注册时间 手机号 用户组)
   @users.each do |user|
-    sheet.add_row [user.id, user.nickname]
+    sheet.add_row [user.id, user.nickname, (user.sex == 1) ? '男' : '女',
+                  user.created_at.to_formatted_s(:date_and_time), user.mobile ,user.user_groups_as_text]
+
   end
 end
