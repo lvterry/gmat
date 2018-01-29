@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :takes
   has_many :exams, through: :takes
 
+  after_create :add_to_PREP_group
+
   def self.find_or_create_from_auth_hash(auth_hash)
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
     user.update(
@@ -66,7 +68,7 @@ class User < ApplicationRecord
 
   def allow_exam?(exam)
     allow_label_ary = Label.find(self.allowed_exam_ids).map(&:name)
-    allow_label_ary.include?(exam.exam_type_label)    
+    allow_label_ary.include?(exam.exam_type_label)
   end
 
   def allowed_exam_ids
@@ -89,6 +91,14 @@ class User < ApplicationRecord
     self.user_groups.map do |group|
       group.name
     end.join(', ')
+  end
+
+  private
+  def add_to_PREP_group
+    if self.provider == "open_wechat"
+      group = UserGroup.find_by_name('PREP')
+      self.user_groups << group if group.present?
+    end
   end
 
 end
