@@ -25,6 +25,7 @@ module ExamsControllerHelper
   end
 
   def next_exercise_url(exam, current_exercise, take)
+    show_break = false
     id = current_exercise.id
     exercise_ids = current_exercise.verbal? ? exam.verbal_exercise_ids : exam.quant_exercise_ids
     idx = exercise_ids.index(current_exercise.id.to_s)
@@ -33,8 +34,10 @@ module ExamsControllerHelper
     else
       if take.subjects == 'V,Q'
         if (take.seq.index('V') > take.seq.index('Q')) and current_exercise.quant?
+          show_break = true
           id = exam.verbal_exercise_ids.first
         elsif (take.seq.index('V') < take.seq.index('Q')) and current_exercise.verbal?
+          show_break = true
           id = exam.quant_exercise_ids.first
         else
           id = -1
@@ -43,7 +46,12 @@ module ExamsControllerHelper
         id = -1
       end
     end
-    "/exams/#{exam.id}/exercises/#{id}"
+
+    if show_break
+      "/exams/#{exam.id}/instructions/14?take_id=#{take.id}"
+    else
+      "/exams/#{exam.id}/exercises/#{id}"
+    end
   end
 
   def current_location(exam, current_exercise)
