@@ -18,7 +18,7 @@
     <% @takes.each do |take| %>
       <% take.calculate_data %>
       <tr data-id="<%= take.id %>">
-        <td><%= take.exam.name %></td>
+        <td style="width: 80px"><%= take.exam.name %></td>
         <td><%= take.created_at.to_formatted_s(:date_and_time) %></td>
         <% Label.where(category: '题型').map(&:name).each do |label| %>
           <th><%= take.accuracy_hash[label].nil? ? "" : "#{take.accuracy_hash[label].round(2)}%" %></th>

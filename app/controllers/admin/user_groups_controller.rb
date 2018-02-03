@@ -2,6 +2,9 @@ class Admin::UserGroupsController < AdminController
 
   def index
     @groups = UserGroup.order(created_at: :desc)
+    @groups = @groups.select do |group|
+      group.is_valid?
+    end
   end
 
   def new
