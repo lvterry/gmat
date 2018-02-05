@@ -15,19 +15,18 @@ $(function(){
   $('#exercise_video_url').on('blur', function(e){
     var input = $(e.currentTarget);
     var videoId = input.val();
+    $('#ployv').remove();
+
     var div = document.createElement('div');
     div.id = 'ployv';
 
-    if (videoId === '') {
-      $('#ployv').remove();
-    } else {
-      input.after(div);
-      player = polyvObject(div).videoPlayer({
-        'width': '500',
-        'height': '373',
-        'vid': videoId
-      });
-    }
+    input.after(div);
+    
+    player = polyvObject(div).videoPlayer({
+      'width': '500',
+      'height': '373',
+      'vid': videoId
+    });
   });
     
     
