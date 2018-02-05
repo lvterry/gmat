@@ -1,5 +1,4 @@
 #= require url-search-params
-#= require video
 
 $ ->
   $('.customer-service').hide()
