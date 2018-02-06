@@ -16,6 +16,16 @@ module ExamsControllerHelper
     "/exams/#{exam.id}/exercises/#{first_exercise_id}"
   end
 
+  def skip_break_url(exam, take)    
+    if take.seq.index('V') > take.seq.index('Q')
+      first_exercise_id = exam.verbal_exercise_ids.first
+    else
+      first_exercise_id = exam.quant_exercise_ids.first
+    end
+
+    "/exams/#{exam.id}/exercises/#{first_exercise_id}"
+  end
+
   def next_instruction_url(exam, page_id, take)
     if page_id.to_i == 13
       skip_instructions_url(exam, take)

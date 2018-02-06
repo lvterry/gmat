@@ -105,4 +105,3 @@ $ ->
   if document.getElementById('clock')
     clock = new Clock(document.getElementById('clock'))
     clock.start()
-

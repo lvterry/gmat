@@ -7,13 +7,16 @@
     <i></i>
     <span><u>E</u>nd Exam</span>
   </a>
-  <a class="btn-next right" href="<%= next_instruction_url(@exam, @page_id, @take) %>">
-    <span><u>N</u>ext</span>
-    <i></i>
-  </a>
-  <a class="btn-skip right" href="javascript:;" data-url="<%= skip_instructions_url(@exam, @take) %>" data-take-id="<%= @take.id %>" data-exam-id="<%= @exam.id %>">
-    <span>Skip</span>
-  </a>
+
+  <% if @page_id != 14 %>
+    <a class="btn-next right" href="<%= next_instruction_url(@exam, @page_id, @take) %>">
+      <span><u>N</u>ext</span>
+      <i></i>
+    </a>
+    <a class="btn-skip right" href="javascript:;" data-url="<%= skip_instructions_url(@exam, @take) %>" data-take-id="<%= @take.id %>" data-exam-id="<%= @exam.id %>">
+      <span>Skip</span>
+    </a>
+  <% end %>
 </div>
 
 <%= render 'exams/end_exam_dialog' %>

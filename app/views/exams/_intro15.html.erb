@@ -1,0 +1,9 @@
+<h1>Optional Break</h1>
+
+
+<div class="clock" id="break-clock" data-take-id="<%= @take.id %>"><i></i>Time cost <span class="minutes">8</span>:<span class="seconds">00</span></div>
+
+<a class="btn-next" id='break-link' href="<%= skip_break_url(@exam, @take) %>">
+  <span><u>S</u>kip</span>
+  <i></i>
+</a>
