@@ -177,8 +177,8 @@ class Take < ApplicationRecord
 
     def anwser_results(exercises, anwsers)
       results = []
-      anwsers = anwsers.split(',')
       unless exercises.nil? || anwsers.nil?
+        anwsers = anwsers.split(',')
         exercises.split(',').each_with_index do |id, index|
           exercise = Exercise.find(id)
           results.push(exercise.anwser == anwsers[index].to_i)
