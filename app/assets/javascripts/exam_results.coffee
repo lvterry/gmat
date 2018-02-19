@@ -133,6 +133,7 @@ $ ->
         data:
           take_id: takeId
           anwser_index: anwserIndex
+          exercise_id: exerciseId
 
   getFirstExercise = ->
     exerciseId = exerciseNumbers[0].getAttribute 'data-ex-id'

@@ -14,7 +14,10 @@ class ExercisesController < ApplicationController
     @user_anwser = nil
     if params[:take_id]
       anwser_index = params[:anwser_index].to_i
-      @user_anwser = Take.find(params[:take_id]).verbal_anwsers.split(',')[anwser_index]
+      take = Take.find(params[:take_id])
+      exercise = Exercise.find(params[:exercise_id])
+      anwsers = exercise.verbal? ? take.verbal_anwsers : take.quant_anwsers
+      @user_anwser = anwsers.split(',')[anwser_index]
     end
 
     respond_to do |format|

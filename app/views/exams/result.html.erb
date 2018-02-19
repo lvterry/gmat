@@ -45,7 +45,7 @@
         <div class="clearfix hidden js-tab" data-tab="math">
           <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
             <% @quant_exercises.each_with_index do |ex, i| %>
-              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, false) %>"><%= i+1 %></a></li>
+              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.quant_anwser_results, false) %>"><%= i+1 %></a></li>
             <% end -%>
           </ol>
         </div>
