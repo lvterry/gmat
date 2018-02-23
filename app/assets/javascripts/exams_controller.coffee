@@ -36,6 +36,9 @@ $ ->
       window.alert '请选择科目'
       return false
 
+  # show hide clock upon click
+  $('.exam-main .header .right').on 'click', (e) ->
+    $(@).find('.to-hide').toggle()
 
   $('.js-next-exercise').on 'click', (e) ->
     e.preventDefault()
