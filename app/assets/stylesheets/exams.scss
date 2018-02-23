@@ -1,20 +1,59 @@
 .exams {
-  min-height: 600px;
+  min-height: 300px;
 
   .container > div {
-    margin-right: 16px;
-    width: 280px;
-    height: 141px;
+    margin-right: 24px;
+    width: 256px;
+    border: 1px solid #ddd;
+    padding: 16px;
+    height: 97px;
+
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+
+    a {
+      font-weight: bold;
+      color: #749D1F;
+
+      &:hover {
+        color: #64881b;
+      }
+    }
   }
 
   .mini-quiz {
     background-color: #e1efff;
 
     h4 {
-      margin: 8px 0;
-      font-size: 22px;
+      margin: 0;
+      font-size: 16px;
       font-weight: bold;
       text-transform: uppercase;
+    }
+  }
+}
+
+.exam-info {
+  font-size: 13px;
+  color: #999;
+  margin-top: 8px;
+}
+
+
+.tabs {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+
+  a {
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    padding: 8px 16px;
+
+    &.active {
+      border-bottom: 3px solid #749D1F;
     }
   }
 }
