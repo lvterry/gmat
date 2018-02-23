@@ -10,10 +10,11 @@ $ ->
   hideModeBar = { displayModeBar: false }
 
   drawTimesChart = (times)->
-    
+
     data =
       x: [1..times.length]
       y: times
+      mode: 'lines+markers'
     layout0 =
       xaxis:
         fixedrange: true
@@ -59,7 +60,7 @@ $ ->
     Plotly.newPlot(timeMgmt, [trace], layout1, hideModeBar)
 
   drawRightWrongChart = (r, w, subjects) ->
-    wrong = 
+    wrong =
       x: w,
       y: subjects
       name: 'Wrong',
@@ -101,7 +102,7 @@ $ ->
 
     Plotly.newPlot(rightWrong, data, layout2, hideModeBar)
 
-  
+
 
   getSubjects = (type) ->
     if type is 'verbal'
