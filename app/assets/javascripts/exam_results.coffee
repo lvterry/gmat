@@ -1,107 +1,80 @@
-#= require plotly-basic.min
+#= require echarts.simple.min
 
 $ ->
-
-  timeAnalysisChart = document.getElementById('time-chart')
-  timeMgmt = document.getElementById('subsection-time-mgmt')
-  rightWrong = document.getElementById('subsection-right-wrong')
-  #subjects = ['RC', 'CR', 'SC', 'Overall']
-
-  hideModeBar = { displayModeBar: false }
-
   drawTimesChart = (times)->
+    myChart = echarts.init(document.getElementById('time-chart'))
+    option = 
+      xAxis:
+        type: 'category'
+        data: [1..times.length]
+      yAxis:
+        type: 'value'
+      series: [{
+          data: times
+          type: 'line'
+          lineStyle:
+            color: '#00B9FC'
+            width: 2
+          itemStyle:
+            color: '#00B9FC'
+            borderWidth: 2
+          symbolSize: 8
 
-    data =
-      x: [1..times.length]
-      y: times
-      mode: 'lines+markers'
-    layout0 =
-      xaxis:
-        fixedrange: true
-      yaxis:
-        autorange: true
-        rangemode: 'tozero'
-      autosize: false
-      height: 350
-      width: 1090
-      margin:
-        l: 50
-        r: 50
-        b: 50
-        t: 20
-        pad: 4
-    trace = [data]
-    Plotly.newPlot(timeAnalysisChart, trace, layout0, hideModeBar)
+      }]
+    myChart.setOption(option)
 
   drawTimeMgmtChart = (data, subjects) ->
-    trace =
-      y: subjects
-      x: data
-      type: 'bar'
-      orientation: 'h'
-      marker:
-        color: '#3366cc'
-
-    layout1 =
-      xaxis:
-        fixedrange: true
-      yaxis:
-        fixedrange: true
-      autosize: false
-      height: 300
-      width: 500
-      margin:
-        l: 50
-        r: 50
-        b: 100
-        t: 20
-        pad: 4
-
-    Plotly.newPlot(timeMgmt, [trace], layout1, hideModeBar)
+    myChart = echarts.init(document.getElementById('subsection-time-mgmt'))
+    option = 
+      xAxis:
+        type: 'value'
+      yAxis:
+        type: 'category'
+        data: subjects
+      series: [{
+        data: data
+        type: 'bar'
+        itemStyle:
+          color: '#00B9FC'
+        label:
+          normal:
+            show: true
+            position: 'insideRight'
+      }]
+    myChart.setOption(option)
 
   drawRightWrongChart = (r, w, subjects) ->
-    wrong =
-      x: w,
-      y: subjects
-      name: 'Wrong',
-      orientation: 'h',
-      marker: {
-        color: '#dd4477',
-        width: 1
-      },
-      type: 'bar'
-
-    right =
-      x: r,
-      y: subjects
-      name: 'Right',
-      orientation: 'h',
-      marker: {
-        color: '#66aa00',
-        width: 1
-      },
-      type: 'bar'
-
-    data = [wrong, right]
-
-    layout2 =
-      xaxis:
-        fixedrange: true
-      yaxis:
-        fixedrange: true
-      autosize: false
-      height: 300
-      width: 560
-      margin:
-        l: 50
-        r: 50
-        b: 100
-        t: 20
-        pad: 4
-      barmode: 'stack'
-
-    Plotly.newPlot(rightWrong, data, layout2, hideModeBar)
-
+    myChart = echarts.init(document.getElementById('subsection-right-wrong'))
+    option = 
+      xAxis:
+        type: 'value'
+      yAxis:
+        type: 'category'
+        data: subjects
+      series: [{
+        name: 'Wrong'
+        type: 'bar'
+        data: w
+        stack: 'total'
+        label:
+          normal:
+            show: true
+            position: 'insideRight'
+        itemStyle:
+          color: '#E90074'
+      }, {
+        name: 'Right'
+        type: 'bar'
+        data: r
+        stack: 'total'
+        label:
+          normal:
+            show: true
+            position: 'insideRight'
+        itemStyle:
+          color: '#00B9FC'
+      }]
+    myChart.setOption(option)
 
 
   getSubjects = (type) ->
