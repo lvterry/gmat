@@ -50,6 +50,11 @@ class ExamsController < ApplicationController
     end
 
     @exercise = @verbal_exercises.first
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @take.calculate_in_group_of_10.to_json}
+    end
   end
 
   private

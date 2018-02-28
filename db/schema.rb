@@ -19,15 +19,15 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "title"
     t.text     "body"
     t.string   "img"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",      precision: 6, null: false
+    t.datetime "updated_at",      precision: 6, null: false
   end
 
   create_table "attachments", force: :cascade do |t|
@@ -37,25 +37,25 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "attachment_type"
     t.string   "url"
     t.integer  "post_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",      precision: 6, null: false
+    t.datetime "updated_at",      precision: 6, null: false
   end
 
   create_table "courses", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "img_url"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_time",  precision: 6
+    t.datetime "end_time",    precision: 6
     t.integer  "subject"
     t.integer  "fee"
     t.string   "link"
     t.string   "video_id"
     t.integer  "seq"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  precision: 6,                 null: false
+    t.datetime "updated_at",  precision: 6,                 null: false
     t.integer  "teacher_id"
-    t.boolean  "is_hidden",   default: false
+    t.boolean  "is_hidden",                 default: false
   end
 
   create_table "exams", force: :cascade do |t|
@@ -63,23 +63,23 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.integer  "exam_type"
     t.string   "verbal_exercises"
     t.integer  "estimated_time"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",       precision: 6, null: false
+    t.datetime "updated_at",       precision: 6, null: false
     t.string   "quant_exercises"
   end
 
   create_table "exercises", force: :cascade do |t|
     t.text     "title"
-    t.text     "choices",        default: [],                 array: true
+    t.text     "choices",                      default: [],                 array: true
     t.integer  "anwser"
-    t.text     "guides",         default: [],                 array: true
+    t.text     "guides",                       default: [],                 array: true
     t.string   "video_url"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "exclusive",      default: true
+    t.datetime "created_at",     precision: 6,                 null: false
+    t.datetime "updated_at",     precision: 6,                 null: false
+    t.boolean  "exclusive",                    default: true
     t.text     "math_guide"
-    t.boolean  "hide_from_view", default: false
-    t.integer  "seq",            default: 0
+    t.boolean  "hide_from_view",               default: false
+    t.integer  "seq",                          default: 0
     t.text     "passage"
   end
 
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.integer "exercise_id"
     t.integer "label_id"
     t.index ["exercise_id"], name: "index_exercises_labels_on_exercise_id", using: :btree
-    t.index ["label_id"], name: "index_exercises_labels_on_labels_id", using: :btree
+    t.index ["label_id"], name: "index_exercises_labels_on_label_id", using: :btree
   end
 
   create_table "flows", force: :cascade do |t|
@@ -95,16 +95,16 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "title"
     t.text     "body"
     t.string   "img"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["vip_id"], name: "index_flows_on_vip_id", using: :btree
   end
 
   create_table "labels", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "labels_users", id: false, force: :cascade do |t|
@@ -115,17 +115,17 @@ ActiveRecord::Schema.define(version: 20180109160230) do
   end
 
   create_table "meeting_blocks", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_time", precision: 6
+    t.datetime "end_time",   precision: 6
     t.integer  "meeting_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "meetings", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string   "link"
     t.integer  "category"
   end
@@ -133,9 +133,9 @@ ActiveRecord::Schema.define(version: 20180109160230) do
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_group_id"
     t.integer  "label_id"
-    t.integer  "permission_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "permission_type",               default: 1
+    t.datetime "created_at",      precision: 6,             null: false
+    t.datetime "updated_at",      precision: 6,             null: false
     t.index ["label_id"], name: "index_permissions_on_label_id", using: :btree
     t.index ["user_group_id"], name: "index_permissions_on_user_group_id", using: :btree
   end
@@ -144,9 +144,9 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "title"
     t.text     "body"
     t.string   "tags"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "top",        default: 0
+    t.datetime "created_at", precision: 6,             null: false
+    t.datetime "updated_at", precision: 6,             null: false
+    t.integer  "top",                      default: 0
     t.text     "summary"
   end
 
@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.integer  "vip_id"
     t.string   "q"
     t.text     "a"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["vip_id"], name: "index_questions_on_vip_id", using: :btree
   end
 
@@ -163,26 +163,26 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "img_url"
     t.string   "link"
     t.string   "bg_color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "takes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "exam_id"
-    t.datetime "take_date"
+    t.datetime "take_date",          precision: 6
     t.string   "subjects"
     t.string   "seq"
     t.string   "verbal_anwsers"
     t.integer  "time_used"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",         precision: 6, null: false
+    t.datetime "updated_at",         precision: 6, null: false
     t.string   "verbal_time_series"
     t.string   "quant_anwsers"
     t.string   "quant_time_series"
@@ -194,8 +194,8 @@ ActiveRecord::Schema.define(version: 20180109160230) do
   create_table "teachers", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",  precision: 6, null: false
+    t.datetime "updated_at",  precision: 6, null: false
     t.string   "avatar"
     t.string   "long_name"
   end
@@ -204,15 +204,15 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.integer  "user_group_id"
     t.string   "name"
     t.string   "mobile"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",    precision: 6, null: false
+    t.datetime "updated_at",    precision: 6, null: false
   end
 
   create_table "user_groups", force: :cascade do |t|
     t.string   "name"
-    t.datetime "valid_to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "valid_to",   precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_groups_users", force: :cascade do |t|
@@ -232,8 +232,8 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "country"
     t.string   "headimgurl"
     t.string   "unionid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string   "mobile"
     t.string   "provider"
     t.string   "token"
@@ -251,8 +251,8 @@ ActiveRecord::Schema.define(version: 20180109160230) do
     t.string   "f6"
     t.string   "f7"
     t.string   "f8"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
