@@ -11,15 +11,53 @@
           <li><a href="#math">Math</a></li>
         </ul>
       <% end -%>
-      <div id="time-chart" style="width: 1190px; height: 350px;"></div>
-      <div>
+      <div id="time-chart" style="width: 1100px; height: 300px;"></div>
+      <div class="clearfix">
         <div class="left" style="width: 50%;">
           <h3>单项时间</h3>
-          <div id="subsection-time-mgmt" style="height: 350px;"></div>
+          <div id="subsection-time-mgmt" style="height: 260px;"></div>
         </div>
         <div class="left" style="width: 50%">
           <h3>单项正确率</h3>
-          <div id="subsection-right-wrong" style="height: 350px;"></div>
+          <div id="subsection-right-wrong" style="height: 260px;"></div>
+        </div>
+      </div>
+      <div class="percent-correct-diagram">
+        <div class="title">percent correct</div>
+        <div class="left" style="width: 30%; padding: 16px;">
+          PERCENTAGE OF QUESTIONS
+          <br/>ANWSERED
+          <br/>CORRECT/INCORRECT<br/><br/>
+          <i class="correct"></i>correct<br/>
+          <i class="incorrect"></i>incorrect
+        </div>
+        <div class="right clearfix" style="width: 70%; padding-top: 16px;">
+          <div class="section">
+            <div class="black-bar">first</div>
+            <div class="bar-correct" style="height: 50px; line-height: 50px;">25%</div>
+            <div class="bar-incorrect" style="height: 150px; line-height: 150px;">75%</div>
+          </div>
+          <div class="section">
+            <div class="black-bar">second</div>
+            <div class="bar-correct" style="height: 142px; line-height: 142px;">71%</div>
+            <div class="bar-incorrect" style="height: 58px; line-height: 58px;">29%</div>
+          </div>
+          <div class="section">
+            <div class="black-bar">third</div>
+            <div class="bar-correct" style="height: 114px; line-height: 114px;">57%</div>
+            <div class="bar-incorrect" style="height: 86px; line-height: 86px;">43%</div>
+          </div>
+          <div class="section">
+            <div class="black-bar">last</div>
+            <div class="bar-correct" style="height: 142px; line-height: 142px;">71%</div>
+            <div class="bar-incorrect" style="height: 58px; line-height: 58px;">29%</div>
+          </div>
+          <div class="section">
+            <div class="black-bar">&nbsp;</div>
+          </div>
+        </div>
+        <div class="black-bar">
+          <span>&nbsp;&nbsp;question number</span>
         </div>
       </div>
     </div>

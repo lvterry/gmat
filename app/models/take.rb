@@ -106,7 +106,7 @@ class Take < ApplicationRecord
 
     #debug
 
-    @verbal_time_management_data = [avg_time(time_rc), avg_time(time_cr), avg_time(time_sc), avg_verbal_time]
+    @verbal_time_management_data = [avg_time(time_rc).round(2), avg_time(time_cr).round(2), avg_time(time_sc).round(2), avg_verbal_time.round(2)]
     @verbal_right_data = [right_rc, right_cr, right_sc, (right_rc + right_cr + right_sc)]
     @verbal_wrong_data = [wrong_rc, wrong_cr, wrong_sc, (wrong_rc + wrong_cr + wrong_sc)]
 
@@ -131,7 +131,7 @@ class Take < ApplicationRecord
       end
     end
 
-    @quant_time_management_data = [avg_time(time_ps), avg_time(time_ds), avg_quant_time]
+    @quant_time_management_data = [avg_time(time_ps).round(2), avg_time(time_ds).round(2), avg_quant_time.round(2)]
     @quant_right_data = [right_ps, right_ds, (right_ps + right_ds)]
     @quant_wrong_data = [wrong_ps, wrong_ds, (wrong_ps + wrong_ds)]
 

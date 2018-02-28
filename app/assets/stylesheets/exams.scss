@@ -57,3 +57,61 @@
     }
   }
 }
+
+.percent-correct-diagram {
+  text-transform: uppercase;
+
+  .title {
+    font-size: 20px;
+    color: white;
+    background: #00B9FC;
+    padding: 8px 16px;
+  }
+
+  i {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: text-bottom;
+
+    &.correct {
+      background-color: #00B9FC;
+    }
+
+    &.incorrect {
+      background-color: #E90074;
+    }
+  }
+
+  .black-bar {
+    background-color: #333;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 0;
+    clear: both;
+  }
+
+  .section {
+    text-align: center;
+    width: 20%;
+    float: left;
+
+    [class^=bar] {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 1px;
+    }
+
+    .bar-correct {
+      background-color: #00B9FC;
+    }
+
+    .bar-incorrect {
+      background-color: #E90074;
+    }
+  }
+
+}

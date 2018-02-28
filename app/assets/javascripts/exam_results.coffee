@@ -1,9 +1,13 @@
-#= require echarts.simple.min
+#= require echarts.common.min
 
 $ ->
   drawTimesChart = (times)->
     myChart = echarts.init(document.getElementById('time-chart'))
-    option = 
+    option =
+      grid:
+        top: 30
+        left: 30
+        right: 20
       xAxis:
         type: 'category'
         data: [1..times.length]
@@ -25,7 +29,9 @@ $ ->
 
   drawTimeMgmtChart = (data, subjects) ->
     myChart = echarts.init(document.getElementById('subsection-time-mgmt'))
-    option = 
+    option =
+      grid:
+        top: 10
       xAxis:
         type: 'value'
       yAxis:
@@ -45,7 +51,13 @@ $ ->
 
   drawRightWrongChart = (r, w, subjects) ->
     myChart = echarts.init(document.getElementById('subsection-right-wrong'))
-    option = 
+    option =
+      tooltip:
+        trigger: 'axis'
+        axisPointer:
+          type: 'shadow'
+      grid:
+        top: 10
       xAxis:
         type: 'value'
       yAxis:
