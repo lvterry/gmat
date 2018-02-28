@@ -180,7 +180,16 @@ drawDiagram = (data) ->
     sec.className = 'section'
     blackBar = document.createElement('div')
     blackBar.className = 'black-bar'
-    blackBar.innerText = 'first'
+    if i is 0
+      blackBar.innerText = 'first'
+    else if i is data.length - 1
+      blackBar.innerText = 'last'
+    else if i is 1
+      blackBar.innerText = 'second'
+    else if i is 2
+      blackBar.innerText = 'third'
+    else if i is 3
+      blackBar.innerText = 'fourth'
     barCorrect = document.createElement('div')
     barCorrect.className = 'bar-correct'
     barCorrect.innerText = "#{section.correct}%"
