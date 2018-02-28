@@ -51,6 +51,8 @@ class ExamsController < ApplicationController
 
     @exercise = @verbal_exercises.first
 
+    exercises_count =
+
     respond_to do |format|
       format.html
       format.json {render json: @take.calculate_in_group_of_10.to_json}

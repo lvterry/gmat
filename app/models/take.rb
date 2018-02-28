@@ -148,14 +148,14 @@ class Take < ApplicationRecord
     hash = {verbal: [], quant: []}
     self.verbal_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
       false_percent = group.count(false).to_f / 10.to_f * 100.0
-      hash[:verbal] << {'false' => false_percent, 'true' => 100.0 - false_percent}
+      hash[:verbal] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
     end
 
     self.quant_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
       false_percent = group.count(false).to_f / 10.to_f * 100.0
-      hash[:quant] << {'false' => false_percent, 'true' => 100.0 - false_percent}
+      hash[:quant] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
     end
-    hash
+    hash.merge(total: self.verbal_anwser_results.count + self.quant_anwser_results.count)
   end
 
 
