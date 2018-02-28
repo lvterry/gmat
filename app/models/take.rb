@@ -144,6 +144,20 @@ class Take < ApplicationRecord
 
   end
 
+  def calculate_in_group_of_10
+    hash = {verbal: [], quant: []}
+    self.verbal_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
+      false_percent = group.count(false).to_f / 10.to_f * 100.0
+      hash[:verbal] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
+    end
+
+    self.quant_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
+      false_percent = group.count(false).to_f / 10.to_f * 100.0
+      hash[:quant] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
+    end
+    hash.merge(total: self.verbal_anwser_results.count + self.quant_anwser_results.count)
+  end
+
 
   private
 
@@ -170,7 +184,7 @@ class Take < ApplicationRecord
           sum.to_f / times.count
         rescue
           return 0
-        end    
+        end
       end
     end
 
