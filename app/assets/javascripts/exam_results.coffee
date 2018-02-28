@@ -1,5 +1,7 @@
 #= require echarts.common.min
 
+percentCorrectData = null
+
 $ ->
   drawTimesChart = (times)->
     myChart = echarts.init(document.getElementById('time-chart'))
@@ -148,10 +150,49 @@ $ ->
         drawTimesChart verbalTimes
         drawTimeMgmtChart verbalTimeManagementData, getSubjects('verbal')
         drawRightWrongChart verbalRightData, verbalWrongData, getSubjects('verbal')
+        drawDiagram percentCorrectData.verbal
       else
         drawTimesChart quantTimes
         drawTimeMgmtChart quantTimeManagementData, getSubjects('quant')
         drawRightWrongChart quantRightData, quantWrongData, getSubjects('quant')
+        drawDiagram percentCorrectData.quant
+
+  # percent correct
+  getPercentData(takeId)
+
+getPercentData = (takeId) ->
+  $.get
+    url: "#{window.location.pathname}.json"
+    dataType: 'json'
+    data:
+      take_id: takeId
+    success: (data) ->
+      percentCorrectData = data
+      drawDiagram data.verbal
+
+drawDiagram = (data) ->
+  diagramContainer = $('.percent-correct-diagram .right')
+  diagramContainer.empty()
+  document = window.document
+  for section, i in data
+    console.log section, i
+    sec = document.createElement('div')
+    sec.className = 'section'
+    blackBar = document.createElement('div')
+    blackBar.className = 'black-bar'
+    blackBar.innerText = 'first'
+    barCorrect = document.createElement('div')
+    barCorrect.className = 'bar-correct'
+    barCorrect.innerText = "#{section.correct}%"
+    barCorrect.style = "height: #{section.correct * 2}px; line-height: #{section.correct * 2}px;"
+    barIncorrect = document.createElement('div')
+    barIncorrect.className = 'bar-incorrect'
+    barIncorrect.innerText = "#{section.incorrect}%"
+    barIncorrect.style = "height: #{section.incorrect * 2}px; line-height: #{section.incorrect * 2}px;"
+    sec.appendChild blackBar
+    sec.appendChild barCorrect
+    sec.appendChild barIncorrect
+    diagramContainer.prepend sec
 
 
 
