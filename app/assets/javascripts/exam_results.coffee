@@ -201,7 +201,15 @@ drawDiagram = (data) ->
     sec.appendChild blackBar
     sec.appendChild barCorrect
     sec.appendChild barIncorrect
-    diagramContainer.prepend sec
+    diagramContainer.append sec
+  if data.length < 5
+    emptySec = document.createElement('div')
+    emptySec.className = 'section'
+    blackBar = document.createElement('div')
+    blackBar.className = 'black-bar'
+    blackBar.innerHTML = '&nbsp;'
+    emptySec.appendChild blackBar
+    diagramContainer.append emptySec
 
 
 
