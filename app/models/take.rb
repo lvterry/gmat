@@ -133,8 +133,9 @@ class Take < ApplicationRecord
       end
 
       @quant_time_management_data = [avg_time(time_ps).round(2), avg_time(time_ds).round(2), avg_quant_time.round(2)]
-      @quant_right_data = [right_ps.to_f / (right_ps + wrong_ps), right_ds.to_f / (right_ds + wrong_ds), (right_ps + right_ds) / exam.quant_exercise_ids.count]
-      @quant_wrong_data = [wrong_ps.to_f / (right_ps + wrong_ps), wrong_ds.to_f / (right_ds + wrong_ds), (wrong_ps + wrong_ds) / exam.quant_exercise_ids.count]
+      @quant_right_data = [right_ps.to_f / (right_ps + wrong_ps), right_ds.to_f / (right_ds + wrong_ds), (right_ps + right_ds).to_f / exam.quant_exercise_ids.count]
+      @quant_wrong_data = [wrong_ps.to_f / (right_ps + wrong_ps), wrong_ds.to_f / (right_ds + wrong_ds), (wrong_ps + wrong_ds).to_f / exam.quant_exercise_ids.count]
+
     end
 
     @accuracy_hash = {'语法SC' => right_sc.to_f / (right_sc + wrong_sc).to_f * 100.0,
