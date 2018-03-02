@@ -107,33 +107,35 @@ class Take < ApplicationRecord
     #debug
 
     @verbal_time_management_data = [avg_time(time_rc).round(2), avg_time(time_cr).round(2), avg_time(time_sc).round(2), avg_verbal_time.round(2)]
-    @verbal_right_data = [right_rc, right_cr, right_sc, (right_rc + right_cr + right_sc)]
-    @verbal_wrong_data = [wrong_rc, wrong_cr, wrong_sc, (wrong_rc + wrong_cr + wrong_sc)]
+    @verbal_right_data = [right_rc.to_f / (right_rc + wrong_rc), right_cr.to_f / (right_cr + wrong_cr), right_sc.to_f / (right_sc + wrong_sc), (right_rc + right_cr + right_sc).to_f / exam.verbal_exercise_ids.count]
+    @verbal_wrong_data = [wrong_rc.to_f / (right_rc + wrong_rc), wrong_cr.to_f / (right_cr + wrong_cr), wrong_sc.to_f / (right_sc + wrong_sc), (wrong_rc + wrong_cr + wrong_sc).to_f / exam.verbal_exercise_ids.count]
 
-    exam.quant_exercise_ids.each_with_index do |id, index|
-      e = Exercise.find id
-      case e.labels.where(category: '题型').first.name
-      when '数学PS'
-        time_ps.push quant_times[index]
-        if verbal_anwser_results[index]
-          right_ps += 1
+    if exam.quant_exercise_ids.count > 0
+      exam.quant_exercise_ids.each_with_index do |id, index|
+        e = Exercise.find id
+        case e.labels.where(category: '题型').first.name
+        when '数学PS'
+          time_ps.push quant_times[index]
+          if verbal_anwser_results[index]
+            right_ps += 1
+          else
+            wrong_ps += 1
+          end
+        when '数学DS'
+          time_ds.push quant_times[index]
+          if verbal_anwser_results[index]
+            right_ds += 1
+          else
+            wrong_ds += 1
+          end
         else
-          wrong_ps += 1
         end
-      when '数学DS'
-        time_ds.push quant_times[index]
-        if verbal_anwser_results[index]
-          right_ds += 1
-        else
-          wrong_ds += 1
-        end
-      else
       end
-    end
 
-    @quant_time_management_data = [avg_time(time_ps).round(2), avg_time(time_ds).round(2), avg_quant_time.round(2)]
-    @quant_right_data = [right_ps, right_ds, (right_ps + right_ds)]
-    @quant_wrong_data = [wrong_ps, wrong_ds, (wrong_ps + wrong_ds)]
+      @quant_time_management_data = [avg_time(time_ps).round(2), avg_time(time_ds).round(2), avg_quant_time.round(2)]
+      @quant_right_data = [right_ps.to_f / (right_ps + wrong_ps), right_ds.to_f / (right_ds + wrong_ds), (right_ps + right_ds) / exam.quant_exercise_ids.count]
+      @quant_wrong_data = [wrong_ps.to_f / (right_ps + wrong_ps), wrong_ds.to_f / (right_ds + wrong_ds), (wrong_ps + wrong_ds) / exam.quant_exercise_ids.count]
+    end
 
     @accuracy_hash = {'语法SC' => right_sc.to_f / (right_sc + wrong_sc).to_f * 100.0,
                      '逻辑CR' => right_cr.to_f / (right_cr + wrong_cr).to_f * 100.0,

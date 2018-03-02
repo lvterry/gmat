@@ -72,6 +72,7 @@ $ ->
         stack: 'total'
         label:
           normal:
+            formatter: (params) -> Math.ceil(params.value * 100) + '%'
             show: true
             position: 'insideRight'
         itemStyle:
@@ -83,6 +84,7 @@ $ ->
         stack: 'total'
         label:
           normal:
+            formatter: (params) -> Math.floor(params.value * 100) + '%'
             show: true
             position: 'insideRight'
         itemStyle:
