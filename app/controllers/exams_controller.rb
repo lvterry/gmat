@@ -5,7 +5,8 @@ class ExamsController < ApplicationController
 
 
   def index
-    @exams = Exam.all
+    @exams_gwd = Exam.where(exam_type: 1)
+    @exams_770 = Exam.where(exam_type: 2)
   end
 
   def show

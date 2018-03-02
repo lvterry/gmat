@@ -7,37 +7,71 @@
         <a href="#gwd" class="active">GWD-TN-24系列</a>
         <a href="#770">770系列</a>
       </div>
-      <p class="text-muted">GWD-TN-24 是基于GWD31套的进阶版,并剔除了重复的题目。其中最后三套的题目只有阅读/逻辑是新的，语法题目大部分来自Prep1 (SC题目不够了)。因此不用把22/23/24这三套留到最后模考。前面1-13的套题目会相对陈旧，14-21会相对新一点。</p>
-      <div class="exams clearfix mb2">
-        <div class="container">
-          <div class="left bg-white p2 mt2 mb2 clearfix mini-quiz">
-            <h4><a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">The GMAT mini quiz</a></h4>
-            <a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">
-              <img src="http://7xtg0z.com2.z0.glb.clouddn.com/verbal.png" width="40">
-              <img src="http://7xtg0z.com2.z0.glb.clouddn.com/quant.png" width="40">
-            </a>
-          </div>
-          <% @exams.each do |exam| %>
-            <div class="left bg-white p2 mt2 mb2 clearfix">
-              <% if current_user %>
-                <%= link_to exam.name, exam_path(exam) %>
-              <% else %>
-                <%= link_to exam.name, '#unauthorized' %>
-              <% end -%>
-              <div class="exam-info">
-                <div>练习人数: <%= exam.user_count %></div>
-                <div>
-                  <span>平均错题数: </span>
-                  <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
-                  <% if exam.exam_type_label == '770' %>
-                    <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
-                  <% end -%>
+
+      <div data-exam-type="gwd" data-behavior="tab">
+
+        <p class="text-muted">GWD-TN-24 是基于GWD31套的进阶版,并剔除了重复的题目。其中最后三套的题目只有阅读/逻辑是新的，语法题目大部分来自Prep1 (SC题目不够了)。因此不用把22/23/24这三套留到最后模考。前面1-13的套题目会相对陈旧，14-21会相对新一点。</p>
+        <div class="exams clearfix mb2">
+          <div class="container">
+            <div class="left bg-white p2 mt2 mb2 clearfix mini-quiz">
+              <h4><a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">The GMAT mini quiz</a></h4>
+              <a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">
+                <img src="http://7xtg0z.com2.z0.glb.clouddn.com/verbal.png" width="40">
+                <img src="http://7xtg0z.com2.z0.glb.clouddn.com/quant.png" width="40">
+              </a>
+            </div>
+            <% @exams_gwd.each do |exam| %>
+              <div class="left bg-white p2 mt2 mb2 clearfix">
+                <% if current_user %>
+                  <%= link_to exam.name, exam_path(exam) %>
+                <% else %>
+                  <%= link_to exam.name, '#unauthorized' %>
+                <% end -%>
+                <div class="exam-info">
+                  <div>练习人数: <%= exam.user_count %></div>
+                  <div>
+                    <span>平均错题数: </span>
+                    <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
+                    <% if exam.exam_type_label == '770' %>
+                      <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
+                    <% end -%>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end -%>
+            <% end -%>
+          </div>
+        </div>
+
+      </div>
+
+      <div data-exam-type="770" data-behavior="tab" class="hidden">
+        <p class="text-muted">770模考系列是基于官方OG，manhattan 等教材以及770自身教研做出的新版模考，结合对考试趋势和机经的把握，给大家还原一个除了GWD之外的全新模考，以匹配当下的实战考试。</p>
+        <div class="exams clearfix mb2">
+          <div class="container">
+            <% @exams_770.each do |exam| %>
+              <div class="left bg-white p2 mt2 mb2 clearfix">
+                <% if current_user %>
+                  <%= link_to exam.name, exam_path(exam) %>
+                <% else %>
+                  <%= link_to exam.name, '#unauthorized' %>
+                <% end -%>
+                <div class="exam-info">
+                  <div>练习人数: <%= exam.user_count %></div>
+                  <div>
+                    <span>平均错题数: </span>
+                    <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
+                    <% if exam.exam_type_label == '770' %>
+                      <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
+                    <% end -%>
+                  </div>
+                </div>
+              </div>
+            <% end -%>
+          </div>
         </div>
       </div>
+
+
     </div>
     <div style="width: 280px; float: right; margin-top: 24px; padding: 24px 32px;">
     </div>
@@ -50,5 +84,14 @@
   <% end %>
   $('[href="#unauthorized"]').on('click', function(e){
     layer.msg('您必须先登录才能查看模考内容');
+  });
+  $('.tabs a').on('click', function(e){
+    if ($(this).hasClass('active')) { return; }
+    $('.tabs a').removeClass('active');
+    $(this).addClass('active');
+    var tabs = $('[data-behavior="tab"]');
+    var tabName = $(this).attr('href').replace('#','');
+    tabs.hide();
+    tabs.filter('[data-exam-type="' + tabName+ '"]').show();
   });
 </script>
