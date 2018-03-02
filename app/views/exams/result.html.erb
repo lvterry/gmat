@@ -50,17 +50,32 @@
         </ul>
       <% end -%>
       <div class="clearfix js-tab" data-tab="verbal">
+        <div class="">
+          <label><input type="radio" name="range" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
+          <label><input type="radio" name="range" value="sc"> 只看SC  &nbsp;&nbsp;</label>
+          <label><input type="radio" name="range" value="cr"> 只看CR  &nbsp;&nbsp;</label>
+          <label><input type="radio" name="range" value="rc"> 只看RC  &nbsp;&nbsp;</label>
+          <label><input type="radio" name="range" value="wrong"> 只看错题 &nbsp;&nbsp;</label>
+          <label><input type="radio" name="range" value="longtime"> 思考时间过长的题目</label>
+        </div>
         <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
           <% @verbal_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, true) %>"><%= i+1 %></a></li>
+            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" data-longtime="<%= @take.longtime_exercise?(ex) %>" data-label="<%= ex.subject_label%>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, true) %>"><%= i+1 %></a></li>
           <% end -%>
         </ol>
       </div>
       <% if @exam.exam_type_label == '770' %>
         <div class="clearfix hidden js-tab" data-tab="math">
+          <div class="">
+            <label><input type="radio" name="range2" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range2" value="ps"> 只看PS  &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range2" value="ds"> 只看DS  &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range2" value="wrong"> 只看错题 &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range2" value="longtime"> 思考时间过长的题目</label>
+          </div>
           <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
             <% @quant_exercises.each_with_index do |ex, i| %>
-              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" class="<%= exercise_number_css_class(i, @take.quant_anwser_results, false) %>"><%= i+1 %></a></li>
+              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" data-longtime="<%= @take.longtime_exercise?(ex) %>" data-label="<%= ex.subject_label%>" class="<%= exercise_number_css_class(i, @take.quant_anwser_results, false) %>"><%= i+1 %></a></li>
             <% end -%>
           </ol>
         </div>

@@ -212,4 +212,22 @@ drawDiagram = (data) ->
     diagramContainer.append emptySec
 
 
+  $('.js-tab input[type=radio]').on 'click', (e) ->
+    $(this).parents('.js-tab').find('.exercise-numbers li a').hide()
 
+    if $(this).val() == 'all'
+      $('.exercise-numbers li a').show()
+    else if $(this).val() == 'sc'
+      $(".exercise-numbers li a[data-label='语法SC']").show()
+    else if $(this).val() == 'cr'
+      $(".exercise-numbers li a[data-label='逻辑CR']").show()
+    else if $(this).val() == 'rc'
+      $(".exercise-numbers li a[data-label='阅读RC']").show()
+    else if $(this).val() == 'ps'
+      $(".exercise-numbers li a[data-label='数学PS']").show()
+    else if $(this).val() == 'ds'
+      $(".exercise-numbers li a[data-label='数学DS']").show()
+    else if $(this).val() == 'wrong'
+      $(".exercise-numbers li a.wrong").show()
+    else if $(this).val() == 'longtime'
+      $(".exercise-numbers li a[data-longtime='true']").show()

@@ -24,6 +24,10 @@ class Exercise < ApplicationRecord
     ['数学PS','数学DS'].include? self.labels.find_by_category('题型').name
   end
 
+  def subject_label
+    Label.find(self.subjects).first.try(:name)
+  end
+
   def subjects
     self.label_ids & Label.subject_ids
   end

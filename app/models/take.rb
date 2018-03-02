@@ -146,16 +146,40 @@ class Take < ApplicationRecord
 
   def calculate_in_group_of_10
     hash = {verbal: [], quant: []}
-    self.verbal_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
+
+    verbal_groups = self.verbal_anwser_results.in_groups_of(10, false)
+    if verbal_groups.size > 1 && verbal_groups.last.size < 5
+      verbal_groups[-2] = verbal_groups[-2] + verbal_groups[-1]
+      verbal_groups.pop
+    end
+
+    quant_groups = self.quant_anwser_results.in_groups_of(10, false)
+    if quant_groups.size > 1 && quant_groups.last.size < 5
+      quant_groups[-2] = quant_groups[-2] + quant_groups[-1]
+      quant_groups.pop
+    end
+
+    verbal_groups.each_with_index do |group, index|
       false_percent = group.count(false).to_f / 10.to_f * 100.0
       hash[:verbal] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
     end
 
-    self.quant_anwser_results.in_groups_of(10, false).each_with_index do |group, index|
+    quant_groups.each_with_index do |group, index|
       false_percent = group.count(false).to_f / 10.to_f * 100.0
       hash[:quant] << {'incorrect' => false_percent, 'correct' => 100.0 - false_percent, 'count' => group.size}
     end
     hash.merge(total: self.verbal_anwser_results.count + self.quant_anwser_results.count)
+  end
+
+  def longtime_exercise?(exercise)
+    if exercise.verbal?
+      index = self.exam.verbal_exercise_ids.index(exercise.id.to_s)
+      self.verbal_times[index] > 180
+    else
+      index = self.exam.quant_exercise_ids.index(exercise.id.to_s)
+      self.quant_times[index] > 180
+    end
+
   end
 
 
