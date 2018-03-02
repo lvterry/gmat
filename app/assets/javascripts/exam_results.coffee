@@ -177,7 +177,6 @@ drawDiagram = (data) ->
   diagramContainer.empty()
   document = window.document
   for section, i in data
-    console.log section, i
     sec = document.createElement('div')
     sec.className = 'section'
     blackBar = document.createElement('div')

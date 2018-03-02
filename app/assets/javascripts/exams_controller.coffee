@@ -99,7 +99,6 @@ $ ->
     if btn.find('u').text() is "P"
       btn.html '<span><u>R</u>esume Exam</span>'
     else
-      console.log btn.find('u').text()
       btn.html '<span><u>P</u>ause Exam</span>'
     $('.pause-exam-content').toggle()
     $('.exercise-content').toggle()
