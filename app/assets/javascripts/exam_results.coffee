@@ -19,6 +19,9 @@ $ ->
         top: 30
         left: 30
         right: 20
+      tooltip:
+        trigger: 'axis'
+        formatter: '题目{b}用时: {c}秒'
       xAxis:
         type: 'category'
         data: [1..times.length]
@@ -56,7 +59,7 @@ $ ->
         label:
           normal:
             formatter: (params) ->
-              if params.value > 0 then Math.round(params.value * 100) / 100 else ''
+              if params.value > 0 then Math.round(params.value * 100) / 100 + '"' else ''
             show: true
             position: 'insideRight'
       }]
@@ -69,6 +72,11 @@ $ ->
         trigger: 'axis'
         axisPointer:
           type: 'shadow'
+        formatter: (params) ->
+          text = "<b>#{params[0].name}</b><br/>"
+          text += params[0].marker + params[0].seriesName + ': ' + Math.ceil(params[0].value * 100) + '%' + '<br/>'
+          text += params[1].marker + params[1].seriesName + ': ' + Math.ceil(params[1].value * 100) + '%' + '<br/>'
+          text
       grid:
         top: 10
       xAxis:
