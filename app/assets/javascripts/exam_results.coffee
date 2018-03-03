@@ -55,6 +55,8 @@ $ ->
           color: '#00B9FC'
         label:
           normal:
+            formatter: (params) ->
+              if params.value > 0 then Math.round(params.value * 100) / 100 else ''
             show: true
             position: 'insideRight'
       }]
@@ -81,7 +83,8 @@ $ ->
         stack: 'total'
         label:
           normal:
-            formatter: (params) -> Math.ceil(params.value * 100) + '%'
+            formatter: (params) ->
+              if params.value > 0 then Math.ceil(params.value * 100) + '%' else ''
             show: true
             position: 'insideRight'
         itemStyle:
@@ -93,7 +96,8 @@ $ ->
         stack: 'total'
         label:
           normal:
-            formatter: (params) -> Math.floor(params.value * 100) + '%'
+            formatter: (params) ->
+              if params.value > 0 then Math.ceil(params.value * 100) + '%' else ''
             show: true
             position: 'insideRight'
         itemStyle:
