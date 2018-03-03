@@ -66,7 +66,7 @@
       </div>
       <% if @exam.exam_type_label == '770' %>
         <div class="clearfix hidden js-tab" data-tab="math">
-          <div class="">
+          <div style="margin-top: 16px;">
             <label><input type="radio" name="range2" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
             <label><input type="radio" name="range2" value="ps"> 只看PS  &nbsp;&nbsp;</label>
             <label><input type="radio" name="range2" value="ds"> 只看DS  &nbsp;&nbsp;</label>
@@ -86,6 +86,7 @@
 </div>
 
 <% content_for :scripts do %>
+  <script src='//player.polyv.net/script/polyvplayer.min.js'></script>
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
     var verbalTimes = <%= @verbal_times %>;

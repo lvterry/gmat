@@ -2,6 +2,15 @@
 
 percentCorrectData = null
 
+initVideoGuide = ()->
+  videos = $('.polyv')
+  return if videos.length is 0
+  element = videos.first()
+  player = polyvObject(element).videoPlayer
+    'width': '840'
+    'height': '573'
+    'vid': element.attr('id')
+
 $ ->
   drawTimesChart = (times)->
     myChart = echarts.init(document.getElementById('time-chart'))
@@ -124,6 +133,7 @@ $ ->
           take_id: takeId
           anwser_index: anwserIndex
           exercise_id: exerciseId
+        success: initVideoGuide
 
   getFirstExercise = ->
     exerciseId = exerciseNumbers[0].getAttribute 'data-ex-id'
