@@ -54,6 +54,7 @@
 <table class="table table-bordered">
   <thead>
     <th>题号</th>
+    <th>ID</th>
     <th style="width: 500px;">题目</th>
     <th>标签</th>
     <th>是否隐藏</th>
@@ -63,6 +64,7 @@
     <% @exercises.each do |exercise| %>
       <tr>
         <td><%= exercise.seq %></td>
+        <td><%= exercise.id %></td>
         <td><%= truncate_html(exercise.title, length: 120) %></td>
         <td>
           <% exercise.labels.each do |label| %>
