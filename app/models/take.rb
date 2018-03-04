@@ -15,6 +15,9 @@ class Take < ApplicationRecord
   end
 
   def verbal_times
+    if verbal_anwsers.nil?
+      return []
+    end
     if exam.exam_type_label == 'GWD'
       return time_points_from_time_series
     else
@@ -30,6 +33,9 @@ class Take < ApplicationRecord
   end
 
   def quant_times
+    if quant_anwsers.nil?
+      return []
+    end
     if exam.exam_type_label == 'GWD'
       return []
     else
@@ -236,8 +242,8 @@ class Take < ApplicationRecord
               results.push(ex.anwser == anwsers[index].to_i)
             end
           end
-          results
         end
+        results
       end
     end
 end
