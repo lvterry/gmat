@@ -45,6 +45,7 @@ class Admin::ExamsController < AdminController
   def destroy
     @exam = Exam.find(params[:id])
     @exam.destroy
+    Take.where(exam_id: params[:id]).destroy_all
     redirect_to admin_exam_path
   end
 
