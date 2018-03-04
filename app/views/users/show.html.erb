@@ -25,7 +25,7 @@
   <div class="container">
     <% if @user.takes.count > 0 %>
       <h3>我参加过的模考</h3>
-      <% @user.takes.each do |take| %>
+      <% @user.takes.order(updated_at: :desc).each do |take| %>
         <div class="take">
           <span class="exam-title"><%= take.exam.name %></span>
           <span class="time-taken"><%= take.created_at.to_formatted_s(:date_and_time) %></span>
