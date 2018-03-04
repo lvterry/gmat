@@ -5,7 +5,7 @@
 #= require countdown.min
 
 class Clock
-  constructor: (@el) ->
+  constructor: (@el, @onTimerEnd) ->
     @minutes = @el.querySelector '.minutes'
     @seconds = @el.querySelector '.seconds'
 
@@ -20,7 +20,10 @@ class Clock
     timespan = countdown date, @deadline, countdown.MINUTES|countdown.SECONDS
     @minutes.innerHTML = timespan.minutes
     @seconds.innerHTML = ('0' + timespan.seconds).slice(-2)
-    requestAnimationFrame @start, 60
+    if (timespan.minutes is 0) and (timespan.seconds is 0)
+      @onTimerEnd()
+    else
+      requestAnimationFrame @start, 60
 
 $ ->
 
@@ -51,13 +54,11 @@ $ ->
   $('.btn-skip').on 'click', (e) ->
     url = @getAttribute 'data-url'
     takeId = @getAttribute 'data-take-id'
-    #examId = @getAttribute 'data-exam-id'
     $.ajax
       url: "/takes/#{takeId}"
       method: 'PATCH'
       data:
         currentTimestamp: Date.now()
-        #examId: examId
       success: (data) -> window.location = url
 
   $('.js-confirm-anwser-yes').on 'click', (e) ->
@@ -80,7 +81,7 @@ $ ->
         if url.indexOf("-1") is -1
           window.location = url
         else
-          window.location = "/exams/#{examId}/result?take_id=#{takeId}"
+          showResultPage()
 
   $('.js-end-exam').on 'click', (e) ->
     e.preventDefault()
@@ -103,7 +104,12 @@ $ ->
     $('.pause-exam-content').toggle()
     $('.exercise-content').toggle()
 
+  showResultPage = ->
+    examId = $('.header').attr('data-exam-id')
+    takeId = $('.header').attr('data-take-id')
+    window.location = "/exams/#{examId}/result?take_id=#{takeId}"
+
   # if the page contains countdown
   if document.getElementById('clock')
-    clock = new Clock(document.getElementById('clock'))
+    clock = new Clock(document.getElementById('clock'), showResultPage)
     clock.start()

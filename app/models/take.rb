@@ -177,10 +177,10 @@ class Take < ApplicationRecord
   def longtime_exercise?(exercise)
     if exercise.verbal?
       index = self.exam.verbal_exercise_ids.index(exercise.id.to_s)
-      self.verbal_times[index] > 180
+      self.verbal_times[index].nil? || self.verbal_times[index] > 180
     else
       index = self.exam.quant_exercise_ids.index(exercise.id.to_s)
-      self.quant_times[index] > 180
+      self.quant_times[index].nil? || self.quant_times[index] > 180
     end
 
   end
@@ -217,14 +217,27 @@ class Take < ApplicationRecord
 
 
     def anwser_results(exercises, anwsers)
-      results = []
-      unless exercises.nil? || anwsers.nil?
-        anwsers = anwsers.split(',')
-        exercises.split(',').each_with_index do |id, index|
-          exercise = Exercise.find(id)
-          results.push(exercise.anwser == anwsers[index].to_i)
+      if exercises.nil?
+        return []
+      else
+        results = []
+        exercises = exercises.split(',')
+        if anwsers.nil?
+          for i in exercises
+            results.push(false)
+          end
+        else
+          anwsers = anwsers.split(',')
+          exercises.each_with_index do |id, index|
+            if anwsers[index].nil?
+              results.push(false)
+            else
+              ex = Exercise.find exercises[index]
+              results.push(ex.anwser == anwsers[index].to_i)
+            end
+          end
+          results
         end
       end
-      results
     end
 end
