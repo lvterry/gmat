@@ -99,16 +99,5 @@
   <% if flash[:error].present? %>
     layer.msg("<%= flash[:error] %>")
   <% end %>
-  $('[href="#unauthorized"]').on('click', function(e){
-    layer.msg('您必须先登录才能查看模考内容');
-  });
-  $('.tabs a').on('click', function(e){
-    if ($(this).hasClass('active')) { return; }
-    $('.tabs a').removeClass('active');
-    $(this).addClass('active');
-    var tabs = $('[data-behavior="tab"]');
-    var tabName = $(this).attr('href').replace('#','');
-    tabs.hide();
-    tabs.filter('[data-exam-type="' + tabName+ '"]').show();
-  });
 </script>
+<%= javascript_include_tag 'exams' %>
