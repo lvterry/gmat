@@ -5,7 +5,8 @@ class ExamsController < ApplicationController
 
 
   def index
-    @exams_gwd = Exam.where(exam_type: 1)
+    @top = Exam.find(36)
+    @exams_gwd = Exam.where(exam_type: 1).where.not(id: 36)
     @exams_770 = Exam.where(exam_type: 2)
   end
 
