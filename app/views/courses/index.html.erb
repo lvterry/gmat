@@ -13,7 +13,10 @@
   <div class="courses clearfix mb2">
     <div class="container">
       <% if @courses.count > 0 %>
-        <%= render @courses %>
+        <% @courses.each do |course| %>
+          <%= render partial: 'courses/course', locals: {course: course, auth: false} %>
+        <% end -%>
+        
       <% else %>
         <div class="gray p4 center h3">没有课程</div>
       <% end -%>
