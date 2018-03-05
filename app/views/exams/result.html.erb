@@ -5,7 +5,7 @@
     </div>
     <div class="container bg-white p3 clearfix">
       <h1>答题时间分析</h1>
-      <% if @exam.exam_type_label == '770' %>
+      <% if @exam.exam_type_label == Exam.VERBAL_QUANT %>
         <ul class="subject-switch js-time-chart-switch">
           <li><a href="#verbal" class="active">Verbal</a></li>
           <li><a href="#math">Math</a></li>
@@ -43,7 +43,7 @@
   <div class="pt2">
     <div class="container bg-white p3">
       <h1>答案及解析</h1>
-      <% if @exam.exam_type_label == '770' %>
+      <% if @exam.exam_type_label == Exam.VERBAL_QUANT %>
         <ul class="subject-switch js-exercise-switch">
           <li><a href="#verbal" class="active">Verbal</a></li>
           <li><a href="#math">Math</a></li>
@@ -64,7 +64,7 @@
           <% end -%>
         </ol>
       </div>
-      <% if @exam.exam_type_label == '770' %>
+      <% if @exam.exam_type_label == Exam.VERBAL_QUANT %>
         <div class="clearfix hidden js-tab" data-tab="math">
           <div style="margin-top: 16px;">
             <label><input type="radio" name="range2" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
@@ -89,19 +89,17 @@
   <script src='//player.polyv.net/script/polyvplayer.min.js'></script>
   <%= javascript_include_tag 'exam_results' %>
   <script type="text/javascript">
-    var verbalTimes = <%= @verbal_times %>;
-    <% if @exam.exam_type_label == '770' %>
-    var quantTimes = <%= @quant_times %>;
+    <% unless @take.exam.exam_type_label == Exam.QUANT_ONLY %>
+      var verbalTimeManagementData = <%= @take.verbal_time_management_data %>;
+      var verbalTimes = <%= @verbal_times %>;
+      var verbalWrongData = <%= @take.verbal_wrong_data %>;
+      var verbalRightData = <%= @take.verbal_right_data %>;
     <% end -%>
-    var verbalTimeManagementData = <%= @take.verbal_time_management_data %>;
-    <% if @exam.exam_type_label == '770' %>
-    var quantTimeManagementData = <%= @take.quant_time_management_data %>;
-    <% end -%>
-    var verbalWrongData = <%= @take.verbal_wrong_data %>;
-    var verbalRightData = <%= @take.verbal_right_data %>;
-    <% if @exam.exam_type_label == '770' %>
-    var quantWrongData = <%= @take.quant_wrong_data %>;
-    var quantRightData = <%= @take.quant_right_data %>;
+    <% unless @take.exam.exam_type_label == Exam.VERBAL_ONLY %>
+      var quantTimes = <%= @quant_times %>;
+      var quantTimeManagementData = <%= @take.quant_time_management_data %>;
+      var quantWrongData = <%= @take.quant_wrong_data %>;
+      var quantRightData = <%= @take.quant_right_data %>;
     <% end -%>
   </script>
 <% end -%>

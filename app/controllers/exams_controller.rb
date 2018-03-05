@@ -12,7 +12,7 @@ class ExamsController < ApplicationController
 
   def show
     @take = Take.new
-    if @exam.exam_type_label == '770'
+    if @exam.exam_type_label == Exam.VERBAL_QUANT
       render 'exams/show'
     else
       @take.exam = @exam
@@ -46,7 +46,7 @@ class ExamsController < ApplicationController
     @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
     @verbal_times = @take.verbal_times
 
-    if @exam.exam_type_label == '770'
+    if @exam.exam_type_label == Exam.VERBAL_QUANT
       @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
       @quant_times = @take.quant_times
     end

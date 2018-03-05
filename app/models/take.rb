@@ -15,10 +15,10 @@ class Take < ApplicationRecord
   end
 
   def verbal_times
-    if verbal_anwsers.nil?
+    if (verbal_anwsers.nil? || (exam.exam_type_label == Exam.QUANT_ONLY))
       return []
     end
-    if exam.exam_type_label == 'GWD'
+    if exam.exam_type_label == Exam.VERBAL_ONLY
       return time_points_from_time_series
     else
       verbal_count = self.exam.verbal_exercise_ids.count
@@ -33,11 +33,11 @@ class Take < ApplicationRecord
   end
 
   def quant_times
-    if quant_anwsers.nil?
+    if (quant_anwsers.nil? || (exam.exam_type_label == Exam.VERBAL_ONLY))
       return []
     end
-    if exam.exam_type_label == 'GWD'
-      return []
+    if exam.exam_type_label == Exam.QUANT_ONLY
+      return time_points_from_time_series
     else
       quant_count = self.exam.quant_exercise_ids.count
 

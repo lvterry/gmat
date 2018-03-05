@@ -68,7 +68,7 @@ class User < ApplicationRecord
 
   def allow_exam?(exam)
     allow_label_ary = Label.find(self.allowed_exam_ids).map(&:name)
-    allow_label_ary.include?(exam.exam_type_label)
+    allow_label_ary.include?(exam.exam_type_as_label)
   end
 
   def allowed_exam_ids

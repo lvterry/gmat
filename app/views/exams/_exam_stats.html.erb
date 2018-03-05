@@ -1,0 +1,17 @@
+<span>平均错题数: </span>
+
+<% if exam.exam_type_label == Exam.VERBAL_ONLY %>
+
+  <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
+
+<% elsif exam.exam_type_label == Exam.QUANT_ONLY %>
+
+  <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
+
+<% elsif exam.exam_type_label == Exam.VERBAL_QUANT %>
+
+  <span>Verbal <%= exam.avg_num_of_wrong_verbal_exercises.nan? ? '-' : exam.avg_num_of_wrong_verbal_exercises %></span>
+
+  <span>Quant <%= exam.avg_num_of_wrong_quant_exercises.nan? ? '-' : exam.avg_num_of_wrong_quant_exercises %></span>
+
+<% end -%>

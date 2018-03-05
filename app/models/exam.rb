@@ -3,6 +3,12 @@ class Exam < ApplicationRecord
   has_many :takes
   has_many :users, through: :takes
 
+  class << self; attr_accessor :VERBAL_ONLY, :QUANT_ONLY, :VERBAL_QUANT end
+
+  @VERBAL_ONLY = 1
+  @QUANT_ONLY = 2
+  @VERBAL_QUANT = 3
+
   def verbal_exercise_ids
     verbal_exercises.nil? ? [] : verbal_exercises.split(',')
   end
@@ -30,6 +36,16 @@ class Exam < ApplicationRecord
   end
 
   def exam_type_label
+    if verbal_exercises.empty? and !quant_exercises.empty?
+      return Exam.QUANT_ONLY
+    elsif quant_exercises.empty? and !verbal_exercises.empty?
+      return Exam.VERBAL_ONLY
+    elsif !quant_exercises.empty? and !verbal_exercises.empty?
+      return Exam.VERBAL_QUANT
+    end
+  end
+
+  def exam_type_as_label
     case self.exam_type
     when 1
       'GWD'
@@ -41,4 +57,5 @@ class Exam < ApplicationRecord
       'nothing'
     end
   end
+
 end
