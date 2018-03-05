@@ -11,25 +11,29 @@
       <div data-exam-type="gwd" data-behavior="tab">
 
         <p class="text-muted">GWD-TN-24 是基于GWD31套的进阶版,并剔除了重复的题目。其中最后三套的题目只有阅读/逻辑是新的，语法题目大部分来自Prep1 (SC题目不够了)。因此不用把22/23/24这三套留到最后模考。前面1-13的套题目会相对陈旧，14-21会相对新一点。</p>
+
+        
         <div class="exams clearfix mb2">
           <div class="container">
-            <div class="left bg-white p2 mt2 mb2 clearfix">
-              <% if current_user %>
-                <%= link_to @top.name, exam_path(@top) %>
-              <% else %>
-                <%= link_to @top.name, '#unauthorized' %>
-              <% end -%>
-              <div class="exam-info">
-                <div>练习人数: <%= @top.user_count %></div>
-                <div>
-                  <span>平均错题数: </span>
-                  <span>Verbal <%= @top.avg_num_of_wrong_verbal_exercises.nan? ? '-' : @top.avg_num_of_wrong_verbal_exercises %></span>
-                  <% if @top.exam_type_label == '770' %>
-                    <span>Quant <%= @top.avg_num_of_wrong_quant_exercises.nan? ? '-' : @top.avg_num_of_wrong_quant_exercises %></span>
-                  <% end -%>
+            <% @top.each do |top| %>
+              <div class="left bg-white p2 mt2 mb2 clearfix">
+                <% if current_user %>
+                  <%= link_to top.name, exam_path(top) %>
+                <% else %>
+                  <%= link_to top.name, '#unauthorized' %>
+                <% end -%>
+                <div class="exam-info">
+                  <div>练习人数: <%= top.user_count %></div>
+                  <div>
+                    <span>平均错题数: </span>
+                    <span>Verbal <%= top.avg_num_of_wrong_verbal_exercises.nan? ? '-' : top.avg_num_of_wrong_verbal_exercises %></span>
+                    <% if top.exam_type_label == '770' %>
+                      <span>Quant <%= top.avg_num_of_wrong_quant_exercises.nan? ? '-' : top.avg_num_of_wrong_quant_exercises %></span>
+                    <% end -%>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end -%>
             <div class="left bg-white p2 mt2 mb2 clearfix mini-quiz">
               <h4><a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">The GMAT mini quiz</a></h4>
               <a href="http://www.mba.com/gmat-mini-quiz?utm_campaign=Global_All_Mini-Quiz_11Apr2016&utm_medium=referral&utm_source=gmat770" target="_blank">

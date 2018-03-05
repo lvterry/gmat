@@ -18,8 +18,8 @@
         <td><%= exam.name %></td>
         <td><%= exam.exam_type == 1 ? 'GWD系列' : '770系列' %></td>
         <td><%= exam.estimated_time %> mins</td>
-        <td><%= exam.verbal_exercise_ids.join(', ') %></td>
-        <td><%= exam.quant_exercise_ids.join(', ') %></td>
+        <td><%= exam.verbal_exercises %></td>
+        <td><%= exam.quant_exercises %></td>
         <td>
           <%= link_to '编辑', edit_admin_exam_path(exam) %>
           <%= link_to '删除', admin_exam_path(exam), class: 'delete-exam' %>
