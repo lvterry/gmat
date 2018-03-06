@@ -215,11 +215,11 @@ drawDiagram = (data) ->
       blackBar.innerText = 'fourth'
     barCorrect = document.createElement('div')
     barCorrect.className = 'bar-correct'
-    barCorrect.innerText = "#{section.correct}%"
+    barCorrect.innerText = "#{Math.ceil(section.correct)}%"
     barCorrect.style = "height: #{section.correct * 2}px; line-height: #{section.correct * 2}px;"
     barIncorrect = document.createElement('div')
     barIncorrect.className = 'bar-incorrect'
-    barIncorrect.innerText = "#{section.incorrect}%"
+    barIncorrect.innerText = "#{Math.ceil(section.incorrect)}%"
     barIncorrect.style = "height: #{section.incorrect * 2}px; line-height: #{section.incorrect * 2}px;"
     sec.appendChild blackBar
     sec.appendChild barCorrect
