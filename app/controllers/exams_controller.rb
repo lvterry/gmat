@@ -5,7 +5,11 @@ class ExamsController < ApplicationController
 
 
   def index
-    @top = Exam.find([36, 38])
+    if Rails.env.production?
+      @top = Exam.find([36, 38])
+    else
+      @top = Exam.limit(2)
+    end
     @exams_gwd = Exam.where(exam_type: 1).where.not(id: [36, 38])
     @exams_770 = Exam.where(exam_type: 2)
   end
