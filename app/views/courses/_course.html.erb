@@ -1,11 +1,11 @@
 <div class="course-item left bg-white p2 mb2 clearfix">
   <div class="mb1">
-    <a href="<%= (current_user.nil? && auth) ? '#unauthorized' : course_show_path(course, from: 'free') %>">
+    <a href="<%= (current_user.nil? && auth) ? '#unauthorized' : course_show_path(course, from: from) %>">
       <img src="<%= course.img_url %>?imageView2/1/w/253/h/151" width="253" height="151">
     </a>
   </div>
   <div>
-    <a href="<%= (current_user.nil? && auth) ? '#unauthorized' : course_show_path(course, from: 'free') %>" class="h4"><%= course.title %></a>
+    <a href="<%= (current_user.nil? && auth) ? '#unauthorized' : course_show_path(course, from: from) %>" class="h4"><%= course.title %></a>
     <div class="gray h5 mt1">
       <div>讲师: <%= course.teacher.nil? ? '' : course.teacher.name %></div>
       <div>开课时间：<%= course.start_time.to_formatted_s(:date_and_time)%></div>

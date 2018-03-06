@@ -53,3 +53,16 @@
     </div>
   </div>
 </div>
+
+<% if @from == 'free' and current_user.nil? %>
+  <script type="text/javascript">
+    layer.confirm('此课程需要登录后才能查看', {
+      btn: '去登录',
+      closeBtn: 0,
+      title: false
+    }, function(index, layero){
+      window.location = '/auth/open_wechat';
+    });
+  </script>
+
+<% end -%>

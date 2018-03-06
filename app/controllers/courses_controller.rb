@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @from = params[:from]
+    @from = params[:from]  
   end
 
   private

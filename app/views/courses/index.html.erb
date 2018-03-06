@@ -14,7 +14,7 @@
     <div class="container">
       <% if @courses.count > 0 %>
         <% @courses.each do |course| %>
-          <%= render partial: 'courses/course', locals: {course: course, auth: false} %>
+          <%= render partial: 'courses/course', locals: {course: course, auth: false, from: nil} %>
         <% end -%>
         
       <% else %>

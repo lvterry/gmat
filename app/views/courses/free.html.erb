@@ -14,7 +14,7 @@
     <div class="container">
       <% if @courses.count > 0 %>
         <% @courses.each do |course| %>
-          <%= render partial: 'courses/course', locals: {course: course, auth: true} %>
+          <%= render partial: 'courses/course', locals: {course: course, auth: true, from: 'free'} %>
         <% end -%>
       <% else %>
         <div class="gray p4 center h3">没有课程</div>
