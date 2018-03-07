@@ -17,7 +17,7 @@ class Meeting < ApplicationRecord
   end
 
   def categories
-    ['Elite∙数学冲刺','百题斩∙数学','Elite∙逻辑突破','百题斩∙逻辑','Elite∙语法突破','百题斩∙语法','免费∙公开课','线下面授班', '限时免费', 'Elite∙阅读提升']
+    ['Elite∙数学冲刺','挑战700+|数学','Elite∙逻辑突破','挑战700+|逻辑','Elite∙语法突破','挑战700+|语法','免费∙公开课','线下面授班', '限时免费', 'Elite∙阅读提升']
   end
 
   def colors
