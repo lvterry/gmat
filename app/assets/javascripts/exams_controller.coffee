@@ -51,7 +51,7 @@ $ ->
     else
       $('.js-confirm-anwser').show()
 
-  $('.btn-skip').on 'click', (e) ->
+  $('.btn-skip, .btn-next-skip').on 'click', (e) ->
     url = @getAttribute 'data-url'
     takeId = @getAttribute 'data-take-id'
     $.ajax

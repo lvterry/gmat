@@ -9,7 +9,7 @@
   </a>
 
   <% if @page_id.to_i != 15 %>
-    <a class="btn-next right" href="<%= next_instruction_url(@exam, @page_id, @take) %>">
+    <a class="btn-next right <%= 'btn-next-skip' if @page_id.to_i == 13 %>" href="<%= next_instruction_url(@exam, @page_id, @take) %>" data-url="<%= next_instruction_url(@exam, @page_id, @take) %>"  data-take-id="<%= @take.id %>" data-exam-id="<%= @exam.id %>">
       <span><u>N</u>ext</span>
       <i></i>
     </a>
