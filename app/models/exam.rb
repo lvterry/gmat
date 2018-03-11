@@ -9,6 +9,9 @@ class Exam < ApplicationRecord
   @QUANT_ONLY = 2
   @VERBAL_QUANT = 3
 
+  TYPE_GWD = 1
+  TYPE_770 = 2
+
   def verbal_exercise_ids
     verbal_exercises.nil? ? [] : verbal_exercises.split(',')
   end

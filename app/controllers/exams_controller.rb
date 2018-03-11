@@ -3,15 +3,14 @@ class ExamsController < ApplicationController
   before_action :find_exam, except: [:index]
   before_action :check_permission, except: [:index]
 
-
   def index
-    if Rails.env.production?
-      @top = Exam.find([36, 38, 39])
-    else
-      @top = Exam.limit(2)
-    end
-    @exams_gwd = Exam.where(exam_type: 1).where.not(id: [36, 38, 39])
-    @exams_770 = Exam.where(exam_type: 2)
+    # if Rails.env.production?
+    #   @top = Exam.find([36, 38, 39])
+    # else
+    #   @top = Exam.limit(2)
+    # end
+    @exams_gwd = Exam.where(exam_type: Exam::TYPE_GWD)
+    @exams_770 = Exam.where(exam_type: Exam::TYPE_770)
   end
 
   def show
