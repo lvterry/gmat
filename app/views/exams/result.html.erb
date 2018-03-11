@@ -49,23 +49,25 @@
           <li><a href="#math">Math</a></li>
         </ul>
       <% end -%>
-      <div class="clearfix js-tab" data-tab="verbal">
-        <div style="margin-top: 16px;">
-          <label><input type="radio" name="range" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
-          <label><input type="radio" name="range" value="sc"> 只看SC  &nbsp;&nbsp;</label>
-          <label><input type="radio" name="range" value="cr"> 只看CR  &nbsp;&nbsp;</label>
-          <label><input type="radio" name="range" value="rc"> 只看RC  &nbsp;&nbsp;</label>
-          <label><input type="radio" name="range" value="wrong"> 只看错题 &nbsp;&nbsp;</label>
-          <label><input type="radio" name="range" value="longtime"> 思考时间过长的题目</label>
+      <% if @exam.exam_type_label != Exam.QUANT_ONLY %>
+        <div class="clearfix js-tab" data-tab="verbal">
+          <div style="margin-top: 16px;">
+            <label><input type="radio" name="range" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range" value="sc"> 只看SC  &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range" value="cr"> 只看CR  &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range" value="rc"> 只看RC  &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range" value="wrong"> 只看错题 &nbsp;&nbsp;</label>
+            <label><input type="radio" name="range" value="longtime"> 思考时间过长的题目</label>
+          </div>
+          <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
+            <% @verbal_exercises.each_with_index do |ex, i| %>
+              <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" data-longtime="<%= @take.longtime_exercise?(ex) %>" data-label="<%= ex.subject_label%>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, true) %>"><%= i+1 %></a></li>
+            <% end -%>
+          </ol>
         </div>
-        <ol class="exercise-numbers" data-take-id="<%= @take.id %>">
-          <% @verbal_exercises.each_with_index do |ex, i| %>
-            <li><a href="#" data-ex-id="<%= ex.id %>" data-index="<%= i %>" data-longtime="<%= @take.longtime_exercise?(ex) %>" data-label="<%= ex.subject_label%>" class="<%= exercise_number_css_class(i, @take.verbal_anwser_results, true) %>"><%= i+1 %></a></li>
-          <% end -%>
-        </ol>
-      </div>
-      <% if @exam.exam_type_label == Exam.VERBAL_QUANT %>
-        <div class="clearfix hidden js-tab" data-tab="math">
+      <% end -%>
+      <% if @exam.exam_type_label != Exam.VERBAL_ONLY %>
+        <div class="clearfix js-tab <%= 'hidden' if @exam.not_quant_only? %>" data-tab="math">
           <div style="margin-top: 16px;">
             <label><input type="radio" name="range2" value="all" checked=true> 全部题目 &nbsp;&nbsp;</label>
             <label><input type="radio" name="range2" value="ps"> 只看PS  &nbsp;&nbsp;</label>
@@ -96,7 +98,7 @@
       var verbalRightData = <%= @take.verbal_right_data %>;
     <% end -%>
     <% unless @take.exam.exam_type_label == Exam.VERBAL_ONLY %>
-      var quantTimes = <%= @quant_times %>;
+      var quantTimes = <%= @take.quant_times %>;
       var quantTimeManagementData = <%= @take.quant_time_management_data %>;
       var quantWrongData = <%= @take.quant_wrong_data %>;
       var quantRightData = <%= @take.quant_right_data %>;

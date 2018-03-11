@@ -46,15 +46,17 @@ class ExamsController < ApplicationController
     @take = Take.find params[:take_id]
     @take.calculate_data
 
-    @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
-    @verbal_times = @take.verbal_times
-
-    if @exam.exam_type_label == Exam.VERBAL_QUANT
-      @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
-      @quant_times = @take.quant_times
+    if @exam.exam_type_label != Exam.QUANT_ONLY
+      @verbal_exercises = Exercise.find @exam.verbal_exercises.split(',')
+      @verbal_times = @take.verbal_times
+      @exercise = @verbal_exercises.first
     end
 
-    @exercise = @verbal_exercises.first
+    if @exam.exam_type_label != Exam.VERBAL_ONLY
+      @quant_exercises = Exercise.find @exam.quant_exercises.split(',')
+      @quant_times = @take.quant_times
+      @exercise = @quant_exercises.first
+    end
 
     respond_to do |format|
       format.html

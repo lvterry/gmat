@@ -121,9 +121,14 @@ $ ->
       ['PS', 'DS', 'Overall']
 
   # init charts
-  drawTimesChart verbalTimes
-  drawTimeMgmtChart verbalTimeManagementData, getSubjects('verbal')
-  drawRightWrongChart verbalRightData, verbalWrongData, getSubjects('verbal')
+  if verbalTimes?
+    drawTimesChart verbalTimes
+    drawTimeMgmtChart verbalTimeManagementData, getSubjects('verbal')
+    drawRightWrongChart verbalRightData, verbalWrongData, getSubjects('verbal')
+  else
+    drawTimesChart quantTimes
+    drawTimeMgmtChart quantTimeManagementData, getSubjects('quant')
+    drawRightWrongChart quantRightData, quantWrongData, getSubjects('quant')
 
   # switch exercise details
   exerciseNumbers = $('.exercise-numbers a')

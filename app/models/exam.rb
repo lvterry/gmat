@@ -61,4 +61,8 @@ class Exam < ApplicationRecord
     end
   end
 
+  def not_quant_only?
+    exam_type_label != Exam.QUANT_ONLY
+  end
+
 end
