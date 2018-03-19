@@ -1,10 +1,10 @@
 module ExamsControllerHelper
   def skip_instructions_url(exam, take)
-    if exam.exam_type == Exam.VERBAL_ONLY
+    if exam.exam_type_label == Exam.VERBAL_ONLY
       first_exercise_id = exam.verbal_exercise_ids.first
-    elsif exam.exam_type == Exam.QUANT_ONLY
+    elsif exam.exam_type_label == Exam.QUANT_ONLY
       first_exercise_id = exam.quant_exercise_ids.first
-    elsif exam.exam_type == Exam.VERBAL_QUANT
+    elsif exam.exam_type_label == Exam.VERBAL_QUANT
       if take.subjects == 'V,Q'
         if take.seq.index('V') > take.seq.index('Q')
           first_exercise_id = exam.quant_exercise_ids.first
