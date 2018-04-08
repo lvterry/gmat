@@ -14,8 +14,10 @@
 
       <div class="pt1 breadcrumb">
         <%= link_to '题库', exercises_path %>
-        &gt;
-        <%= link_to @exercise.labels.first.name, "/exercises/search?labels=#{@exercise.labels.first.id}" %>
+		<% unless @exercise.labels.empty? %>
+          &gt;
+          <%= link_to @exercise.labels.first.name, "/exercises/search?labels=#{@exercise.labels.first.id}" %>
+		<% end %>
         &gt;
         题目详情
       </div>
