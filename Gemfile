@@ -85,3 +85,4 @@ gem 'chinese_pinyin'
 gem 'truncate_html'
 
 gem 'axlsx_rails'
+gem 'newrelic_rpm'
