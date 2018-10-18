@@ -9,9 +9,9 @@
         <div class="joined">已加入高分狗<%= (Time.zone.now - @user.created_at).to_i / 1.days %>天</div>
       </div>
       <div class="related">
-        <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/wechat.png', width: 30, height: 30 %>
+        <%= image_tag 'http://img2.gaofengo.com/wechat.png', width: 30, height: 30 %>
         <span>已绑定</span>
-        <%= image_tag 'http://7xtg0z.com2.z0.glb.clouddn.com/mobile.png', width: 30, height: 30 %>
+        <%= image_tag 'http://img2.gaofengo.com/mobile.png', width: 30, height: 30 %>
         <% if @user.mobile.blank? %>
           <span>未绑定</span>
         <% else %>
