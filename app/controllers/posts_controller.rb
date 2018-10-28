@@ -10,6 +10,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by_id params[:id]
+    if @post.nil?
+      render text:'Sorry, we cannot find this record', status: 404
+      return
+    end
   end
 end

@@ -20,7 +20,12 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = Course.find_by_id params[:id]
+    if @course.nil?
+      render text:'Sorry, we cannot find this course', status: 404
+      return
+    end
+
     @from = params[:from]  
   end
 

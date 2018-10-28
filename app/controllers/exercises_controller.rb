@@ -6,7 +6,11 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    @exercise = Exercise.find params[:id]
+    @exercise = Exercise.find_by_id params[:id]
+    if @exercise.nil?
+      render text:'Sorry, we cannot find this exercise', status: 404
+      return
+    end
     @seq = @exercise.seq.blank? ? 0 : @exercise.seq
     @prev = Exercise.find_by_seq(@seq - 1) ? Exercise.find_by_seq(@seq - 1).id : -1
     @next = Exercise.find_by_seq(@seq + 1) ? Exercise.find_by_seq(@seq + 1).id : -1

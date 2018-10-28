@@ -1,4 +1,4 @@
-window.qiniu_domain = '7xtg0z.com2.z0.glb.clouddn.com'
+window.qiniu_domain = 'img.gaofengo.com'
 
 window.initQiniu = (filesAdded, filesUploaded) ->
     uploader = Qiniu.uploader
@@ -6,8 +6,8 @@ window.initQiniu = (filesAdded, filesUploaded) ->
       browse_button: 'qiniu_upload'      # 上传选择的点选按钮，必需
       uptoken_url: '/welcome/uptoken'    # Ajax请求uptoken的Url，强烈建议设置（服务端提供）
       get_new_uptoken: false             # 设置上传文件的时候是否每次都重新获取新的uptoken
-      domain: qiniu_domain #bucket域名，下载资源时用到，必需
-      container: 'qiniu_container'            # 上传区域DOM ID，默认是browser_button的父元素
+      domain: qiniu_domain 				 #bucket域名，下载资源时用到，必需
+      container: 'qiniu_container'       # 上传区域DOM ID，默认是browser_button的父元素
       max_file_size: '10mb'              # 最大文件体积限制
       flash_swf_url: 'plupload/Moxie.swf' # 引入flash，相对路径
       max_retries: 3                     # 上传失败最大重试次数

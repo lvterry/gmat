@@ -11,7 +11,11 @@ class TempUsersController < ApplicationController
   end
 
   def show
-    @temp_user = TempUser.find params[:id]
+    @temp_user = TempUser.find_by_id params[:id]
+    if @temp_user.nil?
+      render text:'Sorry, we cannot find this user', status: 404
+      return
+    end
     @user_group = UserGroup.find @temp_user.user_group_id
   end
 
