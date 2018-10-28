@@ -1,11 +1,13 @@
 <div class="bg-snow pb2">
 
   <div class="pt2 header-margin search-bar">
+	<% if false  %>
     <div class="container">
       <%= form_tag search_exercises_path, :method => :get do %>
         <%= text_field_tag :query, '', placeholder: '输入题目关键词' %> <%= submit_tag "搜索" %>
       <% end %>
     </div>
+	<% end %>
   </div>
 
    <div class="container clearfix">
