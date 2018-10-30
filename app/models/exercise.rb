@@ -3,7 +3,7 @@ class Exercise < ApplicationRecord
 
   scope :viewable, -> { where(hide_from_view: false) }
 
-  searchable :auto_index => false do
+  searchable do
     text :title, :choices
 
     boolean :exclusive
