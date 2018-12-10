@@ -3,6 +3,7 @@
     <tr>
       <th></th>
       <th>用户ID</th>
+      <th>头像</th>
       <th>用户昵称</th>
       <th>性别</th>
       <th>注册时间</th>
@@ -15,6 +16,7 @@
       <tr data-id="<%= user.id %>">
         <td><input type="checkbox"></td>
         <td><%= user.id %></td>
+		<td><%= image_tag wechat_avatar_url(user.headimgurl), width: 32, height: 32 %></td>
         <td><%= user.nickname %></td>
         <td><%= (user.sex == 1) ? '男' : '女' %></td>
         <td><%= user.created_at.to_formatted_s(:date_and_time) %></td>
