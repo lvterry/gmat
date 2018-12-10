@@ -1,4 +1,4 @@
-window.qiniu_domain = 'img.gaofengo.com'
+window.qiniu_domain = 'img2.gaofengo.com'
 
 window.initQiniu = (filesAdded, filesUploaded) ->
     uploader = Qiniu.uploader

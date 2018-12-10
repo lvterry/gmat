@@ -24,9 +24,9 @@ $ ->
     imgHiddenField.attr 'value', "http://#{qiniu_domain}/#{file.name}"
     if imgContainer.find('img').length > 0
       img = imgContainer.find('img')
-      img.attr 'src', "http://#{qiniu_domain}/#{file.name}?imageView2/1/w/240/h/145"
+      img.attr 'src', "http://#{qiniu_domain}/#{file.name}?imageView2/1/w/480/h/290"
     else
-      html = "<img src='http://#{qiniu_domain}/#{file.name}?imageView2/1/w/240/h/145' width='240' height='145' />"
+      html = "<img src='http://#{qiniu_domain}/#{file.name}?imageView2/1/w/480/h/290' width='240' height='145' />"
       imgContainer.html html
 
   initQiniu(filesAdded, filesUploaded)
